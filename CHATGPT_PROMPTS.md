@@ -91,7 +91,7 @@ Two rules for everything:
 
 The reference images are in `design-source/chatgpt-refs/`, numbered to match. They're lightly color-corrected and cropped to 2:3, the shape ChatGPT returns, so the renders line up with the real photos in a drag slider.
 
-**Renders 1 to 3.** Open one new chat and paste this first, with no image:
+**Renders 1 to 3, and 6.** Open one new chat and paste this first, with no image:
 
 > In this chat I'll attach real photos of rooms in our 1899 Victorian house and ask you to furnish them. Every image you make is an edit of the attached photo, not a new picture. Keep the exact camera position, lens and framing, and keep every wall, window, door, trim board, baseboard, fretwork piece, mantel, floor board and light fixture in the same place and the same size, so the two images line up when one is laid over the other. Only add furniture and decor, and fix the specific things I name. Portrait, 1024 by 1536. Photorealistic, like high-end vacation rental listing photography, soft natural daylight. No people, no text, no logos, no University of Florida branding. Reply only with the image.
 
@@ -105,6 +105,9 @@ The reference images are in `design-source/chatgpt-refs/`, numbered to match. Th
 > Show this room finished as a new kitchen. Along the back wall: shaker cabinets painted deep navy, a white quartz counter, a large single-bowl sink centered where the plumbing is, cream subway tile up to the dark-stained picture rail, brass hardware, and open wood shelves. Replace the laminate floor with wide-plank wood that matches the original floor in the foreground, so the whole floor is one wood. Keep the painted wood mantel on the left wall, the window, the picture rail and all the trim. Replace the track lights with two brass schoolhouse pendants.
 
 If Craig and Jenn have picked a cabinet color or counter, swap it in.
+
+**6. `render-entry-hall.png`** (attach `6-entry-hall.jpg`)
+> Show this entry hall finished. Repair the torn drywall above the doorway so it is smooth and painted to match the wall, keeping all of the carved fretwork. Remove the broom, dustpan, step ladder, water bottles, cord and the loose screen door. Add a long runner rug, a narrow wood console under the window with a lamp and a bowl for keys, a bench with brass coat hooks, and a potted palm. Keep the staircase, the window, the light fixture and the front doors.
 
 **Check each render** before you save it: open the original and the render in two tabs and flick between them. If a door, window or the arch has moved, reply "Keep everything except the furniture exactly where it is in the original photo" and try again (up to 3 times).
 
