@@ -773,3 +773,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 }
 .float-cta.is-shown { transform: translate(-50%, 0); }
 @media (min-width: 761px) { .float-cta { display: none; } }
+.house-photos .tag { top: calc(22px * var(--s)); left: calc(22px * var(--s)); }
+.hp-1 { padding-bottom: calc(14px * var(--s)); }
+.hp-1::before { inset: calc(7px * var(--s)); }
