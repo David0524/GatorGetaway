@@ -283,7 +283,7 @@
           <div class="draft-step"><p class="kick">Still standing, 2026</p><h2>Built to last</h2><p>127 years later, it&rsquo;s all still here.</p></div>
           <div class="draft-step"><p class="kick">Opening December 26, 2026</p><h2>Ready for game day</h2><p>Four bedrooms, four and a half baths, a fenced yard with a gas grill, a billiard table, Ms. Pac-Man and a 98-inch TV.</p></div>
         </div>
-        <p class="draft-scale" aria-hidden="true">Scroll to build</p>
+        
       </div>
       <div class="stage">
         <picture><source type="image/webp" srcset="images/exterior-today-800.webp 800w, images/exterior-today-1600.webp 1551w" sizes="(min-width: 1320px) 1240px, 100vw"><img src="images/exterior-today-1600.jpg" srcset="images/exterior-today-800.jpg 800w, images/exterior-today-1600.jpg 1551w" sizes="(min-width: 1320px) 1240px, 100vw" width="1551" height="1014" alt="The house as it stands today, in a photo enhanced to preview the planned landscaping." loading="lazy"></picture>
@@ -313,10 +313,10 @@
   <section class="section gameday on-royal" aria-labelledby="gameday-h">
     <div class="wrap gameday-head">
       <div style="display:grid;gap:18px"><h2 id="gameday-h">A home-game Saturday</h2>
-      <p class="track-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h16M15 7l5 5-5 5"/></svg>Scroll to follow the day</p></div>
+      <div class="track-nav" data-track-nav="gd-track" hidden><button type="button" class="cal-nav" data-step="-1" aria-label="Earlier in the day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button><button type="button" class="cal-nav" data-step="1" aria-label="Later in the day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button></div></div>
       <picture class="gd-program"><source type="image/webp" srcset="images/prop-program.webp"><img src="images/prop-program.png" width="620" height="921" alt="" loading="lazy"></picture>
     </div>
-    <div class="track" tabindex="0" role="region" aria-label="A home-game Saturday, scrolls sideways">
+    <div class="track" id="gd-track" tabindex="0" role="region" aria-label="A home-game Saturday, scrolls sideways">
       <article class="stop"><div class="stop-media"><picture><source type="image/webp" srcset="images/detail-porch.webp"><img src="images/detail-porch.jpg" width="500" height="300" alt="The wraparound porch with white railings and turned posts." loading="lazy"></picture></div><div class="stop-body"><span class="stop-when">Morning</span><h3>Coffee on the porch</h3><p>A quiet Duck Pond street, and a porch that&rsquo;s been welcoming people since 1899.</p></div></article>
       <article class="stop"><div class="stop-media is-spot"><picture><source type="image/webp" srcset="images/spot-grill.webp"><img src="images/spot-grill.png" width="720" height="489" alt="An engraving of a gas grill on a brick patio beside a picket fence." loading="lazy"></picture></div><div class="stop-body"><span class="stop-when">Late morning</span><h3>Fire up the grill</h3><p>The gas grill is out back in the fenced yard. Your own tailgate.</p></div></article>
       <article class="stop"><div class="stop-media"><picture><source type="image/webp" srcset="images/stop-stadium.webp"><img src="images/stop-stadium.jpg" width="720" height="540" alt="An illustrated map of the football stadium, with a dotted path leading to it through the trees." loading="lazy"></picture></div><div class="stop-body"><span class="stop-when">Before kickoff</span><h3>Head to the stadium</h3><p>Two miles: seven minutes by car on a normal day, sixteen by bike, or a 43-minute walk with the crowd.</p></div></article>
@@ -332,9 +332,6 @@
       <p class="greet-from">Greetings from</p>
       <h2 class="greet-word" id="greet-h">Gainesville</h2>
       <p class="greet-sub">Wish you were here</p>
-      <figure class="greet-map">
-        <picture><source type="image/webp" srcset="images/map-illustrated-1600.webp"><img src="images/map-illustrated-1600.jpg" width="1600" height="800" alt="An illustrated postcard map of a small college town: a Victorian house among tree-lined streets, a downtown square with a fountain, a depot park and a football stadium." loading="lazy"></picture>
-      </figure>
     </div>
   </section>
 

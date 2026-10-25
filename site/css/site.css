@@ -927,3 +927,20 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 @media (max-width: 640px) { .house-photos .note-script { display: none; } .house-photos .tag { top: calc(14px * var(--s)); left: calc(14px * var(--s)); } }
 @media (prefers-reduced-motion: no-preference) { .house-photos .cab { transition: transform 0.5s var(--ease); } .house-photos .cab:hover { transform: rotate(0deg) scale(1.02); z-index: 4; } }
 .house-photos .hp-1 .note-script { text-align: left; padding-left: calc(12px * var(--s)); }
+/* ---------- no full-screen scenes: the build and the game-day row scroll with the page ---------- */
+.draft-pin { min-height: 0; padding-block: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(88px * var(--s))); gap: clamp(calc(24px * var(--s)), calc(3vw * var(--s)), calc(40px * var(--s))); }
+.is-live .stage { width: 100%; }
+@media (min-width: 1000px) {
+  .draft-pin { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); align-items: center; }
+  .draft-head { display: block; }
+  .stage { max-width: calc(64svh * 1551 / 1014); justify-self: end; }
+}
+.gameday .track { scroll-behavior: smooth; }
+@media (min-width: 1000px) { .gameday .stop { flex-basis: min(calc(25vw * var(--s)), calc(330px * var(--s))); } }
+.track-nav { display: flex; gap: calc(10px * var(--s)); }
+.track-nav[hidden] { display: none; }
+.gameday .track-nav .cal-nav { width: calc(46px * var(--s)); height: calc(46px * var(--s)); border-color: var(--paper); color: var(--paper); }
+.gameday .track-nav .cal-nav:hover:not(:disabled) { background: var(--paper); color: var(--royal); }
+.gameday .track-nav .cal-nav svg { width: calc(20px * var(--s)); height: calc(20px * var(--s)); }
+.gameday .gd-program img { height: min(22svh, calc(220px * var(--s))); width: auto; }
+.greet { padding-block: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(88px * var(--s))); }

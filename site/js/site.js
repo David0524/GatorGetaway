@@ -168,9 +168,10 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
 
     /* Pinned sections first, so every later trigger measures the page with their spacers in place */
 
-    /* Drafting table: callouts draw on, then the photograph develops through the drawing */
+    /* Drafting table: as the section scrolls past, the drawing builds up, callouts draw on, and
+       the photograph develops through it. Nothing is pinned, so the page keeps moving. */
     const draft = document.querySelector(".drafting");
-    if (draft) mm.add("(min-height: 560px)", () => {
+    if (draft) mm.add("(min-width: 0px)", () => {
       draft.classList.add("is-live");
       const steps = draft.querySelectorAll(".draft-step");
       const leads = draft.querySelectorAll(".notes .lead");
@@ -185,7 +186,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       let marks = [];
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: draft, start: "top top", end: "+=240%", pin: true, scrub: 0.7, anticipatePin: 1,
+          trigger: draft.querySelector(".stage"), start: "top 85%", end: "bottom 30%", scrub: 0.6,
           onUpdate: (self) => setStep(marks.filter((m) => self.progress >= m).length),
         },
       });
@@ -213,20 +214,6 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
         draft.classList.remove("is-live");
         leads.forEach((l) => { l.style.strokeDasharray = ""; l.style.strokeDashoffset = ""; });
       };
-    });
-
-    /* Game day: the day slides sideways as you scroll (desktop); phones swipe natively */
-    mm.add("(min-width: 1000px) and (min-height: 640px)", () => {
-      const sec = document.querySelector(".gameday");
-      const track = sec && sec.querySelector(".track");
-      if (!sec || !track) return;
-      sec.classList.add("is-live");
-      const distance = () => Math.max(0, track.scrollWidth - window.innerWidth + 40);
-      const tween = gsap.to(track, {
-        x: () => -distance(), ease: "none",
-        scrollTrigger: { trigger: sec, start: "top top", end: () => "+=" + distance(), pin: true, scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1 },
-      });
-      return () => { tween.scrollTrigger?.kill(); tween.kill(); sec.classList.remove("is-live"); gsap.set(track, { clearProps: "x" }); };
     });
 
     /* Hero: the playbill sets line by line, the cabinet card drops onto the table, the seal stamps down */
@@ -291,6 +278,23 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { ScrollTrigger.refresh(); landOnHash(); });
     window.addEventListener("load", () => { ScrollTrigger.refresh(); landOnHash(); });
   }
+
+  /* ---------------- Game day row: arrows scroll the cards one at a time */
+  document.querySelectorAll("[data-track-nav]").forEach((nav) => {
+    const track = document.getElementById(nav.dataset.trackNav);
+    if (!track) return;
+    const prev = nav.querySelector('[data-step="-1"]'), next = nav.querySelector('[data-step="1"]');
+    const step = () => (track.querySelector(".stop")?.getBoundingClientRect().width || 300) + 22;
+    const sync = () => {
+      prev.disabled = track.scrollLeft < 4;
+      next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 4;
+    };
+    [prev, next].forEach((b) => b.addEventListener("click", () => track.scrollBy({ left: Number(b.dataset.step) * step(), behavior: reduceMotion ? "auto" : "smooth" })));
+    track.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    nav.hidden = false;
+    sync();
+  });
 
   /* ---------------- Photo viewer */
   const links = Array.from(document.querySelectorAll("[data-lightbox]"));
