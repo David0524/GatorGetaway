@@ -964,3 +964,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .has-arch .page-title { padding-top: calc(var(--arch-w) * 0.27); }
 .bill-head { padding: calc(30px * var(--s)) calc(40px * var(--s)) 0; }
 .bill-head h2 { font-size: clamp(2rem, 1.4rem + calc(1.8vw * var(--s)), 3rem); }
+.map-card { padding: calc(12px * var(--s)) calc(12px * var(--s)) calc(40px * var(--s)); }
+.map-card::before { inset: calc(6px * var(--s)) calc(6px * var(--s)) calc(32px * var(--s)); }
+.map-card .map-art { width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; border-radius: 3px; }
+.map-card .note-script { bottom: calc(12px * var(--s)); }
+@media (min-width: 1000px) { .map-grid { align-items: center; } }
