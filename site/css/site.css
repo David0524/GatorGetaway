@@ -663,7 +663,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 /* ---------------- Round 3 art set ---------------- */
 /* masthead: seal + hand-lettered wordmark */
 .mark { gap: calc(10px * var(--s)); }
-.mark-seal { width: calc(46px * var(--s)); height: calc(46px * var(--s)); flex: none; }
+.mark-seal { width: calc(44px * var(--s)); height: calc(44px * var(--s)); flex: none; border-radius: 22%; }
 .mark-word-img { height: calc(52px * var(--s)); width: auto; }
 @media (max-width: 560px) { .mark-seal { width: calc(38px * var(--s)); height: calc(38px * var(--s)); } .mark-word-img { height: calc(44px * var(--s)); } }
 .seal-core { width: 64%; background: var(--ink); overflow: hidden; }
