@@ -1,6 +1,6 @@
-# Netlify settings for gatorhavenhouse.com. No build step: the folder is published as is.
+# Netlify settings for gatorhavenhouse.com. No build step: the site/ folder is published as is.
 [build]
-  publish = "."
+  publish = "site"
 
 # Send the bare domain and the Netlify subdomain to www.
 [[redirects]]

@@ -9,12 +9,12 @@ The website for www.gatorhavenhouse.com: an 1899 Victorian vacation rental in Ga
 
 | File | What it is |
 |---|---|
-| `index.html` | Home: announcement, opening timeline, the house, before/after slider, early-guest rates, guest list form |
-| `photos.html` | The home today, the transformation, and renderings of the finished rooms |
-| `history.html` | History of the home (written to be edited) |
-| `thanks.html` | Shown after the form is sent if a visitor's browser has JavaScript off |
+| `site/index.html` | Home: announcement, opening timeline, the house, before/after slider, early-guest rates, guest list form |
+| `site/photos.html` | The home today, the transformation, and renderings of the finished rooms |
+| `site/history.html` | History of the home (written to be edited) |
+| `site/thanks.html` | Shown after the form is sent if a visitor's browser has JavaScript off |
 
-It's a plain static site: HTML, `css/site.css`, `js/site.js` and `images/`. No build step.
+The public site lives in `site/` (HTML, `css/site.css`, `js/site.js`, `images/`). Netlify publishes only that folder, so these notes and the prompts are never public. No build step.
 
 The animation libraries (GSAP and Lenis) load from public CDNs. With reduced motion turned on in a visitor's settings, or if those scripts fail to load, every page still shows everything; only the motion is skipped.
 
@@ -23,7 +23,7 @@ The neighborhood map (`images/map-duck-pond.svg`) was drawn from OpenStreetMap d
 ## See it on your computer
 
 ```sh
-python3 -m http.server 8000
+cd site && python3 -m http.server 8000
 ```
 
 Then open http://localhost:8000.

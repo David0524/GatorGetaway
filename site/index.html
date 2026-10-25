@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gator Haven House</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Gator Haven House is the Albert Blanding House, an 1899 Victorian for rent in Gainesville's Historic Duck Pond. 4 bedrooms, 4½ baths, fenced backyard, gas grill, on-site parking and a 98-inch TV. Join the guest list for early-guest rates.">
 <meta name="theme-color" content="#0d1934">
 <link rel="canonical" href="https://www.gatorhavenhouse.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Gator Haven House">
 <meta property="og:title" content="Gator Haven House">
@@ -26,7 +27,7 @@
     d.classList.remove("no-js");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       d.classList.add("motion");
-      setTimeout(function () { if (!window.__heroReady) d.classList.remove("motion"); }, 3000);
+      setTimeout(function () { if (!window.__heroReady) d.classList.remove("motion"); }, 1200);
     }
   })();
 </script>
@@ -115,6 +116,7 @@
       </div>
       <div class="hero-aside" data-hero-in>
         <p><strong>Opening for stays late 2026.</strong> Fully transformed by summer 2027. Guests who stay early get discounted rates.</p>
+        <p class="hero-note">Exterior photo enhanced to preview the planned landscaping.</p>
         <a class="scroll-cue" href="#story"><span aria-hidden="true"></span>Scroll</a>
       </div>
     </div>
@@ -144,11 +146,11 @@
         <figcaption>Today</figcaption>
       </figure>
     </div>
-    <div class="wrap timewarp-year" aria-hidden="true"><b>1899</b><small data-then="The house, around 1900" data-now="The house today">The house, around 1900</small></div>
+    <div class="wrap timewarp-year" aria-hidden="true"><b>1899</b><small data-then="The house, around 1900" data-now="The house today, photo enhanced">The house, around 1900</small></div>
     <div class="wrap timewarp-copy on-dark">
       <p class="label">127 years on NE 3rd Street</p>
       <h2 id="tw-title">The same porch, a new century</h2>
-      <p class="lede">Judge Horatio Davis built the house in 1899. Albert Blanding, later a general, lived here from 1900. The wraparound porch they knew is the one you&rsquo;ll have your morning coffee on.</p>
+      <p class="lede">Historical accounts credit Judge Horatio Davis with building the house in 1899. Albert Blanding, later a general, lived here from 1900. The wraparound porch they knew is the one you&rsquo;ll have your morning coffee on.</p>
       <div><a class="btn btn-ghost" href="history.html">Read the history <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
     </div>
   </section>
@@ -211,7 +213,7 @@
       </div>
       <p class="track-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16M15 7l5 5-5 5"/></svg>Scroll or swipe to follow the day</p>
     </div>
-    <div class="track">
+    <div class="track" tabindex="0" role="region" aria-label="A home-game Saturday, scrolls sideways">
       <article class="stop">
         <div class="stop-media"><picture><source type="image/webp" srcset="images/detail-porch.webp"><img src="images/detail-porch.jpg" width="500" height="300" alt="The wraparound porch with white railings and turned posts." loading="lazy"></picture></div>
         <div class="stop-body"><span class="stop-when">Morning</span><h3>Coffee on the porch</h3><p>A quiet Duck Pond street, and a porch that&rsquo;s been welcoming people since 1899.</p></div>
@@ -226,7 +228,7 @@
       </article>
       <article class="stop">
         <div class="stop-media is-type is-haint"><span>98&Prime;</span></div>
-        <div class="stop-body"><span class="stop-when">Kickoff</span><h3>Or watch from home</h3><p>For away games, or anyone staying back, the game is on a 98-inch screen in the living room.</p></div>
+        <div class="stop-body"><span class="stop-when">Kickoff</span><h3>Or watch from home</h3><p>Anyone staying back can catch every snap on the 98-inch screen in the living room.</p></div>
       </article>
       <article class="stop">
         <div class="stop-media"><picture><source type="image/webp" srcset="images/detail-entry.webp"><img src="images/detail-entry.jpg" width="310" height="340" alt="The front entry of the house under its gabled porch roof." loading="lazy"></picture></div>
@@ -252,8 +254,8 @@
           <circle class="map-ring" cx="815.5" cy="169.5" r="10"/>
           <circle class="map-dot is-home" cx="815.5" cy="169.5" r="9"/>
         </svg>
-        <span class="pin is-home" style="left:81.55%;top:27.56%">Gator Haven House</span>
-        <span class="pin " style="left:20.30%;top:45.53%">Ben Hill Griffin Stadium</span>
+        <span class="pin is-home is-anchor-right" style="left:81.55%;top:27.56%">Gator Haven House</span>
+        <span class="pin is-anchor-left" style="left:20.30%;top:45.53%">Ben Hill Griffin Stadium</span>
         <span class="pin is-below" style="left:33.00%;top:50.73%">UF campus</span>
         <span class="pin is-below is-minor" style="left:15.30%;top:48.78%">O&rsquo;Connell Center</span>
         <span class="pin is-below" style="left:79.00%;top:39.19%">Downtown</span>
@@ -303,10 +305,10 @@
         <p class="lede">Stay between our opening in late 2026 and the full transformation in summer 2027 and you&rsquo;ll get a discounted rate. In return, we&rsquo;d love your honest feedback while we put the finishing touches on the home.</p>
         <div><a class="btn btn-primary" href="#guest-list">Get early-guest rates <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
       </div>
-      <aside class="offer-note">
+      <div class="offer-note">
         <h3>May 2027 graduation is already being asked for</h3>
         <p>Before we&rsquo;d even announced the house, a family asked to stay for graduation weekend. Join the guest list to hear about open dates before we share them anywhere else.</p>
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -355,7 +357,7 @@
           <div><button class="btn btn-primary" type="submit"><span>Join the guest list</span> <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
         </form>
 
-        <aside class="hosts" aria-labelledby="hosts-title">
+        <div class="hosts">
           <h3 id="hosts-title">Meet your hosts</h3>
           <p>We&rsquo;re Craig and Jenn. Our hope is to become your home away from home throughout your Gator&rsquo;s years at UF, and to welcome you back again and again. We&rsquo;d love your feedback as we finish the house.</p>
           <ul class="contact-list">
@@ -363,7 +365,7 @@
             <li class="contact"><span><span class="contact-name">Jenn</span><br><a href="mailto:jenn@gatorhavenhouse.com">jenn@gatorhavenhouse.com</a></span><button class="copy-btn" type="button" data-copy="jenn@gatorhavenhouse.com">Copy</button></li>
           </ul>
           <p class="pullquote">Go Gators!</p>
-        </aside>
+        </div>
       </div>
     </div>
   </section>
