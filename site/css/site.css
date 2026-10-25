@@ -771,3 +771,13 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .e-ticket .ticket-text b { font-size: 5.6cqw; }
 .e-ticket .ticket-text span { font-size: 11.5cqw; }
 .e-ticket .ticket-text small { font-size: 4cqw; line-height: 1.2; }
+
+/* guest list: what joining means */
+.good-to-know { list-style: none; margin: calc(-12px * var(--s)) auto calc(40px * var(--s)); padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: calc(10px * var(--s)) calc(28px * var(--s)); max-width: 62rem; color: rgba(244, 234, 208, 0.86); font-size: 0.9375rem; text-align: center; }
+.good-to-know b { color: var(--paper); font-weight: 600; }
+/* history page: stay strip before the sources */
+.closer-strip { background: var(--royal); color: var(--paper); padding-block: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(80px * var(--s))); }
+.closer-strip h2 { color: var(--paper); font-size: clamp(2rem, 1.4rem + 2vw, 3rem); }
+.stay-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: calc(20px * var(--s)) calc(40px * var(--s)); }
+.stay-inner .lede { margin-top: calc(10px * var(--s)); }
+#location { background: var(--paper-2); }
