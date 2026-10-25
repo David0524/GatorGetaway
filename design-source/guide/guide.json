@@ -1,0 +1,318 @@
+{
+ "checked": "October 2026",
+ "sections": [
+  {
+   "id": "coffee",
+   "title": "Coffee and breakfast",
+   "lede": "Most of these are an easy walk. Wyatt&rsquo;s and Maude&rsquo;s are closest.",
+   "art": "spot-rockers",
+   "places": [
+    {
+     "name": "Wyatt's Coffee",
+     "address": "202 SE 2nd Ave, Gainesville, FL",
+     "desc": "Independent cafe downtown: espresso, pour-over and pastries.",
+     "price": "$$",
+     "time": "6 min walk"
+    },
+    {
+     "name": "Maude's Classic Cafe",
+     "address": "101 SE 2nd Pl, Gainesville, FL",
+     "desc": "Coffee, tea, desserts and sandwiches beside the Hippodrome, with board games and an outdoor terrace.",
+     "price": "$",
+     "time": "8 min walk"
+    },
+    {
+     "name": "Afternoon",
+     "address": "231 NW 10th Ave, Gainesville, FL",
+     "desc": "Brunch spot known for its Dutch baby and shakshuka. Check the days before you go.",
+     "price": "$$",
+     "time": "17 min walk"
+    },
+    {
+     "name": "Afternoon Coffee",
+     "address": "619 S Main St, Gainesville, FL",
+     "desc": "Small coffee bar on South Main, handy on the way to Depot Park.",
+     "price": "$",
+     "time": "15 min walk"
+    },
+    {
+     "name": "Opus Coffee",
+     "address": "800 SW 2nd Ave, Gainesville, FL",
+     "desc": "Local roaster's cafe at Innovation Square, between downtown and campus.",
+     "price": "$",
+     "time": "20 min walk"
+    },
+    {
+     "name": "Baker Baker",
+     "address": "407 SW 4th Ave, Gainesville, FL",
+     "desc": "Family-run bakeshop at the 4th Avenue Food Park. Mornings only, so go early.",
+     "price": "$",
+     "time": "17 min walk"
+    }
+   ]
+  },
+  {
+   "id": "food",
+   "title": "Lunch and dinner",
+   "lede": "Downtown&rsquo;s restaurants are within ten minutes on foot. Book ahead on game and graduation weekends.",
+   "art": "spot-magnolia",
+   "places": [
+    {
+     "name": "The Top",
+     "address": "30 N Main St, Gainesville, FL",
+     "desc": "Downtown New American restaurant since 2000. Dinner nightly and Sunday brunch.",
+     "price": "$$",
+     "time": "6 min walk"
+    },
+    {
+     "name": "Dragonfly Sushi & Sake",
+     "address": "201 SE 2nd Ave, Gainesville, FL",
+     "desc": "Sushi and Japanese small plates. Takes reservations, which helps on big weekends.",
+     "price": "$$",
+     "time": "7 min walk"
+    },
+    {
+     "name": "Harry's Seafood Bar & Grille",
+     "address": "110 SE 1st St, Gainesville, FL",
+     "desc": "New Orleans-style seafood, downtown since 1994.",
+     "price": "$$",
+     "time": "7 min walk"
+    },
+    {
+     "name": "OAK",
+     "address": "15 SE 1st Ave, Gainesville, FL",
+     "desc": "Southern comfort food with self-serve beer taps and a Friday brunch.",
+     "price": "$$",
+     "time": "7 min walk"
+    },
+    {
+     "name": "Boca Fiesta",
+     "address": "232 SE 1st St, Gainesville, FL",
+     "desc": "Tacos, margaritas and fresh lemonade. Lunch on weekends.",
+     "price": "$$",
+     "time": "9 min walk"
+    },
+    {
+     "name": "Liquid Ginger",
+     "address": "101 SE 2nd Pl, Gainesville, FL",
+     "desc": "Asian fusion: pad thai, curries and bento boxes.",
+     "price": "$$",
+     "time": "8 min walk"
+    },
+    {
+     "name": "Kyuramen",
+     "address": "212 SE 1st St, Gainesville, FL",
+     "desc": "Ramen and milk tea in the Hyatt Place building.",
+     "price": "$$",
+     "time": "9 min walk"
+    },
+    {
+     "name": "Flaco's Cuban Bakery",
+     "address": "200 W University Ave, Gainesville, FL",
+     "desc": "Cuban sandwiches, arepas and bowls, open late most nights.",
+     "price": "$",
+     "time": "9 min walk"
+    },
+    {
+     "name": "Satchel's Pizza",
+     "address": "1800 NE 23rd Ave, Gainesville, FL",
+     "desc": "Local favorite pizza place with famously eclectic decor. Tuesday through Saturday.",
+     "price": "$$",
+     "time": "6 min drive"
+    },
+    {
+     "name": "The Swamp Restaurant",
+     "address": "1104 SW 2nd Ave, Gainesville, FL",
+     "desc": "Gator-themed sports restaurant about 20 minutes on foot from the stadium.",
+     "price": "$$",
+     "time": "4 min drive"
+    },
+    {
+     "name": "Mildred's Big City Food",
+     "address": "3445 W University Ave, Gainesville, FL",
+     "desc": "Upscale American and seafood since 1994. Book ahead for a graduation dinner.",
+     "price": "$$$",
+     "time": "10 min drive"
+    }
+   ]
+  },
+  {
+   "id": "drinks",
+   "title": "Breweries and cocktails",
+   "lede": "Cocktail bars a few blocks away, and three local breweries.",
+   "art": "spot-football",
+   "places": [
+    {
+     "name": "Cry Baby's",
+     "address": "1 W University Ave, Gainesville, FL",
+     "desc": "Cocktail bar with food on the corner of University and Main.",
+     "price": "",
+     "time": "7 min walk"
+    },
+    {
+     "name": "Kin Cocktail Bar",
+     "address": "9 W University Ave, Gainesville, FL",
+     "desc": "Craft cocktail lounge downtown. Closed Mondays.",
+     "price": "",
+     "time": "7 min walk"
+    },
+    {
+     "name": "The Bull",
+     "address": "18 SW 1st Ave, Gainesville, FL",
+     "desc": "Beer and wine pub with live music most nights.",
+     "price": "",
+     "time": "8 min walk"
+    },
+    {
+     "name": "Cypress & Grove Brewing",
+     "address": "1001 NW 4th St, Gainesville, FL",
+     "desc": "Brewery in a former ice factory, open daily from 2 pm.",
+     "price": "",
+     "time": "17 min walk"
+    },
+    {
+     "name": "First Magnitude Brewing",
+     "address": "1220 SE Veitch St, Gainesville, FL",
+     "desc": "Brewery with a big beer garden and food trucks, beside the Hawthorne Trail.",
+     "price": "",
+     "time": "4 min drive"
+    },
+    {
+     "name": "Swamp Head Brewery",
+     "address": "3650 SW 42nd Ave, Gainesville, FL",
+     "desc": "Gainesville's original craft brewery (2008), with a large outdoor area and food trucks.",
+     "price": "",
+     "time": "14 min drive"
+    }
+   ]
+  },
+  {
+   "id": "todo",
+   "title": "Things to do",
+   "lede": "Museums, theater and Florida outdoors, from a four-minute walk to a twenty-minute drive.",
+   "art": "spot-liveoak",
+   "places": [
+    {
+     "name": "Union Street Farmers Market",
+     "address": "Bo Diddley Plaza, 111 E University Ave, Gainesville, FL",
+     "desc": "Wednesdays 4 to 7 pm, rain or shine. Bring cash.",
+     "price": "",
+     "time": "5 min walk"
+    },
+    {
+     "name": "Hippodrome Theatre",
+     "address": "25 SE 2nd Pl, Gainesville, FL",
+     "desc": "Professional theater in the old federal building. A Twistmas Carol runs December 5 to 21.",
+     "price": "",
+     "time": "9 min walk"
+    },
+    {
+     "name": "Matheson History Museum",
+     "address": "513 E University Ave, Gainesville, FL",
+     "desc": "Free museum of local history, Wednesday through Saturday.",
+     "price": "",
+     "time": "6 min walk"
+    },
+    {
+     "name": "Historic Thomas Center",
+     "address": "302 NE 6th Ave, Gainesville, FL",
+     "desc": "1910s Mediterranean Revival hotel turned city galleries, with gardens to wander.",
+     "price": "",
+     "time": "4 min walk"
+    },
+    {
+     "name": "Depot Park",
+     "address": "874 SE 4th St, Gainesville, FL",
+     "desc": "City park with a big playground, a splash pad, trails and ponds.",
+     "price": "",
+     "time": "19 min walk"
+    },
+    {
+     "name": "Cade Museum",
+     "address": "811 S Main St, Gainesville, FL",
+     "desc": "Hands-on science and invention museum at Depot Park, Thursday through Sunday.",
+     "price": "",
+     "time": "18 min walk"
+    },
+    {
+     "name": "Florida Museum of Natural History",
+     "address": "3215 Hull Rd, Gainesville, FL",
+     "desc": "Fossils, Florida wildlife and the Butterfly Rainforest. Scheduled to reopen November 23, 2026, after renovation.",
+     "price": "",
+     "time": "13 min drive"
+    },
+    {
+     "name": "Harn Museum of Art",
+     "address": "3259 Hull Rd, Gainesville, FL",
+     "desc": "Free UF art museum next door to the natural history museum. Open late on Thursdays.",
+     "price": "",
+     "time": "13 min drive"
+    },
+    {
+     "name": "UF Bat Houses at Lake Alice",
+     "address": "Museum Rd, UF campus",
+     "desc": "Free. Thousands of bats fly out about 15 to 20 minutes after sunset on warm, calm evenings.",
+     "price": "",
+     "time": "10 min drive"
+    },
+    {
+     "name": "Sweetwater Wetlands Park",
+     "address": "325 SW Williston Rd, Gainesville, FL",
+     "desc": "Boardwalk through a restored wetland: birds and alligators. $5 per car.",
+     "price": "",
+     "time": "8 min drive"
+    },
+    {
+     "name": "Paynes Prairie Preserve State Park",
+     "address": "100 Savannah Blvd, Micanopy",
+     "desc": "Wide-open prairie with wild bison, horses and alligators.",
+     "price": "",
+     "time": "22 min drive"
+    },
+    {
+     "name": "Devil's Millhopper",
+     "address": "4732 Millhopper Rd, Gainesville, FL",
+     "desc": "A 120-foot sinkhole with a boardwalk of 132 steps down into it.",
+     "price": "",
+     "time": "15 min drive"
+    }
+   ]
+  },
+  {
+   "id": "practical",
+   "title": "Groceries and pharmacies",
+   "lede": "For stocking the kitchen and anything you forgot.",
+   "art": "spot-key",
+   "places": [
+    {
+     "name": "Publix",
+     "address": "1302 N Main St, Gainesville, FL",
+     "desc": "The nearest full supermarket, with a pharmacy.",
+     "price": "",
+     "time": "3 min drive"
+    },
+    {
+     "name": "Ward's Supermarket",
+     "address": "515 NW 23rd Ave, Gainesville, FL",
+     "desc": "Independent family grocer since 1951: local produce and a meat counter.",
+     "price": "",
+     "time": "5 min drive"
+    },
+    {
+     "name": "Walgreens",
+     "address": "1615 NW 13th St, Gainesville, FL",
+     "desc": "Store open until midnight; pharmacy until 9 pm on weekdays.",
+     "price": "",
+     "time": "5 min drive"
+    },
+    {
+     "name": "CVS Pharmacy (24 hours)",
+     "address": "1621 SW 13th St, Gainesville, FL",
+     "desc": "Listed as open 24 hours. Call ahead at 352-336-3383.",
+     "price": "",
+     "time": "6 min drive"
+    }
+   ]
+  }
+ ]
+}
