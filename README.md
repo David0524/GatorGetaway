@@ -11,13 +11,14 @@ The website for www.gatorhavenhouse.com: an 1899 Victorian vacation rental in Ga
 
 | File | What it is |
 |---|---|
-| `site/index.html` | Home: announcement, opening timeline, the house, before/after slider, early-guest rates, guest list form |
-| `site/photos.html` | The home today, the transformation, and renderings of the finished rooms |
+| `site/index.html` | Home: announcement, the house facts, location, guest list form with date calendar, drawing-to-house build, game day, history teaser |
+| `site/photos.html` | Outside, inside, the transformation, and today/concept sliders of the finished rooms |
+| `site/guide.html` | Visitor's guide: coffee, food, drinks, things to do, groceries, with times from the house |
 | `site/history.html` | History of the home (written to be edited) |
-| `site/404.html` | Shown for any address that doesn't exist (Netlify uses it automatically) |
+| `site/404.html` | Shown for any address that doesn't exist (Cloudflare Pages and Netlify use it automatically) |
 | `site/thanks.html` | Shown after the form is sent if a visitor's browser has JavaScript off |
 
-The public site lives in `site/` (HTML, `css/site.css`, `js/site.js`, `images/`). Netlify publishes only that folder, so these notes and the prompts are never public. No build step.
+The public site lives in `site/` (HTML, `css/site.css`, `js/site.js`, `images/`). The host publishes only that folder, so these notes and the prompts are never public. No build step.
 
 The animation libraries (GSAP and Lenis) load from public CDNs. With reduced motion turned on in a visitor's settings, or if those scripts fail to load, every page still shows everything; only the motion is skipped.
 
@@ -31,27 +32,35 @@ cd site && python3 -m http.server 8000
 
 Then open http://localhost:8000.
 
-## Put it online (Netlify, recommended)
+## Put it online (Cloudflare Pages, recommended)
 
-Netlify is free for a site this size and handles the guest list form with no extra setup.
+The domain is registered at Cloudflare, so Pages needs no DNS changes. It's free with no bandwidth limit.
 
-1. Create a free account at netlify.com.
-2. **Add new site → Deploy manually**, and drag this whole folder onto the page. (Or connect this GitHub repository so every push updates the site.)
-3. **Forms → Enable form detection**, then redeploy. Sign-ups appear under **Forms → guest-list**.
-4. **Forms → Form notifications → Add notification → Email**: add craig@gatorhavenhouse.com and jenn@gatorhavenhouse.com so every sign-up is emailed to you.
-5. **Domain management → Add a domain**: enter `www.gatorhavenhouse.com` and follow the DNS steps for your domain registrar. Netlify adds the HTTPS certificate for you.
+1. Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to Git**, and pick this repository. (Choose Pages, not a Worker.)
+2. Production branch: the branch with the finished site. Build command: none. Build output directory: `site`.
+3. After the first deploy, **Custom domains → Set up a custom domain**: add `www.gatorhavenhouse.com`, then `gatorhavenhouse.com`. Cloudflare adds the DNS records and HTTPS.
+4. **Rules → Redirect Rules → Create rule → "Redirect from root to WWW"** template, so the bare domain goes to www. (`site/_redirects` can't redirect a whole domain.)
+5. In **Speed → Optimization**, leave **Rocket Loader** off; it reorders scripts and can break the animations.
 
-Hosting somewhere else? Make a free form at formspree.io and put its URL in `js/site.js`:
+`site/_headers` carries the security headers and image caching. Pages serves `/photos` for `photos.html`; the canonical links and sitemap use those clean addresses.
+
+### The guest list form
+
+Pages doesn't collect form posts, so sign-ups go to Formspree (free: 50 a month). Make a form at formspree.io and put its URL in `js/site.js`:
 
 ```js
 const FORM_ENDPOINT = "https://formspree.io/f/your-form-id";
 ```
 
-If the form can't send for any reason, it opens an email to Craig and Jenn with the visitor's details filled in, so no sign-up is lost.
+and in the `action` of the `<form>` in `index.html` (for visitors with JavaScript off). If the form can't send for any reason, it shows Craig's and Jenn's addresses with a pre-filled email and a copy button, so no sign-up is lost.
+
+### Hosting on Netlify instead
+
+`netlify.toml` holds the same settings. Netlify collects the form itself: set `FORM_ENDPOINT = "netlify"`, enable **Forms → form detection**, and add craig@ and jenn@ under **Forms → Form notifications**.
 
 ## The email addresses
 
-craig@ and jenn@gatorhavenhouse.com need email hosting on the domain before they'll receive mail. Options: Google Workspace or Microsoft 365 (full inboxes, paid), Zoho Mail (free tier), or free forwarding to existing inboxes through your domain registrar or ImprovMX. Send a test message to each address before you share the site.
+craig@ and jenn@gatorhavenhouse.com need email hosting on the domain before they'll receive mail. With the domain at Cloudflare, the simplest is **Email → Email Routing** (free): forward craig@ and jenn@ to existing inboxes. For full inboxes that can also send as those addresses, use Google Workspace, Microsoft 365 or Zoho Mail. Send a test message to each address before you share the site.
 
 ## Common edits
 

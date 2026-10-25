@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects. This file is read by Cloudflare and never served as a page.
+# Pages already serves /photos for photos.html, so old .html links keep working.
+#
+# The bare domain to www redirect (gatorhavenhouse.com -> www.gatorhavenhouse.com) can't live
+# here: Pages only redirects paths, not domains. It's a Redirect Rule in the Cloudflare
+# dashboard instead (Rules > Redirect Rules > "Redirect from root to WWW" template).
