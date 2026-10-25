@@ -1,0 +1,55 @@
+# 1899 Gator Getaway
+
+The website for www.1899gatorgetaway.com: an 1899 Victorian vacation rental in Gainesville's Historic Duck Pond District. Its job is to collect a guest list before the house opens at the end of 2026.
+
+- `PLAN.md`: the design and content plan.
+- `CHATGPT_PROMPTS.md`: prompts for the logo, renderings, social graphics and history research.
+
+## Pages
+
+| File | What it is |
+|---|---|
+| `index.html` | Home: announcement, opening timeline, the house, before/after slider, early-guest rates, guest list form |
+| `photos.html` | The home today, the transformation, and renderings of the finished rooms |
+| `history.html` | History of the home (written to be edited) |
+| `thanks.html` | Shown after the form is sent if a visitor's browser has JavaScript off |
+
+It's a plain static site: HTML, `css/site.css`, `js/site.js` and `images/`. No build step.
+
+## See it on your computer
+
+```sh
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000.
+
+## Put it online (Netlify, recommended)
+
+Netlify is free for a site this size and handles the guest list form with no extra setup.
+
+1. Create a free account at netlify.com.
+2. **Add new site → Deploy manually**, and drag this whole folder onto the page. (Or connect this GitHub repository so every push updates the site.)
+3. **Forms → Enable form detection**, then redeploy. Sign-ups appear under **Forms → guest-list**.
+4. **Forms → Form notifications → Add notification → Email**: add craig@1899gatorgetaway.com and jenn@1899gatorgetaway.com so every sign-up is emailed to you.
+5. **Domain management → Add a domain**: enter `www.1899gatorgetaway.com` and follow the DNS steps for your domain registrar. Netlify adds the HTTPS certificate for you.
+
+Hosting somewhere else? Make a free form at formspree.io and put its URL in `js/site.js`:
+
+```js
+const FORM_ENDPOINT = "https://formspree.io/f/your-form-id";
+```
+
+If the form can't send for any reason, it opens an email to Craig and Jenn with the visitor's details filled in, so no sign-up is lost.
+
+## The email addresses
+
+craig@ and jenn@1899gatorgetaway.com need email hosting on the domain before they'll receive mail. Options: Google Workspace or Microsoft 365 (full inboxes, paid), Zoho Mail (free tier), or free forwarding to existing inboxes through your domain registrar or ImprovMX. Send a test message to each address before you share the site.
+
+## Common edits
+
+- **Add photos:** see the instructions at the top of `photos.html`. Resize photos to about 1600 pixels wide before adding them.
+- **Write the history:** see the instructions at the top of `history.html`.
+- **Change dates or wording:** edit the text in `index.html` directly.
+- **Replace the logo:** the placeholder mark is the `<svg class="brand-mark">` in each page's header, plus `favicon.svg`.
+- **Update the share image:** replace `images/og-share.jpg` (1200 by 630 pixels).
