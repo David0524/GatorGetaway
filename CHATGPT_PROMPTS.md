@@ -87,30 +87,44 @@ Two rules for everything:
 - **Label renderings as concepts** on the site. The Photos page already has a "Concept" tag for this.
 
 ---
-### 10. Staging the real interior photos (before/after sliders)
+### 10. Furnished renders of the real rooms, and the woodwork as vectors
 
-These turn the October 2026 interior photos into furnished concepts. On the Photos page each one becomes a slider: drag from the room today to the room finished. A slider only works if the two images line up, so the walls, doors and trim must not move.
+The reference images are in `design-source/chatgpt-refs/`, numbered to match. They're lightly color-corrected and cropped to 2:3, the shape ChatGPT returns, so the renders line up with the real photos in a drag slider.
 
-Use the four pre-cropped photos in `design-source/staging-refs/` (already lightly color-corrected and cropped to 2:3, the shape ChatGPT returns). Open one new chat for all four, and paste this first, with no image:
+**Renders 1 to 3.** Open one new chat and paste this first, with no image:
 
 > In this chat I'll attach real photos of rooms in our 1899 Victorian house and ask you to furnish them. Every image you make is an edit of the attached photo, not a new picture. Keep the exact camera position, lens and framing, and keep every wall, window, door, trim board, baseboard, fretwork piece, mantel, floor board and light fixture in the same place and the same size, so the two images line up when one is laid over the other. Only add furniture and decor, and fix the specific things I name. Portrait, 1024 by 1536. Photorealistic, like high-end vacation rental listing photography, soft natural daylight. No people, no text, no logos, no University of Florida branding. Reply only with the image.
 
-Then one message each, with the photo attached.
-
-**`stage-living-room.png`** (attach `stage-ref-arch-living-room.jpg`)
+**1. `render-living-room-real.png`** (attach `1-living-room.jpg`)
 > Furnish the living room seen through the carved fretwork arch. A deep sofa in oatmeal linen facing the fireplace, two cognac leather armchairs, a round wood coffee table, a large vintage-style rug in muted navy and rust, a brass floor lamp, a tall potted fiddle-leaf fig in the corner. Keep the mantel, its oval mirror and the chandelier. Remove the extension cord on the floor and make the worn threshold in the doorway look refinished.
 
-**`stage-bedroom.png`** (attach `stage-ref-upstairs-room.jpg`)
+**2. `render-primary-bedroom.png`** (attach `2-primary-bedroom.jpg`)
 > Furnish this upstairs room as the primary bedroom. A king bed with a low upholstered headboard in soft cream, white bedding with a burnt-orange and navy quilt folded across the foot, two nightstands with brass lamps, a woven rug under the bed, an upholstered bench at the foot, light linen curtains on the three windows. Keep the ceiling fan.
 
-**`stage-fireplace-room.png`** (attach `stage-ref-fireplace-room.jpg`)
-> Furnish the corner around this fireplace as a quiet sitting spot in a guest bedroom. Two upholstered armchairs angled toward the fireplace, a small round side table with a stack of books, a framed botanical print and two candlesticks on the mantel, a dried magnolia arrangement in the firebox, a small rug. Keep the white mantel, the tile and the paneled door with its transom.
+**3. `render-kitchen.png`** (attach `3-kitchen.jpg`)
+> Show this room finished as a new kitchen. Along the back wall: shaker cabinets painted deep navy, a white quartz counter, a large single-bowl sink centered where the plumbing is, cream subway tile up to the dark-stained picture rail, brass hardware, and open wood shelves. Replace the laminate floor with wide-plank wood that matches the original floor in the foreground, so the whole floor is one wood. Keep the painted wood mantel on the left wall, the window, the picture rail and all the trim. Replace the track lights with two brass schoolhouse pendants.
 
-**`stage-entry-hall.png`** (attach `stage-ref-entry-hall.jpg`)
-> Show this entry hall finished. Repair the torn drywall above the doorway so it is smooth and painted to match the wall, keeping all of the carved fretwork. Remove the broom, dustpan, step ladder, water bottles, cord and the loose screen door. Add a long runner rug, a narrow wood console under the window with a lamp and a bowl for keys, a bench with brass coat hooks, and a potted palm. Keep the staircase, the window, the light fixture and the front doors.
+If Craig and Jenn have picked a cabinet color or counter, swap it in.
 
-**Check each one** before you save it: open the original and the new image in two tabs and flick between them. If a door, window or the arch has shifted, reply "Keep everything except the furniture exactly where it is in the original photo" and try again (up to 3 times). Drop the keepers in the Google Drive folder with the file names above, and I'll build the sliders.
+**Check each render** before you save it: open the original and the render in two tabs and flick between them. If a door, window or the arch has moved, reply "Keep everything except the furniture exactly where it is in the original photo" and try again (up to 3 times).
 
+**Vectors 4 and 5: the house's own woodwork.** These become the site's ornaments (section dividers, photo corners, the frame around the house facts), so they need to be flat and clean enough to trace into SVG. Open a second new chat.
+
+**4. `ornament-fretwork-arch.png`** (attach `4-fretwork-arch.jpg`)
+> The attached photo shows carved wooden fretwork over a doorway in our 1899 house: a sunburst of spindles at the center, scrolling C and S curves, and a drop-pendant corner bracket running down the side. Redraw it as a flat vector-style ornament for a doorway header. Straight-on, no perspective. Make it complete and symmetrical: mirror the right side to make the left. Keep the shapes faithful to the photo. One solid color, navy #1B2A55, on a pure white background. No shading, no wood grain, no wall, no door frame, no text. Crisp, smooth edges with clean open gaps between the pieces, like a laser-cut stencil. Landscape 1536 by 1024, ornament spanning the full width with a small margin.
+
+Follow-up in the same chat:
+> Now only the corner bracket, the piece that runs down the side with the drop pendant, on its own. Same style, navy on pure white, square 1024 by 1024.
+
+**5. `ornament-spindle-frieze.png`** (attach `5-spindle-frieze.jpg`)
+> The attached photo shows a spindle frieze over our staircase: a row of turned spindles between two rails, a sawtooth trim along the bottom, and a round wheel bracket at the end. Redraw it as a flat vector-style horizontal border, straight-on with no perspective: one long run of spindles with the sawtooth below and a wheel bracket at each end. One solid color, navy #1B2A55, on a pure white background. No shading, no wood grain, no text. Crisp, smooth edges like a laser-cut stencil. Landscape 1536 by 1024.
+
+Follow-up:
+> Now only the wheel bracket on its own, same style, square 1024 by 1024.
+
+Drop everything in the Google Drive folder with these file names. I'll build the sliders and trace the ornaments into SVG.
+
+---
 
 ## 1. Logo
 
