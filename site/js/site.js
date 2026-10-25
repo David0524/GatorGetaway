@@ -228,17 +228,16 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     if (playIntro) {
       gsap.from(".playbill > span", { y: 40, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.12, delay: 0.1 });
       gsap.from(".hero .pb-rule, .hero-copy > *", { y: 20, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.08, delay: 0.55 });
-      gsap.from(".cabinet .cab", { y: -60, rotate: -8, opacity: 0, duration: 1.4, ease: "elastic.out(1, 0.7)", delay: 0.35 });
-      gsap.from(".cabinet .seal", { scale: 0, rotate: -120, duration: 1.1, ease: "back.out(1.6)", delay: 0.9 });
+      gsap.from(".cabinet .cab", { y: 30, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.3 });
+      gsap.from(".cabinet .seal", { rotate: -90, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.7 });
       gsap.from(".hist-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
-      gsap.from(".hist-card", { y: -50, rotate: -8, opacity: 0, duration: 1.4, ease: "elastic.out(1, 0.7)", delay: 0.3 });
+      gsap.from(".hist-card", { y: 30, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.3 });
       gsap.from(".page-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
     }
 
     /* Postcard: the big word rises and the stamps get stuck on */
     if (document.querySelector(".greet")) {
       gsap.from(".greet-word", { yPercent: 30, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".greet", start: "top 70%" } });
-      gsap.from(".stamp", { y: 60, rotate: (i) => [-14, 10, -8][i] || 0, opacity: 0, duration: 0.9, ease: "back.out(1.5)", stagger: 0.12, scrollTrigger: { trigger: ".stamps", start: "top 88%" } });
     }
 
     /* Ephemera: pieces start scattered off the table and settle into the pile as you scroll */
@@ -252,30 +251,12 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       pen?.addEventListener("pointerenter", () => gsap.fromTo(pen, { rotate: -10 }, { rotate: -16, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }));
     }
 
-    /* Cabinet cards and keepsakes drop gently onto the page the first time they appear */
-    document.querySelectorAll("[data-drop]").forEach((el, i) => {
-      gsap.from(el, { y: -36, rotate: "-=5", opacity: 0.25, duration: 1.1, ease: "elastic.out(1, 0.75)", delay: (i % 3) * 0.08, scrollTrigger: { trigger: el, start: "top 90%", once: true } });
-    });
-    /* Layered house photos drift at slightly different speeds */
-    document.querySelectorAll("[data-float]").forEach((el) => {
-      const d = Number(el.getAttribute("data-float")) || 30;
-      gsap.fromTo(el, { y: d }, { y: -d, ease: "none", scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
-    });
-
-    /* Headings rise into place (readable before they move) */
-    if (hasSplit) document.querySelectorAll("[data-split]").forEach((el) => {
-      window.SplitText.create(el, {
-        type: "lines", autoSplit: true, aria: "hidden",
-        onSplit: (self) => gsap.from(self.lines, { yPercent: 40, opacity: 0.25, duration: 1, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: el, start: "top 88%", once: true } }),
-      });
-    });
-
     /* Map: the walking route draws itself to the stadium */
     const route = document.querySelector(".map-route");
     if (route && route.getTotalLength) {
       const len = route.getTotalLength();
       gsap.fromTo(route, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: ".map", start: "top 80%", end: "center 40%", scrub: true } });
-      gsap.from(".map .pin", { y: 10, opacity: 0.3, duration: 0.8, ease: "back.out(2)", stagger: 0.06, scrollTrigger: { trigger: ".map", start: "top 75%", once: true } });
+      gsap.from(".map .pin", { y: 10, opacity: 0.3, duration: 0.8, ease: "power2.out", stagger: 0.06, scrollTrigger: { trigger: ".map", start: "top 75%", once: true } });
     }
 
     /* Primary buttons lean toward the pointer */
@@ -390,7 +371,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       const data = new FormData(form);
       if (data.get("bot-field")) return;
       button.disabled = true;
-      label.textContent = "Punching...";
+      label.textContent = "Joining...";
       try {
         let res;
         if (FORM_ENDPOINT === "netlify") {
@@ -402,7 +383,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
         showSuccess(data.get("name"));
       } catch (err) {
         button.disabled = false;
-        label.textContent = "Punch my ticket";
+        label.textContent = "Join the guest list";
         const text = detailsText(data);
         const subject = encodeURIComponent("Guest list: " + (data.get("name") || ""));
         const href = "mailto:" + HOST_EMAILS.join(",") + "?subject=" + subject + "&body=" + encodeURIComponent(text);

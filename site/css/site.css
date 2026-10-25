@@ -216,7 +216,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (max-width: 560px) { .seal { left: auto; right: -4%; top: -8%; width: calc(104px * var(--s)); } }
 
-/* ---------- fish-scale band + ticker ---------- */
+/* ---------- fish-scale band ---------- */
 .scales {
   height: calc(26px * var(--s)); background-color: var(--paper-2);
   background-image:
@@ -224,11 +224,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     radial-gradient(circle at 50% 100%, transparent calc(9px * var(--s)), var(--pine) calc(9.5px * var(--s)), var(--pine) calc(10.5px * var(--s)), transparent calc(11px * var(--s)));
   background-size: calc(22px * var(--s)) calc(13px * var(--s)); background-position: 0 0, calc(11px * var(--s)) calc(6.5px * var(--s)); opacity: 0.75;
 }
-.ticker { background: var(--royal); color: var(--paper); overflow: hidden; border-block: 3px solid var(--ink); }
-.ticker-track { display: flex; width: max-content; animation: tick 40s linear infinite; }
-.ticker span { font: 800 clamp(1.375rem, calc(2.6vw * var(--s)), 2.125rem)/1 var(--gothic); letter-spacing: 0.1em; text-transform: uppercase; padding: calc(16px * var(--s)) 0; white-space: nowrap; }
-.ticker span::after { content: "\2726"; color: var(--peach); margin: 0 0.9em; }
-@keyframes tick { to { transform: translateX(-50%); } }
 
 /* ---------- drafting table: the elevation develops into the house ---------- */
 .drafting { position: relative; }
@@ -309,12 +304,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   display: inline-block; padding-inline: 0.05em; margin: 0;
 }
 .greet-sub { font: 700 0.9375rem/1 var(--gothic); letter-spacing: 0.3em; text-transform: uppercase; margin-top: calc(22px * var(--s)); color: var(--white); }
-.stamps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: calc(18px * var(--s)); max-width: calc(980px * var(--s)); margin: clamp(calc(40px * var(--s)), calc(6vw * var(--s)), calc(72px * var(--s))) auto 0; }
-.stamp { background: var(--white); color: var(--ink); padding: calc(22px * var(--s)) calc(18px * var(--s)) calc(20px * var(--s)); border: calc(7px * var(--s)) dotted var(--orange-btn); box-shadow: inset 0 0 0 calc(9px * var(--s)) var(--white), inset 0 0 0 calc(10.5px * var(--s)) rgba(31, 63, 149, 0.35); }
-.stamp b { display: block; font: 900 clamp(2.4rem, 1.6rem + calc(2.4vw * var(--s)), 3.6rem)/1 var(--clarendon); color: var(--royal); }
-.stamp span { font: 700 0.875rem/1.3 var(--gothic); letter-spacing: 0.14em; text-transform: uppercase; }
-.stamp:nth-child(1) { transform: rotate(-2deg); } .stamp:nth-child(2) { transform: rotate(1.5deg); } .stamp:nth-child(3) { transform: rotate(-1deg); }
-@media (max-width: 640px) { .stamps { grid-template-columns: minmax(0, 1fr); } }
 
 .map-grid { display: grid; gap: clamp(calc(36px * var(--s)), calc(5vw * var(--s)), calc(72px * var(--s))); }
 .map-grid > * { min-width: 0; }
@@ -422,28 +411,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .e-portrait { width: 25%; left: 30%; bottom: 0; transform: rotate(-3deg); z-index: 3; padding: calc(10px * var(--s)) calc(10px * var(--s)) calc(34px * var(--s)); }
 .e-portrait::before { inset: 5px 5px calc(28px * var(--s)); }
 .e-portrait img { aspect-ratio: 4 / 5; border-radius: calc(999px * var(--s)) calc(999px * var(--s)) 4px 4px; }
-.pennant { position: absolute; z-index: 4; right: 4%; top: 0; width: 44%; height: 26%; background: var(--orange); clip-path: polygon(0 0, 100% 50%, 0 100%); display: flex; align-items: center; padding-left: 9%; transform: rotate(-10deg); filter: drop-shadow(0 calc(10px * var(--s)) calc(10px * var(--s)) rgba(58, 40, 16, 0.35)); }
-.pennant::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7%; background: var(--royal); }
-.pennant span { font: 900 clamp(1.25rem, calc(3vw * var(--s)), 2.5rem)/1 var(--gothic); letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); text-shadow: 2px 2px 0 var(--royal); }
-.stub { position: absolute; z-index: 5; left: -2%; bottom: 14%; width: 34%; background: var(--ticket); color: var(--ink); padding: calc(12px * var(--s)) calc(14px * var(--s)); transform: rotate(8deg); box-shadow: 0 calc(12px * var(--s)) calc(20px * var(--s)) -12px var(--shadow); border-left: 2px dashed var(--pine); }
-.stub b { display: block; font: 900 0.9375rem/1 var(--gothic); letter-spacing: 0.2em; text-transform: uppercase; }
-.stub span { font: 800 1.875rem/1 var(--clarendon); }
-.stub small { display: block; font: 600 0.6875rem/1.3 var(--body); color: var(--pine); }
 .story { display: grid; gap: calc(20px * var(--s)); }
 .story .lede { font-size: 1.125rem; }
 .story .script { font-size: 2.1rem; }
 @media (max-width: 640px) { .pile { min-height: 0; aspect-ratio: 1 / 1.05; } .eph .note-script { font-size: 0.9375rem; bottom: calc(6px * var(--s)); } .stub span { font-size: 1.375rem; } }
 
 /* ---------- occasions ---------- */
-.occasions { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(22px * var(--s)); grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.occasions li { background: var(--card); padding: calc(26px * var(--s)) calc(22px * var(--s)) calc(24px * var(--s)); display: grid; gap: calc(10px * var(--s)); align-content: start; position: relative; box-shadow: 0 calc(18px * var(--s)) calc(30px * var(--s)) -24px var(--shadow); }
-.occasions li::before { content: ""; position: absolute; inset: calc(7px * var(--s)); border: 1px solid #c8a85e; pointer-events: none; }
-.occasions li:nth-child(odd) { transform: rotate(-0.8deg); } .occasions li:nth-child(even) { transform: rotate(0.7deg); }
-.occasions .num { font: 400 2rem/1 var(--script); color: var(--orange-ink); }
-.occasions h3 { font-size: 1.625rem; }
-.occasions p { font-size: 0.9375rem; color: var(--ink-soft); }
-@media (max-width: 1040px) { .occasions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .occasions { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- early guests ---------- */
 .offer { background: var(--ink); color: var(--paper); }
@@ -704,8 +677,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 /* line-art spots and cut-out keepsakes */
 .stop-media.is-spot { background: var(--card); padding: calc(12px * var(--s)); }
 .stop-media.is-spot img { object-fit: contain; }
-.occ-art { display: block; height: calc(96px * var(--s)); margin-bottom: 2px; }
-.occ-art img { height: 100%; width: auto; }
 .gd-program { display: none; }
 @media (min-width: 900px) {
   .gd-program { display: block; justify-self: end; transform: rotate(5deg); filter: drop-shadow(0 calc(18px * var(--s)) calc(24px * var(--s)) rgba(0, 0, 20, 0.45)); }
@@ -760,10 +731,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .footer-word > img { width: min(100%, calc(860px * var(--s))); height: auto; }
 
 /* closing call to action */
-.closer { background: var(--royal); color: var(--paper); text-align: center; overflow: hidden; }
-.closer h2 { color: var(--paper); }
-.closer-inner { display: grid; gap: 20px; justify-items: center; }
-.closer .lede { margin-inline: auto; }
 
 /* floating guest-list button on phones, shown after the hero and hidden near the form */
 .float-cta {
@@ -776,3 +743,24 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .house-photos .tag { top: calc(22px * var(--s)); left: calc(22px * var(--s)); }
 .hp-1 { padding-bottom: calc(14px * var(--s)); }
 .hp-1::before { inset: calc(7px * var(--s)); }
+
+/* ---------------- Calmer pass (audit): fewer tilts, fewer moving parts ---------------- */
+/* Only the hero photograph, the history card and the scrapbook pile sit at an angle. */
+.tilt-l, .tilt-r, .tilt-s { transform: none; }
+.cabinet .cab.tilt-r { transform: rotate(2.2deg); }
+.hist-card.tilt-l { transform: rotate(-2.4deg); }
+.stop:nth-child(odd), .stop:nth-child(even), .hosts { transform: none; }
+/* The seal turns when you point at it instead of spinning all the time; the map dot holds still. */
+.seal svg.ring { animation: none; transition: transform 1.2s var(--ease); }
+.seal:hover svg.ring { transform: rotate(40deg); }
+.map-ring { display: none; }
+/* Occasions as a plain list inside the early-guest section */
+.occasion-list { list-style: none; margin: calc(8px * var(--s)) 0 0; padding: 0; display: grid; gap: calc(14px * var(--s)); max-width: 36em; }
+.occasion-list li { color: rgba(244, 234, 208, 0.86); padding-left: calc(22px * var(--s)); position: relative; }
+.occasion-list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: calc(10px * var(--s)); height: calc(10px * var(--s)); border-radius: 50%; background: var(--orange); }
+.occasion-list b { color: var(--paper); font-weight: 600; }
+.notice { display: grid; gap: calc(14px * var(--s)); }
+.notice .pill { justify-self: start; }
+.house-photos .cab { padding-bottom: calc(14px * var(--s)); }
+.house-photos .cab::before { inset: calc(7px * var(--s)); }
+.bill-foot .link { font-size: var(--step--1, 0.9375rem); }
