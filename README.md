@@ -4,6 +4,8 @@ The website for www.gatorhavenhouse.com: an 1899 Victorian vacation rental in Ga
 
 - `PLAN.md`: the design and content plan.
 - `CHATGPT_PROMPTS.md`: prompts for the logo, renderings, social graphics and history research.
+- `design-source/CLAUDE_FOR_CHROME_ART_RUN.md`: a run file for Claude for Chrome to generate the full illustration set in ChatGPT.
+- `design-source/direction/`: the round 3 direction board and prototype.
 
 ## Pages
 
@@ -12,6 +14,7 @@ The website for www.gatorhavenhouse.com: an 1899 Victorian vacation rental in Ga
 | `site/index.html` | Home: announcement, opening timeline, the house, before/after slider, early-guest rates, guest list form |
 | `site/photos.html` | The home today, the transformation, and renderings of the finished rooms |
 | `site/history.html` | History of the home (written to be edited) |
+| `site/404.html` | Shown for any address that doesn't exist (Netlify uses it automatically) |
 | `site/thanks.html` | Shown after the form is sent if a visitor's browser has JavaScript off |
 
 The public site lives in `site/` (HTML, `css/site.css`, `js/site.js`, `images/`). Netlify publishes only that folder, so these notes and the prompts are never public. No build step.

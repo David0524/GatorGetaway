@@ -146,3 +146,14 @@ Built with GSAP 3.13 (ScrollTrigger, SplitText) and Lenis smooth scroll, loaded 
 | Camp Blanding named for him (1939); helped found Everglades National Park | Wikipedia, Florida Memory |
 | Named a Great Floridian (2000) | Florida Dept. of State |
 | Great Floridian plaque at this house | **Not shown yet.** Wikipedia places Blanding's plaque at Bartow City Hall. The sentence is ready in `history.html`, commented out, to turn on once confirmed. |
+
+---
+
+# Round 3: "The 1899 Program" (current)
+
+Round 2 read as generic luxury. Round 3 builds from objects only this house and this town have: an 1899 cabinet-card photograph, an architect's elevation, a general's portrait, fish-scale shingles, felt pennants, ticket stubs and a game-day program. Research: 27 hospitality and heritage sites loaded in a real browser; the board with references lives in `design-source/direction/` (published as a private preview).
+
+- **Type:** Clarendon (Besley) + varsity gothic (Big Shoulders Display) + Spencerian script (Pinyon Script) + Franklin Gothic (Libre Franklin), mixed the way an 1890s printer set a playbill.
+- **Palette:** clapboard paper #F4EAD0, vintage Gator blue #1B2A55, felt royal #1F3F95, pennant orange #D8501C (buttons #C4461A, small text #A83C10 for AA contrast), stained pine #6B3A1E.
+- **Signature moments:** playbill hero with cabinet card and spinning seal; drafting table (the architect's drawing develops into the photo as you scroll); "Greetings from Gainesville" postcard; ephemera pile; a game-day "order of events"; the guest list as a ticket whose stub tears off.
+- **Art still to come:** `design-source/CLAUDE_FOR_CHROME_ART_RUN.md` generates the rest of the illustration set in ChatGPT.

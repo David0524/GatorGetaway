@@ -1,11 +1,11 @@
-/* Gator Haven House: header, menu, motion, before/after slider, map, chapters, photo viewer,
-   guest list form and copy buttons. Every effect is an enhancement: without JavaScript, or with
-   reduced motion turned on, the pages are complete and readable as plain HTML. */
+/* Gator Haven House: header, menu, motion, drafting table, before/after slider, map, history
+   chapters, photo viewer, guest-list ticket and copy buttons. Every effect is an enhancement:
+   without JavaScript, or with reduced motion turned on, the pages are complete as plain HTML. */
 
 /* Where guest-list sign-ups go.
    "netlify"  works with no setup when the site is hosted on Netlify (Netlify Forms).
    A URL      posts to any form service instead, e.g. "https://formspree.io/f/abcdwxyz".
-   If sending fails, the form opens an email to Craig and Jenn with the details filled in. */
+   If sending fails, the form shows the hosts' email addresses and a copy button instead. */
 const FORM_ENDPOINT = "netlify";
 const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
 
@@ -18,9 +18,9 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
   if (!motion) root.classList.remove("motion");
   let lenis = null;
 
-  /* Smooth scrolling (desktop feel; touch keeps native scrolling) */
+  /* Smooth scrolling on desktop (touch keeps native scrolling) */
   if (motion && window.Lenis) {
-    lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+    lenis = new window.Lenis({ lerp: 0.1 });
     lenis.on("scroll", window.ScrollTrigger.update);
     window.gsap.ticker.add((t) => lenis.raf(t * 1000));
     window.gsap.ticker.lagSmoothing(0);
@@ -34,6 +34,8 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
     el.focus({ preventScroll: true });
   };
+
+  /* Same-page anchor links: smooth scroll, move focus, keep the address bar honest */
   document.addEventListener("click", (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const a = e.target.closest('a[href*="#"]');
@@ -49,27 +51,23 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     if (location.hash !== url.hash) history.pushState(null, "", url.hash);
   });
 
-  /* Header: transparent over the hero photo, solid after it, tucks away while scrolling down */
+  /* Header: a shadow once you scroll, tucks away while scrolling down */
   const header = document.querySelector(".site-header");
-  const hero = document.querySelector(".hero");
   let lastY = window.scrollY;
   const onScroll = () => {
     const y = window.scrollY;
-    const threshold = hero ? hero.offsetHeight - (header ? header.offsetHeight : 0) : 10;
-    header?.classList.toggle("is-solid", y > threshold);
-    const goingDown = y > lastY + 4;
-    const goingUp = y < lastY - 4;
-    if (goingDown && y > 480) header?.classList.add("is-hidden");
-    if (goingUp || y < 200) header?.classList.remove("is-hidden");
+    header?.classList.toggle("is-solid", y > 8);
+    if (y > lastY + 4 && y > 480) header?.classList.add("is-hidden");
+    if (y < lastY - 4 || y < 200) header?.classList.remove("is-hidden");
     lastY = y;
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* Full-screen menu */
+  /* Full-screen menu, with the page behind it made inert */
   const menu = document.getElementById("menu");
   const menuBtn = document.querySelector(".menu-btn");
-  const behindMenu = [".skip", ".site-header", "main", ".site-footer"].map((sel) => document.querySelector(sel)).filter(Boolean);
+  const behindMenu = [".skip", ".site-header", "main", ".site-footer"].map((s) => document.querySelector(s)).filter(Boolean);
   const setInert = (on) => behindMenu.forEach((el) => { el.inert = on; });
   function closeMenu() {
     if (!menu || !menu.classList.contains("is-open")) return;
@@ -108,28 +106,21 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       const r = box.getBoundingClientRect();
       set(((e.clientX - r.left) / r.width) * 100);
     };
-    box.addEventListener("pointerdown", (e) => {
-      dragging = true;
-      box.setPointerCapture(e.pointerId);
-      fromEvent(e);
-      range.focus({ preventScroll: true });
-    });
+    box.addEventListener("pointerdown", (e) => { dragging = true; box.setPointerCapture(e.pointerId); fromEvent(e); range.focus({ preventScroll: true }); });
     box.addEventListener("pointermove", (e) => { if (dragging) fromEvent(e); });
     box.addEventListener("pointerup", () => { dragging = false; });
     box.addEventListener("pointercancel", () => { dragging = false; });
     range.addEventListener("input", () => set(Number(range.value)));
-
-    /* One sweep the first time it comes into view, so people see that it moves */
     if (motion) {
-      const state = { v: 50 };
+      const st = { v: 50 };
       window.gsap.timeline({ scrollTrigger: { trigger: box, start: "top 65%", once: true }, delay: 0.3 })
-        .to(state, { v: 18, duration: 1.1, ease: "power2.inOut", onUpdate: () => !dragging && set(state.v) })
-        .to(state, { v: 78, duration: 1.3, ease: "power2.inOut", onUpdate: () => !dragging && set(state.v) })
-        .to(state, { v: 50, duration: 0.9, ease: "power2.out", onUpdate: () => !dragging && set(state.v) });
+        .to(st, { v: 18, duration: 1.1, ease: "power2.inOut", onUpdate: () => !dragging && set(st.v) })
+        .to(st, { v: 78, duration: 1.3, ease: "power2.inOut", onUpdate: () => !dragging && set(st.v) })
+        .to(st, { v: 50, duration: 0.9, ease: "power2.out", onUpdate: () => !dragging && set(st.v) });
     }
   });
 
-  /* History chapters: swap the sticky picture as each chapter reaches the middle of the screen */
+  /* History chapters: swap the sticky keepsake as each chapter reaches the middle of the screen */
   const visuals = document.querySelectorAll(".cv");
   if (visuals.length && "IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
@@ -142,42 +133,52 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     document.querySelectorAll(".chapter[data-visual]").forEach((c) => io.observe(c));
   }
 
-  /* Motion (GSAP). Skipped entirely for reduced motion or if the library didn't load. */
+  /* ---------------- Motion (GSAP). Skipped for reduced motion or if the library didn't load. */
   if (motion) {
     const { gsap, ScrollTrigger } = window;
     const hasSplit = !!window.SplitText;
     gsap.registerPlugin(ScrollTrigger);
     if (hasSplit) gsap.registerPlugin(window.SplitText);
-
-    /* Then and now: 1899 wipes away to today while the year counts up */
     const mm = gsap.matchMedia();
-    const tw = document.querySelector(".timewarp");
-    if (tw) mm.add("(min-height: 520px)", () => {
-      tw.classList.add("is-live");
-      const yearEl = tw.querySelector(".timewarp-year b");
-      const yearNote = tw.querySelector(".timewarp-year small");
-      const from = Number(tw.dataset.from || 1899);
-      const to = Number(tw.dataset.to || 2026);
-      const counter = { y: from };
-      gsap.timeline({
-        scrollTrigger: { trigger: tw, start: "top top", end: "+=160%", pin: true, scrub: 0.6, anticipatePin: 1 },
-      })
+
+    /* Pinned sections first, so every later trigger measures the page with their spacers in place */
+
+    /* Drafting table: callouts draw on, then the photograph develops through the drawing */
+    const draft = document.querySelector(".drafting");
+    if (draft) mm.add("(min-height: 560px)", () => {
+      draft.classList.add("is-live");
+      const steps = draft.querySelectorAll(".draft-step");
+      const leads = draft.querySelectorAll(".notes .lead");
+      leads.forEach((l) => { const n = l.getTotalLength(); l.style.strokeDasharray = n; l.style.strokeDashoffset = n; });
+      const q = (s) => draft.querySelectorAll(s);
+      gsap.set(q(".notes .dot, .notes text, .titleblock"), { opacity: 0 });
+      gsap.set(q(".stage .draw"), { clipPath: "inset(0% 0% 0% 0%)" });
+      gsap.set(q(".pencil"), { left: "0%", opacity: 0 });
+      const setStep = (i) => steps.forEach((s, k) => s.classList.toggle("is-on", k === i));
+      setStep(0);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: draft, start: "top top", end: "+=240%", pin: true, scrub: 0.7, anticipatePin: 1,
+          onUpdate: (self) => setStep(self.progress < 0.42 ? 0 : self.progress < 0.8 ? 1 : 2),
+        },
+      });
+      tl.to(q(".notes .dot"), { opacity: 1, stagger: 0.06, duration: 0.1 })
+        .to(leads, { strokeDashoffset: 0, stagger: 0.06, duration: 0.3, ease: "none" }, "<")
+        .to(q(".notes text, .titleblock"), { opacity: 1, stagger: 0.05, duration: 0.15 }, "-=0.2")
         .to({}, { duration: 0.15 })
-        .fromTo(tw.querySelector(".tw-then"), { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", ease: "power2.inOut", duration: 1 }, ">")
-        .fromTo(tw.querySelector(".tw-now img"), { scale: 1.18 }, { scale: 1, ease: "power2.out", duration: 1 }, "<")
-        .to(counter, {
-          y: to, ease: "power2.inOut", duration: 1,
-          onUpdate: () => {
-            const v = Math.round(counter.y);
-            if (yearEl) yearEl.textContent = v;
-            if (yearNote) yearNote.textContent = v < to ? yearNote.dataset.then : yearNote.dataset.now;
-          },
-        }, "<")
+        .set(q(".pencil"), { opacity: 1 })
+        .to(q(".pencil"), { left: "100%", duration: 0.9, ease: "power1.inOut" })
+        .to(q(".stage .draw"), { clipPath: "inset(0% 0% 0% 100%)", duration: 0.9, ease: "power1.inOut" }, "<")
+        .to(q(".notes .note"), { opacity: 0, duration: 0.3, stagger: 0.03 }, "-=0.5")
+        .to(q(".pencil"), { opacity: 0, duration: 0.05 })
         .to({}, { duration: 0.2 });
-      return () => { tw.classList.remove("is-live"); if (yearEl) yearEl.textContent = from; };
+      return () => {
+        draft.classList.remove("is-live");
+        leads.forEach((l) => { l.style.strokeDasharray = ""; l.style.strokeDashoffset = ""; });
+      };
     });
 
-    /* Game day: the cards slide sideways as you scroll (desktop); phones swipe natively */
+    /* Game day: the day slides sideways as you scroll (desktop); phones swipe natively */
     mm.add("(min-width: 1000px) and (min-height: 640px)", () => {
       const sec = document.querySelector(".gameday");
       const track = sec && sec.querySelector(".track");
@@ -191,61 +192,52 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       return () => { tween.scrollTrigger?.kill(); tween.kill(); sec.classList.remove("is-live"); gsap.set(track, { clearProps: "x" }); };
     });
 
-    /* Hero: the photograph settles, the headline rises line by line */
-    const heroImg = document.querySelector(".hero-media img");
-    const heroIn = document.querySelectorAll(".hero [data-hero-in]");
-    const heroTitle = document.querySelector(".hero h1");
+    /* Hero: the playbill sets line by line, the cabinet card drops onto the table, the seal stamps down */
     const playIntro = root.classList.contains("motion");
     window.__heroReady = true;
-    gsap.set(heroIn, { autoAlpha: 1 });
-    if (heroImg) {
-      if (playIntro) gsap.fromTo(heroImg, { scale: 1.14 }, { scale: 1, duration: 2.6, ease: "expo.out" });
-      gsap.to(heroImg, { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.set(".hero [data-hero-in]", { autoAlpha: 1 });
+    if (playIntro) {
+      gsap.from(".playbill > span", { y: 40, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.12, delay: 0.1 });
+      gsap.from(".hero .pb-rule, .hero-copy > *", { y: 20, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.08, delay: 0.55 });
+      gsap.from(".cabinet .cab", { y: -60, rotate: -8, opacity: 0, duration: 1.4, ease: "elastic.out(1, 0.7)", delay: 0.35 });
+      gsap.from(".cabinet .seal", { scale: 0, rotate: -120, duration: 1.1, ease: "back.out(1.6)", delay: 0.9 });
+      gsap.from(".hist-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
+      gsap.from(".hist-card", { y: -50, rotate: -8, opacity: 0, duration: 1.4, ease: "elastic.out(1, 0.7)", delay: 0.3 });
+      gsap.from(".page-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
     }
-    if (playIntro && heroTitle && hasSplit) {
-      window.SplitText.create(heroTitle, {
-        type: "lines", mask: "lines", autoSplit: true, aria: "hidden",
-        onSplit: (self) => gsap.from(self.lines, { yPercent: 110, duration: 1.3, ease: "expo.out", stagger: 0.09, delay: 0.25 }),
-      });
-    }
-    const heroRest = Array.from(heroIn).filter((el) => el !== heroTitle);
-    if (playIntro) gsap.from(heroRest, { y: 24, autoAlpha: 0, duration: 1.1, ease: "expo.out", stagger: 0.08, delay: 0.55 });
 
-    /* Statement: words fill in as you read down */
-    document.querySelectorAll("[data-scrub-words]").forEach((el) => {
-      if (!hasSplit) return;
-      window.SplitText.create(el, {
-        type: "words", autoSplit: true, aria: "hidden",
-        onSplit: (self) => gsap.fromTo(self.words, { opacity: 0.24 }, {
-          opacity: 1, ease: "none", stagger: 0.1,
-          scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: true },
-        }),
-      });
+    /* Postcard: the big word rises and the stamps get stuck on */
+    if (document.querySelector(".greet")) {
+      gsap.from(".greet-word", { yPercent: 30, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".greet", start: "top 70%" } });
+      gsap.from(".stamp", { y: 60, rotate: (i) => [-14, 10, -8][i] || 0, opacity: 0, duration: 0.9, ease: "back.out(1.5)", stagger: 0.12, scrollTrigger: { trigger: ".stamps", start: "top 88%" } });
+    }
+
+    /* Ephemera: pieces start scattered off the table and settle into the pile as you scroll */
+    if (document.querySelector(".pile")) {
+      [[".e-old", -260, -120, -24], [".e-now", 300, 60, 20], [".e-portrait", -80, 260, -18], [".pennant", 260, -200, -40], [".stub", -320, 140, 34]]
+        .forEach(([sel, x, y, r]) => gsap.from(sel, {
+          x, y, rotate: "+=" + r, opacity: 0, ease: "power2.out",
+          scrollTrigger: { trigger: ".pile", start: "top 95%", end: "center 55%", scrub: 0.8 },
+        }));
+      const pen = document.querySelector(".pennant");
+      pen?.addEventListener("pointerenter", () => gsap.fromTo(pen, { rotate: -10 }, { rotate: -16, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }));
+    }
+
+    /* Cabinet cards and keepsakes drop gently onto the page the first time they appear */
+    document.querySelectorAll("[data-drop]").forEach((el, i) => {
+      gsap.from(el, { y: -36, rotate: "-=5", opacity: 0.25, duration: 1.1, ease: "elastic.out(1, 0.75)", delay: (i % 3) * 0.08, scrollTrigger: { trigger: el, start: "top 90%", once: true } });
+    });
+    /* Layered house photos drift at slightly different speeds */
+    document.querySelectorAll("[data-float]").forEach((el) => {
+      const d = Number(el.getAttribute("data-float")) || 30;
+      gsap.fromTo(el, { y: d }, { y: -d, ease: "none", scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
     });
 
-    /* Headings rise gently into place (they stay readable before they move) */
-    document.querySelectorAll("[data-split]").forEach((el) => {
-      if (!hasSplit) return;
+    /* Headings rise into place (readable before they move) */
+    if (hasSplit) document.querySelectorAll("[data-split]").forEach((el) => {
       window.SplitText.create(el, {
         type: "lines", autoSplit: true, aria: "hidden",
-        onSplit: (self) => gsap.from(self.lines, {
-          yPercent: 45, opacity: 0.2, duration: 1.1, ease: "expo.out", stagger: 0.08,
-          scrollTrigger: { trigger: el, start: "top 88%", once: true },
-        }),
-      });
-    });
-
-    /* Photographs: a slow drift inside their frames, and frames that open as they arrive */
-    document.querySelectorAll("[data-parallax] img").forEach((img) => {
-      gsap.fromTo(img, { yPercent: -6 }, {
-        yPercent: 6, ease: "none",
-        scrollTrigger: { trigger: img.closest("[data-parallax]"), start: "top bottom", end: "bottom top", scrub: true },
-      });
-    });
-    document.querySelectorAll("[data-reveal]").forEach((el) => {
-      gsap.fromTo(el, { clipPath: "inset(9% 9% 9% 9% round 4px)" }, {
-        clipPath: "inset(0% 0% 0% 0% round 4px)", ease: "none",
-        scrollTrigger: { trigger: el, start: "top 95%", end: "top 40%", scrub: true },
+        onSplit: (self) => gsap.from(self.lines, { yPercent: 40, opacity: 0.25, duration: 1, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: el, start: "top 88%", once: true } }),
       });
     });
 
@@ -253,25 +245,19 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     const route = document.querySelector(".map-route");
     if (route && route.getTotalLength) {
       const len = route.getTotalLength();
-      gsap.fromTo(route, { strokeDasharray: len, strokeDashoffset: len }, {
-        strokeDashoffset: 0, ease: "none",
-        scrollTrigger: { trigger: ".map", start: "top 80%", end: "center 40%", scrub: true },
-      });
-      gsap.from(".map .pin", {
-        y: 10, opacity: 0.3, duration: 0.8, ease: "expo.out", stagger: 0.06,
-        scrollTrigger: { trigger: ".map", start: "top 75%", once: true },
-      });
+      gsap.fromTo(route, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: ".map", start: "top 80%", end: "center 40%", scrub: true } });
+      gsap.from(".map .pin", { y: 10, opacity: 0.3, duration: 0.8, ease: "back.out(2)", stagger: 0.06, scrollTrigger: { trigger: ".map", start: "top 75%", once: true } });
     }
 
     /* Primary buttons lean toward the pointer */
     if (finePointer) {
-      document.querySelectorAll(".btn-primary").forEach((btn) => {
+      document.querySelectorAll(".pill").forEach((btn) => {
         const xTo = gsap.quickTo(btn, "x", { duration: 0.5, ease: "power3.out" });
         const yTo = gsap.quickTo(btn, "y", { duration: 0.5, ease: "power3.out" });
         btn.addEventListener("pointermove", (e) => {
           const r = btn.getBoundingClientRect();
-          xTo((e.clientX - r.left - r.width / 2) * 0.18);
-          yTo((e.clientY - r.top - r.height / 2) * 0.28);
+          xTo((e.clientX - r.left - r.width / 2) * 0.16);
+          yTo((e.clientY - r.top - r.height / 2) * 0.26);
         });
         btn.addEventListener("pointerleave", () => { xTo(0); yTo(0); });
       });
@@ -288,7 +274,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     window.addEventListener("load", () => { ScrollTrigger.refresh(); landOnHash(); });
   }
 
-  /* Photo viewer */
+  /* ---------------- Photo viewer */
   const links = Array.from(document.querySelectorAll("[data-lightbox]"));
   if (links.length && typeof HTMLDialogElement === "function") {
     const dlg = document.createElement("dialog");
@@ -309,60 +295,42 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       const thumb = a.querySelector("img");
       img.src = a.getAttribute("href");
       img.alt = thumb ? thumb.alt : "";
-      const fig = a.closest("figure");
-      const fc = fig && fig.querySelector("figcaption");
+      const fc = a.closest("figure")?.querySelector("figcaption");
       cap.textContent = fc ? fc.textContent.trim() : "";
     };
     const single = links.length < 2;
     dlg.querySelector(".lightbox-prev").hidden = single;
     dlg.querySelector(".lightbox-next").hidden = single;
-    links.forEach((a, i) => a.addEventListener("click", (e) => {
-      e.preventDefault();
-      show(i);
-      lenis?.stop();
-      dlg.showModal();
-    }));
+    links.forEach((a, i) => a.addEventListener("click", (e) => { e.preventDefault(); show(i); lenis?.stop(); dlg.showModal(); }));
     dlg.addEventListener("close", () => lenis?.start());
     dlg.querySelector(".lightbox-close").addEventListener("click", () => dlg.close());
     dlg.querySelector(".lightbox-prev").addEventListener("click", () => show(index - 1));
     dlg.querySelector(".lightbox-next").addEventListener("click", () => show(index + 1));
     dlg.addEventListener("click", (e) => { if (e.target === dlg || e.target.classList.contains("lightbox-inner")) dlg.close(); });
-    dlg.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") show(index - 1);
-      if (e.key === "ArrowRight") show(index + 1);
-    });
+    dlg.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") show(index - 1); if (e.key === "ArrowRight") show(index + 1); });
   }
 
-  /* Copy email buttons */
+  /* ---------------- Copy email buttons */
+  const copyText = async (btn, text) => {
+    try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+    catch (err) {
+      const link = btn.parentElement.querySelector("a");
+      if (link) { const sel = window.getSelection(); const r = document.createRange(); r.selectNodeContents(link); sel.removeAllRanges(); sel.addRange(r); }
+      btn.textContent = "Selected";
+    }
+  };
   document.querySelectorAll("[data-copy]").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const text = btn.getAttribute("data-copy");
-      try {
-        await navigator.clipboard.writeText(text);
-        btn.textContent = "Copied";
-      } catch (err) {
-        const link = btn.parentElement.querySelector("a");
-        if (link) {
-          const sel = window.getSelection();
-          const r = document.createRange();
-          r.selectNodeContents(link);
-          sel.removeAllRanges();
-          sel.addRange(r);
-        }
-        btn.textContent = "Selected";
-      }
-      setTimeout(() => { btn.textContent = "Copy"; }, 2000);
-    });
+    btn.addEventListener("click", async () => { await copyText(btn, btn.getAttribute("data-copy")); setTimeout(() => { btn.textContent = "Copy"; }, 2000); });
   });
 
-  /* Guest list form */
+  /* ---------------- Guest list ticket */
   const form = document.querySelector("[data-guest-form]");
   if (form) {
+    const ticket = form.closest(".ticket");
     const errorBox = form.querySelector(".form-error");
     const button = form.querySelector('button[type="submit"]');
     const label = button.querySelector("span") || button;
     const showError = (msg) => { errorBox.textContent = msg; errorBox.hidden = false; };
-
     const detailsText = (data) => {
       const lines = [];
       for (const [k, v] of data.entries()) {
@@ -373,15 +341,14 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     };
     const showSuccess = (name) => {
       const first = (name || "").trim().split(/\s+/)[0].replace(/[<>&"]/g, "");
+      ticket?.classList.add("is-torn");
       form.innerHTML =
         '<div class="form-success" role="status" tabindex="-1">' +
         "<h3>You're on the list" + (first ? ", " + first : "") + ".</h3>" +
-        '<p class="lede">We\'ll email you when dates open and when there\'s progress to show. Watch for a note from ' +
-        HOST_EMAILS.join(" or ") + ".</p>" +
+        "<p>Keep your stub. We'll write when dates open and when there's progress to show, from " + HOST_EMAILS.join(" or ") + ".</p>" +
         '<p><a class="link" href="photos.html">See the photos while you wait</a></p></div>';
       form.querySelector(".form-success").focus();
     };
-
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       errorBox.hidden = true;
@@ -389,30 +356,16 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       const email = form.querySelector("#gl-email");
       name.removeAttribute("aria-invalid");
       email.removeAttribute("aria-invalid");
-      if (!name.value.trim()) {
-        name.setAttribute("aria-invalid", "true");
-        name.focus();
-        return showError("Add your name so we know who to write back to.");
-      }
-      if (!email.validity.valid || !email.value.trim()) {
-        email.setAttribute("aria-invalid", "true");
-        email.focus();
-        return showError("Add an email address like name@example.com so we can send you dates.");
-      }
-
+      if (!name.value.trim()) { name.setAttribute("aria-invalid", "true"); name.focus(); return showError("Add your name so we know who to write back to."); }
+      if (!email.validity.valid || !email.value.trim()) { email.setAttribute("aria-invalid", "true"); email.focus(); return showError("Add an email address like name@example.com so we can send you dates."); }
       const data = new FormData(form);
       if (data.get("bot-field")) return;
       button.disabled = true;
-      label.textContent = "Joining...";
-
+      label.textContent = "Punching...";
       try {
         let res;
         if (FORM_ENDPOINT === "netlify") {
-          res = await fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(data).toString(),
-          });
+          res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(data).toString() });
         } else if (FORM_ENDPOINT) {
           res = await fetch(FORM_ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: data });
         }
@@ -420,7 +373,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
         showSuccess(data.get("name"));
       } catch (err) {
         button.disabled = false;
-        label.textContent = "Join the guest list";
+        label.textContent = "Punch my ticket";
         const text = detailsText(data);
         const subject = encodeURIComponent("Guest list: " + (data.get("name") || ""));
         const href = "mailto:" + HOST_EMAILS.join(",") + "?subject=" + subject + "&body=" + encodeURIComponent(text);
@@ -429,10 +382,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
           ' and you\'re on the list. <a href="' + href + '">Open a pre-filled email</a> or ' +
           '<button type="button" class="copy-btn" data-copy-details>Copy my details</button>';
         errorBox.hidden = false;
-        errorBox.querySelector("[data-copy-details]").addEventListener("click", async (ev) => {
-          try { await navigator.clipboard.writeText(text); ev.target.textContent = "Copied"; }
-          catch (err2) { ev.target.textContent = "Copy didn't work, please type them in an email"; }
-        });
+        errorBox.querySelector("[data-copy-details]").addEventListener("click", (ev) => copyText(ev.target, text));
       }
     });
   }
