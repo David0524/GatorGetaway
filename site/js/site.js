@@ -249,6 +249,14 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       pen?.addEventListener("pointerenter", () => gsap.fromTo(pen, { rotate: -10 }, { rotate: -16, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }));
     }
 
+    /* Illustrated map: the dotted walk from the house draws itself to the stadium as you scroll */
+    const walk = document.querySelector(".walk-mask");
+    if (walk && walk.getTotalLength) {
+      const len = walk.getTotalLength();
+      gsap.fromTo(walk, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, ease: "none",
+        scrollTrigger: { trigger: ".map-illo", start: "top 80%", end: "center 40%", scrub: 0.6 } });
+    }
+
     /* Map: the walking route draws itself to the stadium */
     const route = document.querySelector(".map-route");
     if (route && route.getTotalLength) {
