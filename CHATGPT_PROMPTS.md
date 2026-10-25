@@ -1,5 +1,74 @@
 # ChatGPT prompts for Gator Haven House
 
+## Round 3 art: "The 1899 Program"
+
+These make the new direction look custom instead of templated. For any prompt that says "attached", upload the file named. Ask for the **largest size** ChatGPT offers and **PNG**. When you get one you like, reply "same image, higher detail, no changes" once to sharpen it.
+
+Rules for all of them: no University of Florida logos or marks, no real people's faces except Blanding's portrait, and no words inside the image unless the prompt asks for them (AI lettering often comes out misspelled; the site sets real type over the art).
+
+### 1. The architect's elevation (the drawing-to-house moment): most important
+Attach `site/images/exterior-today-1600.jpg`.
+
+> Redraw the attached photograph as an 1890s architect's presentation drawing of this exact house. Keep the camera angle, framing, proportions and every architectural detail exactly where they are in the photo, so the drawing lines up perfectly when laid over the original: the steep front gable with fish-scale shingles and the small arched attic window, the second-floor window, the wraparound porch with turned posts, the spindle frieze under the porch roof, the gabled entry over the front steps, the porch railings, the brick lattice foundation, the front steps and the walk. Style: fine pen-and-ink linework in deep navy ink (#1B2A55) on warm cream drafting paper (#F4EAD0), crisp ruled lines for the architecture, light cross-hatching for shadows under the porch roof and eaves. Trees, lawn and fence drawn loosely and lightly so they fade toward the edges, the way an architect sketches landscaping. No text, no labels, no border, no people, no cars. Same aspect ratio as the photo.
+
+Then ask for a blueprint version of the same drawing:
+
+> Same drawing, exactly the same lines and composition, as an 1890s cyanotype blueprint: white lines on deep Prussian blue (#16346E), with faint paper texture. No text.
+
+Save as `house-elevation.png` and `house-blueprint.png`. I'll replace the photo-traced stand-in in the prototype.
+
+### 2. The house being built (optional upgrade to the drawing moment)
+Attach the elevation drawing from prompt 1. Ask for each frame separately, always with "keep the composition identical to the attached drawing":
+
+> Frame 1: only the faint pencil construction lines and centerlines of this exact house, as an architect starts a drawing: light grey guide lines, the ground line and the roofline. Nothing else.
+
+> Frame 2: the same house as a bare timber frame under construction in 1899: studs, rafters and porch posts in pen and ink, no siding yet. Identical composition.
+
+> Frame 3: the same house with clapboard, roof shingles and fish-scale gable going on, porch railings not yet added. Identical composition.
+
+With four frames that line up, the site can "build" the house as you scroll: guide lines, then the frame, then the walls, then the finished drawing, then the real photo.
+
+### 3. Engraved spot illustrations (a matched set)
+Ask in one conversation so they match. Start with:
+
+> Create a set of small spot illustrations in the style of an 1890s steel engraving from a Victorian magazine: fine parallel-line shading, single deep navy ink color (#1B2A55) on a plain cream background (#F4EAD0), no text, no border, each centered with generous empty space around it. First: a friendly American alligator resting at the edge of a Florida pond among lily pads and cattails, calm and charming, not menacing.
+
+Then, one at a time in the same chat:
+
+> Same style: a pair of white wooden rocking chairs on a Victorian porch with a small table and two glasses of sweet tea.
+
+> Same style: a Southern magnolia branch with one open blossom.
+
+> Same style: a vintage leather football from the early 1900s resting against a felt pennant (the pennant blank, no letters).
+
+> Same style: a close-up of a Victorian gable with fish-scale shingles and a small arched attic window.
+
+> Same style: a Spanish-moss-draped live oak.
+
+### 4. Illustrated neighborhood map (replaces the plain map)
+> Create an illustrated tourist map in the style of a 1950s hand-painted American city map: soft gouache colors on cream paper, cream (#F4EAD0), navy (#1B2A55), burnt orange (#D8501C) and muted greens. Show a small grid of tree-lined streets running from a Victorian house in the upper right (a yellow Queen Anne with a wraparound porch) west to a large college football stadium on the left, with a small downtown square with a fountain between them and a railroad depot park below. Little illustrated trees, a dotted walking path from the house to the stadium. No text, no labels, no logos (I'll add the labels myself).
+
+### 5. Hand-lettered wordmark
+> Hand-lettered logo text "Gator Haven House" in the style of an 1890s American sign painter: a bold Clarendon-style slab serif for "Gator Haven" with a delicate Spencerian script "House" underneath, finished with a small curling flourish that ends in an alligator's tail. Deep navy (#1B2A55) on plain cream. Check that every letter is spelled correctly. Flat, clean vector look, no texture, no shadow.
+
+### 6. Center of the spinning seal
+> A small round emblem for the center of a badge: a Victorian house gable with fish-scale shingles and an arched attic window, with an alligator's eyes and snout peeking just above a wavy waterline at the bottom of the circle. Two colors only, cream (#FFFDF6) linework on navy (#1B2A55). Simple enough to read at 60 pixels. No text.
+
+### 7. Paper and ephemera textures
+> A seamless, tileable texture of aged cream cotton paper (#F4EAD0) with very subtle fibers and faint foxing, evenly lit, no folds, no stains in the center. 2048 by 2048.
+
+> A vintage admission ticket stub on thick cream card stock with a perforated edge, photographed flat from above on a plain background, completely blank (no printing), slightly worn corners.
+
+### 8. A hand-tinted postcard of the house (for the History scrapbook)
+Attach `site/images/house-early-1900s-1200.jpg`.
+
+> Turn the attached early photograph of this house into a 1905-style hand-tinted postcard: soft, slightly uneven watercolor tints over the original photo (pale butter-yellow house, green trees, blue sky), with the white border of an antique postcard. Keep every detail of the house and the people exactly as in the original. No text.
+
+Label this one "colorized" on the site.
+
+---
+
+
 Copy any prompt below into ChatGPT (image generation is on by default in GPT-4o and later). When a prompt says "attached", upload the photo first.
 
 Two rules for everything:
