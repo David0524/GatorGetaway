@@ -1,32 +1,93 @@
-/* 1899 Gator Getaway: menu, before/after slider, photo viewer, guest list form, copy buttons. */
+/* Gator Haven House: header, menu, motion, before/after slider, map, chapters, photo viewer,
+   guest list form and copy buttons. Every effect is an enhancement: without JavaScript, or with
+   reduced motion turned on, the pages are complete and readable as plain HTML. */
 
 /* Where guest-list sign-ups go.
    "netlify"  works with no setup when the site is hosted on Netlify (Netlify Forms).
    A URL      posts to any form service instead, e.g. "https://formspree.io/f/abcdwxyz".
    If sending fails, the form opens an email to Craig and Jenn with the details filled in. */
 const FORM_ENDPOINT = "netlify";
-const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
+const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
 
 (function () {
+  const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const hasGsap = !!(window.gsap && window.ScrollTrigger);
+  const motion = hasGsap && !reduceMotion;
+  if (!motion) root.classList.remove("motion");
+  let lenis = null;
 
-  /* Mobile menu */
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.getElementById("site-nav");
-  if (toggle && nav) {
-    const setOpen = (open) => {
-      nav.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.textContent = open ? "Close" : "Menu";
-    };
-    toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
-    nav.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+  /* Smooth scrolling (desktop feel; touch keeps native scrolling) */
+  if (motion && window.Lenis) {
+    lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+    lenis.on("scroll", window.ScrollTrigger.update);
+    window.gsap.ticker.add((t) => lenis.raf(t * 1000));
+    window.gsap.ticker.lagSmoothing(0);
+  }
+  const headerOffset = () => -(document.querySelector(".site-header")?.offsetHeight || 0) - 8;
+  const scrollToEl = (el) => {
+    if (lenis) lenis.scrollTo(el, { offset: headerOffset(), duration: 1.4 });
+    else el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+  };
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href*="#"]');
+    if (!a) return;
+    const url = new URL(a.href, location.href);
+    if (url.pathname.replace(/index\.html$/, "") !== location.pathname.replace(/index\.html$/, "") || !url.hash) return;
+    const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+    if (!target) return;
+    e.preventDefault();
+    closeMenu();
+    scrollToEl(target);
+  });
+
+  /* Header: transparent over the hero photo, solid after it, tucks away while scrolling down */
+  const header = document.querySelector(".site-header");
+  const hero = document.querySelector(".hero");
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    const threshold = hero ? hero.offsetHeight - (header ? header.offsetHeight : 0) : 10;
+    header?.classList.toggle("is-solid", y > threshold);
+    const goingDown = y > lastY + 4;
+    const goingUp = y < lastY - 4;
+    if (goingDown && y > 480) header?.classList.add("is-hidden");
+    if (goingUp || y < 200) header?.classList.remove("is-hidden");
+    lastY = y;
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* Full-screen menu */
+  const menu = document.getElementById("menu");
+  const menuBtn = document.querySelector(".menu-btn");
+  function closeMenu() {
+    if (!menu || !menu.classList.contains("is-open")) return;
+    menu.classList.remove("is-open");
+    menu.setAttribute("aria-hidden", "true");
+    menuBtn?.setAttribute("aria-expanded", "false");
+    lenis?.start();
+    document.body.style.overflow = "";
+    menuBtn?.focus();
+  }
+  if (menu && menuBtn) {
+    menuBtn.addEventListener("click", () => {
+      menu.classList.add("is-open");
+      menu.setAttribute("aria-hidden", "false");
+      menuBtn.setAttribute("aria-expanded", "true");
+      lenis?.stop();
+      document.body.style.overflow = "hidden";
+      menu.querySelector("nav a")?.focus();
+    });
+    menu.querySelector(".menu-close")?.addEventListener("click", closeMenu);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
   }
 
   /* Before / after slider */
   document.querySelectorAll("[data-compare]").forEach((box) => {
     const range = box.querySelector(".compare-range");
+    let dragging = false;
     const set = (pct) => {
       const v = Math.max(0, Math.min(100, pct));
       box.style.setProperty("--pos", v + "%");
@@ -36,7 +97,6 @@ const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
       const r = box.getBoundingClientRect();
       set(((e.clientX - r.left) / r.width) * 100);
     };
-    let dragging = false;
     box.addEventListener("pointerdown", (e) => {
       dragging = true;
       box.setPointerCapture(e.pointerId);
@@ -44,35 +104,169 @@ const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
       range.focus({ preventScroll: true });
     });
     box.addEventListener("pointermove", (e) => { if (dragging) fromEvent(e); });
-    const stop = () => { dragging = false; };
-    box.addEventListener("pointerup", stop);
-    box.addEventListener("pointercancel", stop);
+    box.addEventListener("pointerup", () => { dragging = false; });
+    box.addEventListener("pointercancel", () => { dragging = false; });
     range.addEventListener("input", () => set(Number(range.value)));
 
-    /* One gentle sweep the first time the slider scrolls into view, so people see it moves. */
-    if (!reduceMotion && "IntersectionObserver" in window) {
-      const io = new IntersectionObserver((entries) => {
-        if (!entries[0].isIntersecting) return;
-        io.disconnect();
-        const frames = [[0, 50], [700, 22], [1500, 72], [2200, 50]];
-        const start = performance.now();
-        const step = (now) => {
-          if (dragging) return;
-          const t = now - start;
-          let i = 0;
-          while (i < frames.length - 2 && t > frames[i + 1][0]) i++;
-          const [t0, v0] = frames[i];
-          const [t1, v1] = frames[i + 1];
-          const p = Math.min(1, (t - t0) / (t1 - t0));
-          const ease = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
-          set(v0 + (v1 - v0) * ease);
-          if (t < frames[frames.length - 1][0]) requestAnimationFrame(step);
-        };
-        setTimeout(() => requestAnimationFrame(step), 400);
-      }, { threshold: 0.6 });
-      io.observe(box);
+    /* One sweep the first time it comes into view, so people see that it moves */
+    if (motion) {
+      const state = { v: 50 };
+      window.gsap.timeline({ scrollTrigger: { trigger: box, start: "top 65%", once: true }, delay: 0.3 })
+        .to(state, { v: 18, duration: 1.1, ease: "power2.inOut", onUpdate: () => !dragging && set(state.v) })
+        .to(state, { v: 78, duration: 1.3, ease: "power2.inOut", onUpdate: () => !dragging && set(state.v) })
+        .to(state, { v: 50, duration: 0.9, ease: "power2.out", onUpdate: () => !dragging && set(state.v) });
     }
   });
+
+  /* History chapters: swap the sticky picture as each chapter reaches the middle of the screen */
+  const visuals = document.querySelectorAll(".cv");
+  if (visuals.length && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const id = en.target.getAttribute("data-visual");
+        visuals.forEach((v) => v.classList.toggle("is-active", v.id === id));
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    document.querySelectorAll(".chapter[data-visual]").forEach((c) => io.observe(c));
+  }
+
+  /* Motion (GSAP). Skipped entirely for reduced motion or if the library didn't load. */
+  if (motion) {
+    const { gsap, ScrollTrigger } = window;
+    const hasSplit = !!window.SplitText;
+    gsap.registerPlugin(ScrollTrigger);
+    if (hasSplit) gsap.registerPlugin(window.SplitText);
+
+    /* Hero: the photograph settles, the headline rises line by line */
+    const heroImg = document.querySelector(".hero-media img");
+    const heroIn = document.querySelectorAll(".hero [data-hero-in]");
+    const heroTitle = document.querySelector(".hero h1");
+    gsap.set(heroIn, { autoAlpha: 1 });
+    window.__heroReady = true;
+    if (heroImg) {
+      gsap.fromTo(heroImg, { scale: 1.14 }, { scale: 1, duration: 2.6, ease: "expo.out" });
+      gsap.to(heroImg, { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    }
+    if (heroTitle && hasSplit) {
+      window.SplitText.create(heroTitle, {
+        type: "lines", mask: "lines", autoSplit: true,
+        onSplit: (self) => gsap.from(self.lines, { yPercent: 110, duration: 1.3, ease: "expo.out", stagger: 0.09, delay: 0.25 }),
+      });
+    }
+    const heroRest = Array.from(heroIn).filter((el) => el !== heroTitle);
+    gsap.from(heroRest, { y: 24, autoAlpha: 0, duration: 1.1, ease: "expo.out", stagger: 0.08, delay: 0.55 });
+
+    /* Statement: words fill in as you read down */
+    document.querySelectorAll("[data-scrub-words]").forEach((el) => {
+      if (!hasSplit) return;
+      window.SplitText.create(el, {
+        type: "words", autoSplit: true,
+        onSplit: (self) => gsap.fromTo(self.words, { opacity: 0.16 }, {
+          opacity: 1, ease: "none", stagger: 0.1,
+          scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: true },
+        }),
+      });
+    });
+
+    /* Headings rise gently into place (they stay readable before they move) */
+    document.querySelectorAll("[data-split]").forEach((el) => {
+      if (!hasSplit) return;
+      window.SplitText.create(el, {
+        type: "lines", autoSplit: true,
+        onSplit: (self) => gsap.from(self.lines, {
+          yPercent: 45, opacity: 0.2, duration: 1.1, ease: "expo.out", stagger: 0.08,
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        }),
+      });
+    });
+
+    /* Photographs: a slow drift inside their frames, and frames that open as they arrive */
+    document.querySelectorAll("[data-parallax] img").forEach((img) => {
+      gsap.fromTo(img, { yPercent: -6 }, {
+        yPercent: 6, ease: "none",
+        scrollTrigger: { trigger: img.closest("[data-parallax]"), start: "top bottom", end: "bottom top", scrub: true },
+      });
+    });
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      gsap.fromTo(el, { clipPath: "inset(9% 9% 9% 9% round 4px)" }, {
+        clipPath: "inset(0% 0% 0% 0% round 4px)", ease: "none",
+        scrollTrigger: { trigger: el, start: "top 95%", end: "top 40%", scrub: true },
+      });
+    });
+
+    /* Then and now: 1899 wipes away to today while the year counts up */
+    const tw = document.querySelector(".timewarp");
+    if (tw) {
+      tw.classList.add("is-live");
+      const yearEl = tw.querySelector(".timewarp-year b");
+      const yearNote = tw.querySelector(".timewarp-year small");
+      const from = Number(tw.dataset.from || 1899);
+      const to = Number(tw.dataset.to || 2026);
+      const counter = { y: from };
+      gsap.timeline({
+        scrollTrigger: { trigger: tw, start: "top top", end: "+=160%", pin: true, scrub: 0.6, anticipatePin: 1 },
+      })
+        .to({}, { duration: 0.15 })
+        .fromTo(tw.querySelector(".tw-then"), { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", ease: "power2.inOut", duration: 1 }, ">")
+        .fromTo(tw.querySelector(".tw-now img"), { scale: 1.18 }, { scale: 1, ease: "power2.out", duration: 1 }, "<")
+        .to(counter, {
+          y: to, ease: "power2.inOut", duration: 1,
+          onUpdate: () => {
+            const v = Math.round(counter.y);
+            if (yearEl) yearEl.textContent = v;
+            if (yearNote) yearNote.textContent = v < to ? yearNote.dataset.then : yearNote.dataset.now;
+          },
+        }, "<")
+        .to({}, { duration: 0.2 });
+    }
+
+    /* Game day: the cards slide sideways as you scroll (desktop); phones swipe natively */
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1000px)", () => {
+      const sec = document.querySelector(".gameday");
+      const track = sec && sec.querySelector(".track");
+      if (!sec || !track) return;
+      sec.classList.add("is-live");
+      const distance = () => Math.max(0, track.scrollWidth - window.innerWidth + 40);
+      const tween = gsap.to(track, {
+        x: () => -distance(), ease: "none",
+        scrollTrigger: { trigger: sec, start: "top top", end: () => "+=" + distance(), pin: true, scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1 },
+      });
+      return () => { tween.scrollTrigger?.kill(); tween.kill(); sec.classList.remove("is-live"); gsap.set(track, { clearProps: "x" }); };
+    });
+
+    /* Map: the walking route draws itself to the stadium */
+    const route = document.querySelector(".map-route");
+    if (route && route.getTotalLength) {
+      const len = route.getTotalLength();
+      gsap.fromTo(route, { strokeDasharray: len, strokeDashoffset: len }, {
+        strokeDashoffset: 0, ease: "none",
+        scrollTrigger: { trigger: ".map", start: "top 80%", end: "center 40%", scrub: true },
+      });
+      gsap.from(".map .pin", {
+        y: 10, opacity: 0.3, duration: 0.8, ease: "expo.out", stagger: 0.06,
+        scrollTrigger: { trigger: ".map", start: "top 75%", once: true },
+      });
+    }
+
+    /* Primary buttons lean toward the pointer */
+    if (finePointer) {
+      document.querySelectorAll(".btn-primary").forEach((btn) => {
+        const xTo = gsap.quickTo(btn, "x", { duration: 0.5, ease: "power3.out" });
+        const yTo = gsap.quickTo(btn, "y", { duration: 0.5, ease: "power3.out" });
+        btn.addEventListener("pointermove", (e) => {
+          const r = btn.getBoundingClientRect();
+          xTo((e.clientX - r.left - r.width / 2) * 0.18);
+          yTo((e.clientY - r.top - r.height / 2) * 0.28);
+        });
+        btn.addEventListener("pointerleave", () => { xTo(0); yTo(0); });
+      });
+    }
+
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+  }
 
   /* Photo viewer */
   const links = Array.from(document.querySelectorAll("[data-lightbox]"));
@@ -105,8 +299,10 @@ const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
     links.forEach((a, i) => a.addEventListener("click", (e) => {
       e.preventDefault();
       show(i);
+      lenis?.stop();
       dlg.showModal();
     }));
+    dlg.addEventListener("close", () => lenis?.start());
     dlg.querySelector(".lightbox-close").addEventListener("click", () => dlg.close());
     dlg.querySelector(".lightbox-prev").addEventListener("click", () => show(index - 1));
     dlg.querySelector(".lightbox-next").addEventListener("click", () => show(index + 1));
@@ -144,7 +340,7 @@ const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
   if (form) {
     const errorBox = form.querySelector(".form-error");
     const button = form.querySelector('button[type="submit"]');
-
+    const label = button.querySelector("span") || button;
     const showError = (msg) => { errorBox.textContent = msg; errorBox.hidden = false; };
 
     const emailFallback = (data) => {
@@ -154,20 +350,19 @@ const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
         lines.push(k.replace(/_/g, " ") + ": " + v);
       }
       const subject = encodeURIComponent("Guest list: " + (data.get("name") || ""));
-      const body = encodeURIComponent("Please add me to the 1899 Gator Getaway guest list.\n\n" + lines.join("\n"));
+      const body = encodeURIComponent("Please add me to the Gator Haven House guest list.\n\n" + lines.join("\n"));
       window.location.href = "mailto:" + HOST_EMAILS.join(",") + "?subject=" + subject + "&body=" + body;
     };
 
     const showSuccess = (name) => {
-      const first = (name || "").trim().split(/\s+/)[0];
+      const first = (name || "").trim().split(/\s+/)[0].replace(/[<>&"]/g, "");
       form.innerHTML =
         '<div class="form-success" role="status" tabindex="-1">' +
-        "<h3>You're on the list" + (first ? ", " + first.replace(/[<>&"]/g, "") : "") + ".</h3>" +
-        "<p>We'll email you when dates open and when there's progress to show. Watch for a note from " +
+        "<h3>You're on the list" + (first ? ", " + first : "") + ".</h3>" +
+        '<p class="lede">We\'ll email you when dates open and when there\'s progress to show. Watch for a note from ' +
         HOST_EMAILS.join(" or ") + ".</p>" +
-        '<p><a href="photos.html">See the photos while you wait</a></p></div>';
-      const ok = form.querySelector(".form-success");
-      ok.focus();
+        '<p><a class="link" href="photos.html">See the photos while you wait</a></p></div>';
+      form.querySelector(".form-success").focus();
     };
 
     form.addEventListener("submit", async (e) => {
@@ -191,7 +386,7 @@ const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
       const data = new FormData(form);
       if (data.get("bot-field")) return;
       button.disabled = true;
-      button.textContent = "Joining...";
+      label.textContent = "Joining...";
 
       try {
         let res;
@@ -208,7 +403,7 @@ const HOST_EMAILS = ["craig@1899gatorgetaway.com", "jenn@1899gatorgetaway.com"];
         showSuccess(data.get("name"));
       } catch (err) {
         button.disabled = false;
-        button.textContent = "Join the guest list";
+        label.textContent = "Join the guest list";
         showError("We couldn't send the form from here, so we've opened an email to Craig and Jenn with your details. Press send and you're on the list.");
         emailFallback(data);
       }

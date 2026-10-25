@@ -1,4 +1,4 @@
-# ChatGPT prompts for 1899 Gator Getaway
+# ChatGPT prompts for Gator Haven House
 
 Copy any prompt below into ChatGPT (image generation is on by default in GPT-4o and later). When a prompt says "attached", upload the photo first.
 
@@ -19,7 +19,7 @@ The site colors, so the logo matches:
 
 Paste this style block at the end of whichever concept prompt you use:
 
-> Style: a flat vector logo, two or three solid colors only (navy #13224A, orange #E0531F, optional brown #6E3A1F) on a plain off-white #FAFAF7 background. No gradients, no shadows, no 3D, no photo textures. Clean, confident lines that still read clearly at 32 pixels wide. Victorian in spirit but modern and simple, not clip art and not cartoonish. Do not use any University of Florida logos or trademarks. Show the symbol on its own, then the symbol with the wordmark "1899 Gator Getaway" set in a Clarendon-style slab serif similar to Besley.
+> Style: a flat vector logo, two or three solid colors only (navy #13224A, orange #E0531F, optional brown #6E3A1F) on a plain off-white #FAFAF7 background. No gradients, no shadows, no 3D, no photo textures. Clean, confident lines that still read clearly at 32 pixels wide. Victorian in spirit but modern and simple, not clip art and not cartoonish. Do not use any University of Florida logos or trademarks. Show the symbol on its own, then the symbol with the wordmark "Gator Haven House" set in a Clarendon-style slab serif similar to Besley.
 
 ### Concept A: The gable gator (recommended)
 > Design a logo symbol based on the front gable of an 1899 Queen Anne Victorian house: a steep triangular gable filled with rows of fish-scale shingles, with a small arched attic window near the peak. Hide an alligator in it. The fish-scale shingles should double as the alligator's scales, and the negative space along one side of the gable should form an alligator's head in profile, snout pointing right, with the attic window as its eye. The house should be the first thing people see; the gator is the second look, the thing people point out to each other.
@@ -35,6 +35,9 @@ Paste this style block at the end of whichever concept prompt you use:
 
 ### Concept E: The gingerbread bracket
 > Design a logo symbol based on a Victorian porch corner bracket, the decorative carved "gingerbread" piece where a porch post meets the beam. Its scrollwork should curl into the shape of an alligator's tail, and a small cut-out circle in the bracket becomes the alligator's eye. Elegant and restrained, like something cut from wood with a scroll saw.
+
+### Concept F: The haven
+> Design a logo symbol of a simple house outline with a steep Victorian gable and a small arched attic window, with an alligator curled protectively around its base so its body forms a half-circle cradle under the house and its tail wraps up one side. The gator should feel calm and watchful, a guardian, not a threat. The house is the hero; the gator is the "haven" around it.
 
 ### Follow-up prompts once you pick one
 > Simplify this logo for use as a favicon and phone app icon: the symbol only, centered on a navy #13224A rounded square, in off-white and orange. It must read at 32 by 32 pixels.
@@ -81,15 +84,15 @@ To keep every rendering matching, add this line to each one:
 ## 4. Social media graphics
 
 **Announcement post (Instagram and Facebook, 1080 by 1350):**
-> Attached is a photo of our 1899 Victorian rental house in Gainesville, Florida. Create a vertical social media announcement, 1080 by 1350 pixels, using the photo as the main image in the top two thirds. Below it, on an off-white #FAFAF7 panel, set the headline "Something big is coming to Gainesville." in a heavy Clarendon-style slab serif in navy #13224A, then the line "4 bedrooms · 4½ baths · Rent-ready end of 2026" and "1899gatorgetaway.com" in a clean sans serif. Add a thin orange #E0531F rule. Simple and elegant, real estate listing quality, no clip art, no University of Florida logos.
+> Attached is a photo of our 1899 Victorian rental house in Gainesville, Florida. Create a vertical social media announcement, 1080 by 1350 pixels, using the photo as the main image in the top two thirds. Below it, on an off-white #FAFAF7 panel, set the headline "Something big is coming to Gainesville." in a heavy Clarendon-style slab serif in navy #13224A, then the line "4 bedrooms · 4½ baths · Rent-ready end of 2026" and "gatorhavenhouse.com" in a clean sans serif. Add a thin orange #E0531F rule. Simple and elegant, real estate listing quality, no clip art, no University of Florida logos.
 
 **Link preview image (1200 by 630, for when the website is shared in texts and Facebook):**
-> Using the attached house photo, create a 1200 by 630 pixel website preview image. The photo fills the frame. Add a navy #13224A band along the bottom third with "1899 Gator Getaway" in a heavy Clarendon-style slab serif in off-white, and "A historic home for rent in Gainesville's Duck Pond" underneath in a smaller sans serif. Keep the house fully visible above the band.
+> Using the attached house photo, create a 1200 by 630 pixel website preview image. The photo fills the frame. Add a navy #13224A band along the bottom third with "Gator Haven House" in a heavy Clarendon-style slab serif in off-white, and "A historic home for rent in Gainesville's Duck Pond" underneath in a smaller sans serif. Keep the house fully visible above the band.
 
 Save it as `images/og-share.jpg` to replace the current one.
 
 **Progress update posts:**
-> Create a before and after social post, 1080 by 1080 pixels, with the two attached photos side by side, labeled "Before" and "Now" in small navy pill labels. Add "The 1899 Gator Getaway transformation" across the bottom in a Clarendon-style slab serif. Clean, no clutter.
+> Create a before and after social post, 1080 by 1080 pixels, with the two attached photos side by side, labeled "Before" and "Now" in small navy pill labels. Add "The Gator Haven House transformation" across the bottom in a Clarendon-style slab serif. Clean, no clutter.
 
 ---
 

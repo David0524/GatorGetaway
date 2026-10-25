@@ -3,67 +3,103 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Thanks | 1899 Gator Getaway</title>
+<title>Thanks | Gator Haven House</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="An 1899 Victorian vacation rental in Gainesville's Historic Duck Pond District, minutes from UF. 4 bedrooms, 4½ baths, fenced backyard, gas grill, on-site parking and a 98-inch TV. Join the guest list for early-guest rates.">
-<meta name="theme-color" content="#fafaf7">
+<meta name="description" content="You're on the Gator Haven House guest list.">
+<meta name="theme-color" content="#0d1934">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:title" content="1899 Gator Getaway: something big is coming to Gainesville">
-<meta property="og:description" content="An 1899 Victorian in the Historic Duck Pond District, minutes from UF. 4 bedrooms, 4½ baths. Rent-ready by the end of 2026. Join the guest list.">
-<meta property="og:image" content="https://www.1899gatorgetaway.com/images/og-share.jpg">
-<meta property="og:url" content="https://www.1899gatorgetaway.com/">
+<meta property="og:site_name" content="Gator Haven House">
+<meta property="og:title" content="Thanks | Gator Haven House">
+<meta property="og:description" content="You're on the Gator Haven House guest list.">
+<meta property="og:image" content="https://www.gatorhavenhouse.com/images/og-share.jpg">
+<meta property="og:url" content="https://www.gatorhavenhouse.com/thanks.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&family=Libre+Franklin:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&family=Libre+Franklin:wght@300..700&display=swap">
 <link rel="stylesheet" href="css/site.css">
-<script>document.documentElement.classList.remove("no-js");</script>
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.remove("no-js");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      d.classList.add("motion");
+      setTimeout(function () { if (!window.__heroReady) d.classList.remove("motion"); }, 3000);
+    }
+  })();
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="site-header">
   <div class="wrap header-row">
-    <a class="brand" href="./" aria-label="1899 Gator Getaway, home">
+    <a class="brand" href="./" aria-label="Gator Haven House, home">
       <svg class="brand-mark" viewBox="0 0 40 44" aria-hidden="true">
-        <path d="M2 20 20 2l18 18" fill="none" stroke="#13224a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M6 19v23h28V19" fill="none" stroke="#13224a" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M10 18a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0" fill="none" stroke="#6e3a1f" stroke-width="1.6"/>
+        <path d="M2 20 20 2l18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M6 19v23h28V19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M10 18a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
         <path d="M17.5 14v-3a2.5 2.5 0 0 1 5 0v3z" fill="#e0531f"/>
-        <text x="20" y="36" text-anchor="middle" font-family="Besley, Georgia, serif" font-weight="800" font-size="10.5" fill="#13224a">1899</text>
+        <text x="20" y="35.5" text-anchor="middle" font-family="Besley, Georgia, serif" font-weight="500" font-size="10" fill="currentColor">1899</text>
       </svg>
-      <span class="brand-text"><span class="brand-year">EST. 1899</span><span class="brand-name">Gator Getaway</span></span>
+      <span class="brand-text"><span class="brand-name">Gator Haven House</span><span class="brand-sub">The Albert Blanding House, 1899</span></span>
     </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="nav" id="site-nav" aria-label="Main">
+    <nav class="nav" aria-label="Main">
       <a href="./#the-house">The House</a>
+      <a href="./#location">Location</a>
       <a href="photos.html">Photos</a>
       <a href="history.html">History</a>
-      <a class="btn btn-primary btn-small" href="./#guest-list">Join the guest list</a>
     </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary btn-small" href="./#guest-list">Join the guest list</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+    </div>
   </div>
-  <div class="balusters" aria-hidden="true"></div>
 </header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <div class="menu-top">
+    <span class="brand-name">Gator Haven House</span>
+    <button class="menu-close" type="button">Close</button>
+  </div>
+  <nav aria-label="Menu">
+    <a href="./#the-house">The House</a>
+    <a href="./#location">Location</a>
+    <a href="photos.html">Photos</a>
+    <a href="history.html">History</a>
+  </nav>
+  <div class="menu-foot">
+    <a class="btn btn-primary" href="./#guest-list">Join the guest list</a>
+    <span>306 NE 3rd Street, Gainesville, Florida</span>
+    <span>craig@gatorhavenhouse.com<br>jenn@gatorhavenhouse.com</span>
+  </div>
+</div>
+
 <main id="main">
-  <section class="wrap page-head">
-    <p class="kicker">Thank you</p>
-    <h1>You're on the guest list</h1>
-    <p class="lede">We'll email you when dates open and when there's progress to show. Watch for a note from craig@1899gatorgetaway.com or jenn@1899gatorgetaway.com.</p>
-    <div class="hero-actions"><a class="btn btn-primary" href="photos.html">See the photos</a><a class="btn btn-ghost" href="history.html">Read the history</a></div>
+  <section class="wrap page-head" style="min-height:60svh;align-content:center">
+    <p class="label">Thank you</p>
+    <h1>You&rsquo;re on the guest list</h1>
+    <p class="lede">We&rsquo;ll email you when dates open and when there&rsquo;s progress to show. Watch for a note from craig@gatorhavenhouse.com or jenn@gatorhavenhouse.com.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="photos.html">See the photos <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn-ghost" href="history.html">Read the history</a></div>
   </section>
 </main>
+
 <footer class="site-footer">
   <div class="balusters" aria-hidden="true"></div>
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <p class="footer-sign">1899 Gator Getaway</p>
-        <p>A historic home for rent in the Duck Pond District, Gainesville, Florida. Rent-ready by the end of 2026.</p>
+        <h2>The Albert Blanding House</h2>
+        <p>A historic home for rent in the Duck Pond, built in 1899. Opening for stays late 2026, fully transformed by summer 2027.</p>
+        <p style="margin-top:14px"><a class="link" href="https://www.google.com/maps/search/?api=1&query=306+NE+3rd+St+Gainesville+FL+32601" rel="noopener">306 NE 3rd Street, Gainesville, FL 32601</a></p>
       </div>
       <div>
-        <h2>The house</h2>
+        <h2>Explore</h2>
         <ul>
           <li><a href="./#the-house">The House</a></li>
+          <li><a href="./#location">Location</a></li>
           <li><a href="photos.html">Photos</a></li>
           <li><a href="history.html">History</a></li>
           <li><a href="./#guest-list">Join the guest list</a></li>
@@ -72,14 +108,23 @@
       <div>
         <h2>Write to us</h2>
         <ul>
-          <li><a href="mailto:craig@1899gatorgetaway.com">craig@1899gatorgetaway.com</a></li>
-          <li><a href="mailto:jenn@1899gatorgetaway.com">jenn@1899gatorgetaway.com</a></li>
+          <li><a href="mailto:craig@gatorhavenhouse.com">craig@gatorhavenhouse.com</a></li>
+          <li><a href="mailto:jenn@gatorhavenhouse.com">jenn@gatorhavenhouse.com</a></li>
         </ul>
       </div>
     </div>
-    <p class="footer-legal">1899 Gator Getaway is a private vacation rental and is not affiliated with the University of Florida.</p>
+    <p class="footer-word" aria-hidden="true">Gator Haven House<span>.</span></p>
+    <div class="footer-legal">
+      <span>Gator Haven House is a private vacation rental and is not affiliated with the University of Florida.</span>
+      <span>Map data &copy; OpenStreetMap contributors</span>
+    </div>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
 <script src="js/site.js" defer></script>
 </body>
 </html>

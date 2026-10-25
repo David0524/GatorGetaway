@@ -1,6 +1,6 @@
-# 1899 Gator Getaway
+# Gator Haven House
 
-The website for www.1899gatorgetaway.com: an 1899 Victorian vacation rental in Gainesville's Historic Duck Pond District. Its job is to collect a guest list before the house opens at the end of 2026.
+The website for www.gatorhavenhouse.com: an 1899 Victorian vacation rental in Gainesville's Historic Duck Pond District. Its job is to collect a guest list before the house opens at the end of 2026.
 
 - `PLAN.md`: the design and content plan.
 - `CHATGPT_PROMPTS.md`: prompts for the logo, renderings, social graphics and history research.
@@ -15,6 +15,10 @@ The website for www.1899gatorgetaway.com: an 1899 Victorian vacation rental in G
 | `thanks.html` | Shown after the form is sent if a visitor's browser has JavaScript off |
 
 It's a plain static site: HTML, `css/site.css`, `js/site.js` and `images/`. No build step.
+
+The animation libraries (GSAP and Lenis) load from public CDNs. With reduced motion turned on in a visitor's settings, or if those scripts fail to load, every page still shows everything; only the motion is skipped.
+
+The neighborhood map (`images/map-duck-pond.svg`) was drawn from OpenStreetMap data, which requires the "© OpenStreetMap contributors" credit already shown on the map and in the footer.
 
 ## See it on your computer
 
@@ -31,8 +35,8 @@ Netlify is free for a site this size and handles the guest list form with no ext
 1. Create a free account at netlify.com.
 2. **Add new site → Deploy manually**, and drag this whole folder onto the page. (Or connect this GitHub repository so every push updates the site.)
 3. **Forms → Enable form detection**, then redeploy. Sign-ups appear under **Forms → guest-list**.
-4. **Forms → Form notifications → Add notification → Email**: add craig@1899gatorgetaway.com and jenn@1899gatorgetaway.com so every sign-up is emailed to you.
-5. **Domain management → Add a domain**: enter `www.1899gatorgetaway.com` and follow the DNS steps for your domain registrar. Netlify adds the HTTPS certificate for you.
+4. **Forms → Form notifications → Add notification → Email**: add craig@gatorhavenhouse.com and jenn@gatorhavenhouse.com so every sign-up is emailed to you.
+5. **Domain management → Add a domain**: enter `www.gatorhavenhouse.com` and follow the DNS steps for your domain registrar. Netlify adds the HTTPS certificate for you.
 
 Hosting somewhere else? Make a free form at formspree.io and put its URL in `js/site.js`:
 
@@ -44,7 +48,7 @@ If the form can't send for any reason, it opens an email to Craig and Jenn with 
 
 ## The email addresses
 
-craig@ and jenn@1899gatorgetaway.com need email hosting on the domain before they'll receive mail. Options: Google Workspace or Microsoft 365 (full inboxes, paid), Zoho Mail (free tier), or free forwarding to existing inboxes through your domain registrar or ImprovMX. Send a test message to each address before you share the site.
+craig@ and jenn@gatorhavenhouse.com need email hosting on the domain before they'll receive mail. Options: Google Workspace or Microsoft 365 (full inboxes, paid), Zoho Mail (free tier), or free forwarding to existing inboxes through your domain registrar or ImprovMX. Send a test message to each address before you share the site.
 
 ## Common edits
 

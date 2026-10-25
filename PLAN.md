@@ -1,4 +1,4 @@
-# 1899 Gator Getaway — Website Plan
+# Gator Haven House — Website Plan
 
 ## 1. The job of the site
 
@@ -103,4 +103,46 @@ History (history.html)
 - Is the exterior photo a current photo or an enhanced rendering? If it's a rendering, add the "Concept" label in `photos.html`.
 - The street address: shown or hidden until booking? (Hidden for now.)
 - Is "steps from campus" accurate for the address? The Duck Pond is a short walk to downtown; campus distance depends on the street. Copy currently says "minutes from UF's campus."
-- The second email was written `jenn@@1899gatorgetaway.com`; the site uses `jenn@1899gatorgetaway.com`.
+- The second email was written `jenn@@gatorhavenhouse.com`; the site uses `jenn@gatorhavenhouse.com`.
+
+---
+
+# Redesign (round 2)
+
+## What changed and why
+
+- **Name:** the brand is **Gator Haven House** (gatorhavenhouse.com). The house itself is presented by its historic name, **the Albert Blanding House**, which gives the brand real pedigree. Emails: craig@ and jenn@gatorhavenhouse.com.
+- **Feel:** quiet luxury, like a boutique hotel site, with a few cinematic moments. It still reads as a college town: game-day copy, Gator orange and blue, "Go Gators" in the footer, and a site that works one-handed on a phone.
+- **Address and map:** 306 NE 3rd Street is shown, with a custom map drawn from OpenStreetMap data in the site's colors and real walking, biking and driving times.
+
+## Design references
+
+Patterns borrowed from award-winning hospitality and editorial sites (Awwwards hotel winners such as Silena and Hotel Odisej, plus Aman and Auberge-style booking sites):
+
+| Pattern | Where it's used |
+|---|---|
+| Full-bleed hero photo with headline rising line by line, image settling from a slow zoom | Home and History heroes |
+| Text that fills in word by word as you scroll | Home "A house with a story" statement |
+| Pinned "time-warp": 1899 photo wipes away to today while the year counts 1899 → 2026 | Home, after the statement |
+| Sticky picture beside scrolling chapters | History timeline (1899, 1900, 1917, 1980, 2026) |
+| Horizontal scroll section pinned on desktop, swipe on phones | Home "A home-game Saturday" |
+| Parallax drift inside framed photos, frames that open as they arrive | The house, Then and now, architecture details |
+| Route drawing itself on a custom map | Home location |
+| Smooth scrolling, magnetic primary buttons, fill-up button hovers, header that hides on scroll | Site-wide |
+| Full-screen serif menu on phones, cross-page fade transitions | Site-wide |
+
+Built with GSAP 3.13 (ScrollTrigger, SplitText) and Lenis smooth scroll, loaded from public CDNs. Everything is an enhancement: with reduced motion turned on, or if the scripts fail to load, every page is complete and readable.
+
+## History content sources
+
+| Claim | Status |
+|---|---|
+| Built 1899, credited to Judge Horatio Davis, twice mayor | Supported by listing histories and Davis's 1900 *Gainesville Sun* obituary |
+| Blanding lived here 1900–1910, family owned until 1958 | From local listing histories; owners' account |
+| East Florida Seminary graduate (1894) | Wikipedia, National Guard Bureau |
+| First in his class; Gainesville Guards | Owners' account; not yet confirmed in a second source |
+| Distinguished Service Medal, WWI | Florida Dept. of State, National Guard Bureau |
+| Chief of the National Guard Bureau 1936–1940 | Wikipedia, Florida Memory |
+| Camp Blanding named for him (1939); helped found Everglades National Park | Wikipedia, Florida Memory |
+| Named a Great Floridian (2000) | Florida Dept. of State |
+| Great Floridian plaque at this house | **Not shown yet.** Wikipedia places Blanding's plaque at Bartow City Hall. The sentence is ready in `history.html`, commented out, to turn on once confirmed. |
