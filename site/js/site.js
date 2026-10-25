@@ -64,6 +64,23 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* Floating guest-list button on phones: appears after the first screen, steps aside near the form and footer */
+  const floatCta = document.querySelector(".float-cta");
+  if (floatCta) {
+    const avoid = [document.getElementById("guest-list"), document.querySelector(".closer"), document.querySelector(".site-footer")].filter(Boolean);
+    const inView = new Set();
+    const update = () => floatCta.classList.toggle("is-shown", window.scrollY > window.innerHeight * 0.8 && inView.size === 0);
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => (en.isIntersecting ? inView.add(en.target) : inView.delete(en.target)));
+        update();
+      });
+      avoid.forEach((el) => io.observe(el));
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
   /* Full-screen menu, with the page behind it made inert */
   const menu = document.getElementById("menu");
   const menuBtn = document.querySelector(".menu-btn");
@@ -160,7 +177,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       let marks = [];
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: draft, start: "top top", end: "+=420%", pin: true, scrub: 0.7, anticipatePin: 1,
+          trigger: draft, start: "top top", end: "+=340%", pin: true, scrub: 0.7, anticipatePin: 1,
           onUpdate: (self) => setStep(marks.filter((m) => self.progress >= m).length),
         },
       });

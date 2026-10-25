@@ -127,6 +127,10 @@ Checks for 5.2: it must still clearly look like the same man. If the face drifts
 
 ---
 
+## Part 6: The 98-inch TV (added later)
+
+Open the chat that made the Part 2 spot illustrations. For `spot-tv.png` and `render-living-room.png`, use the two prompts in section 9 of `CHATGPT_PROMPTS.md`. Checks: the TV must clearly read as a huge modern flat screen, the game shows no logos or readable text, and the engraving matches the other spots.
+
 ## When you're done
 
 1. Make sure `GatorHaven-art` holds every file name above (or its `-review` version) and `LOG.txt`.

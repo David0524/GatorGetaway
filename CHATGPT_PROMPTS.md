@@ -66,6 +66,17 @@ Attach `site/images/house-early-1900s-1200.jpg`.
 
 Label this one "colorized" on the site.
 
+### 9. The 98-inch TV (two images)
+Upload both to the same Drive folder as before and Claude will place them.
+
+**`spot-tv.png`**: matches the engraved set (game-day card, occasion cards). Paste in the chat that made the other spot illustrations, or start with the house style line from the Claude for Chrome run file.
+
+> Same engraving style as the set: a Victorian parlor with tall windows, crown molding and dark wood trim, and a giant modern flat-screen TV mounted over the fireplace showing a college football game from a high stadium angle: a packed crowd, the field and players, no team logos, no letters or numbers on the uniforms. A deep sectional sofa facing it with a football-shaped throw pillow and a bowl of popcorn on the ottoman. Single navy ink (#1B2A55) on plain cream (#F4EAD0), fine parallel-line shading, no text, no frame, lots of empty space around the scene.
+
+**`render-living-room.png`**: a photoreal concept rendering for the Photos page "When it's finished". If you have a photo of the living room, attach it and start with "Using the attached photo of this exact room, keeping the windows, trim and floors..."
+
+> Photorealistic interior design rendering of the living room of an 1899 Queen Anne Victorian house in Florida, styled for game day: a 98-inch flat-screen TV mounted on the main wall showing a college football game (generic teams, no logos, no readable text), a large deep sectional sofa in warm oatmeal fabric facing it, orange and blue throw pillows, a leather ottoman with snack boards, original dark-stained wood trim, tall windows with plantation shutters, wide-plank wood floors, warm late-afternoon light. Wide angle from the room's entrance, high-end vacation rental listing photography. No people, no text, no University of Florida branding.
+
 ---
 
 
