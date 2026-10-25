@@ -253,8 +253,20 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     const walk = document.querySelector(".walk-mask");
     if (walk && walk.getTotalLength) {
       const len = walk.getTotalLength();
-      gsap.fromTo(walk, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, ease: "none",
-        scrollTrigger: { trigger: ".map-illo", start: "top 80%", end: "center 40%", scrub: 0.6 } });
+      gsap.set(walk, { strokeDasharray: len, strokeDashoffset: len });
+      /* desktop: the section holds still, centered, while the walk draws; phones draw it as it scrolls past */
+      mm.add("(min-width: 1000px) and (min-height: 640px)", () => {
+        const loc = document.getElementById("location");
+        const tw = gsap.to(walk, { strokeDashoffset: 0, ease: "none", scrollTrigger: {
+          trigger: loc, start: () => (loc.offsetHeight < innerHeight ? "center center" : "top top"),
+          end: "+=110%", pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+        return () => { tw.scrollTrigger?.kill(); tw.kill(); };
+      });
+      mm.add("(max-width: 999px), (max-height: 639px)", () => {
+        const tw = gsap.to(walk, { strokeDashoffset: 0, ease: "none",
+          scrollTrigger: { trigger: ".map-illo", start: "top 85%", end: "bottom 45%", scrub: 0.6 } });
+        return () => { tw.scrollTrigger?.kill(); tw.kill(); };
+      });
     }
 
     /* Map: the walking route draws itself to the stadium */
