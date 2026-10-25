@@ -3,10 +3,11 @@
    without JavaScript, or with reduced motion turned on, the pages are complete as plain HTML. */
 
 /* Where guest-list sign-ups go.
-   "netlify"  works with no setup when the site is hosted on Netlify (Netlify Forms).
-   A URL      posts to any form service instead, e.g. "https://formspree.io/f/abcdwxyz".
+   A URL      posts to a form service: the Gator Haven House form on Formspree.
+   "netlify"  uses Netlify Forms instead, if the site moves to Netlify (also restore the
+              data-netlify attributes on the form in index.html).
    If sending fails, the form shows the hosts' email addresses and a copy button instead. */
-const FORM_ENDPOINT = "netlify";
+const FORM_ENDPOINT = "https://formspree.io/f/xeaaajnn";
 const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
 
 (function () {
@@ -342,7 +343,8 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
 
   /* ---------------- Date calendar on the guest-list ticket
      Without JavaScript the two native date fields stay. With it, they're hidden but still hold
-     the values (checkin and checkout, as YYYY-MM-DD) that the form sends. */
+     the values (checkin and checkout, as YYYY-MM-DD) that the form sends, and a date field
+     opens the calendar as a dropdown over the form. */
   document.querySelectorAll("[data-calendar]").forEach((box) => {
     const inIn = box.querySelector('[name="checkin"]');
     const inOut = box.querySelector('[name="checkout"]');
@@ -363,17 +365,39 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     let focusDay = start || min;
 
     box.querySelector(".date-inputs").hidden = true;
+    const calId = "cal-" + Math.random().toString(36).slice(2, 8);
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "date-trigger";
+    trigger.setAttribute("aria-haspopup", "dialog");
+    trigger.setAttribute("aria-expanded", "false");
+    trigger.setAttribute("aria-controls", calId);
+    trigger.innerHTML =
+      '<span class="dt-part"><small>Check-in</small><b data-dt="in">Add date</b></span>' +
+      '<span class="dt-part"><small>Check-out</small><b data-dt="out">Add date</b></span>' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>';
+    box.appendChild(trigger);
     const cal = document.createElement("div");
     cal.className = "cal";
+    cal.id = calId;
+    cal.hidden = true;
+    cal.setAttribute("role", "dialog");
+    cal.setAttribute("aria-label", "Choose your dates");
     cal.innerHTML =
       '<div class="cal-nav-row"><button type="button" class="cal-nav" data-step="-1" aria-label="Previous month"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>' +
       '<button type="button" class="cal-nav" data-step="1" aria-label="Next month"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button></div>' +
       '<div class="cal-months"></div>' +
-      '<div class="cal-foot"><p class="cal-summary" aria-live="polite"></p><button type="button" class="cal-clear" hidden>Clear dates</button></div>';
-    box.appendChild(cal);
+      '<div class="cal-foot"><p class="cal-summary" aria-live="polite"></p><span class="cal-actions"><button type="button" class="cal-clear" hidden>Clear</button><button type="button" class="cal-done">Done</button></span></div>';
+    // The ticket's notched edges are a mask that would clip the dropdown, so it lives on the
+    // ticket itself and is placed under the date field when it opens.
+    const host = box.closest(".ticket") || box;
+    host.appendChild(cal);
     const monthsEl = cal.querySelector(".cal-months");
     const summary = cal.querySelector(".cal-summary");
     const clearBtn = cal.querySelector(".cal-clear");
+    const doneBtn = cal.querySelector(".cal-done");
+    const tIn = trigger.querySelector('[data-dt="in"]');
+    const tOut = trigger.querySelector('[data-dt="out"]');
     const prevBtn = cal.querySelector('[data-step="-1"]');
     const nextBtn = cal.querySelector('[data-step="1"]');
 
@@ -425,7 +449,12 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       clearBtn.hidden = !start;
       inIn.value = start ? iso(start) : "";
       inOut.value = end ? iso(end) : "";
-      if (keepFocus) monthsEl.querySelector('[data-date="' + iso(focusDay) + '"]')?.focus();
+      tIn.textContent = start ? fmtShort.format(start) : "Add date";
+      tOut.textContent = end ? fmtShort.format(end) : "Add date";
+      trigger.classList.toggle("has-dates", !!start);
+      trigger.setAttribute("aria-label", "Your dates: " + (start && end ? fmtLong.format(start) + " to " + fmtLong.format(end) : start ? "check-in " + fmtLong.format(start) + ", no check-out yet" : "none chosen") + ". Open calendar");
+      if (!cal.hidden) place();
+      if (keepFocus) monthsEl.querySelector('[data-date="' + iso(focusDay) + '"]')?.focus({ preventScroll: true });
     };
 
     const showMonthOf = (d) => {
@@ -436,6 +465,48 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       else if (first > (twoUp ? second : view)) view = twoUp ? new Date(first.getFullYear(), first.getMonth() - 1, 1) : first;
     };
 
+    const isOpen = () => !cal.hidden;
+    const place = () => {
+      const h = host.getBoundingClientRect(), b = box.getBoundingClientRect(), t = trigger.getBoundingClientRect();
+      cal.style.left = b.left - h.left + "px";
+      cal.style.width = b.width + "px";
+      // Drop down when there's room before the guest-list band ends, otherwise open upward.
+      const band = (host.closest("section") || document.body).getBoundingClientRect();
+      const below = t.bottom + 10 + cal.offsetHeight <= band.bottom - 8;
+      cal.style.top = (below ? t.bottom - h.top + 10 : b.top - h.top - cal.offsetHeight - 10) + "px";
+      cal.classList.toggle("is-up", !below);
+    };
+    const open = () => {
+      if (isOpen()) return;
+      cal.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+      view = new Date((start || focusDay).getFullYear(), (start || focusDay).getMonth(), 1);
+      render(false);
+      place();
+      window.addEventListener("resize", place);
+      // Bring the whole calendar into view if it opened past the top or bottom of the screen.
+      const r = cal.getBoundingClientRect();
+      const topLimit = (document.querySelector(".site-header")?.offsetHeight || 0) + 12;
+      const shift = r.top < topLimit ? r.top - topLimit : r.bottom > innerHeight - 12 ? Math.min(r.bottom - innerHeight + 12, r.top - topLimit) : 0;
+      if (shift) { if (lenis) lenis.scrollTo(scrollY + shift, { duration: 0.6 }); else window.scrollBy({ top: shift, behavior: reduceMotion ? "auto" : "smooth" }); }
+      monthsEl.querySelector('[data-date="' + iso(focusDay) + '"]')?.focus({ preventScroll: true });
+      document.addEventListener("pointerdown", outside, true);
+    };
+    const close = (refocus) => {
+      if (!isOpen()) return;
+      cal.hidden = true;
+      hover = null;
+      trigger.setAttribute("aria-expanded", "false");
+      document.removeEventListener("pointerdown", outside, true);
+      window.removeEventListener("resize", place);
+      if (refocus) trigger.focus();
+    };
+    const outside = (e) => { if (!cal.contains(e.target) && !trigger.contains(e.target)) close(false); };
+    trigger.addEventListener("click", () => (isOpen() ? close(true) : open()));
+    doneBtn.addEventListener("click", () => close(true));
+    cal.addEventListener("keydown", (e) => { if (e.key === "Escape") { e.preventDefault(); close(true); } });
+    cal.addEventListener("focusout", (e) => { if (e.relatedTarget && !cal.contains(e.relatedTarget) && e.relatedTarget !== trigger) close(false); });
+
     const pick = (d) => {
       if (blocked(d)) return;
       if (!start || end || d <= start) { start = d; end = null; }
@@ -443,6 +514,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       hover = null;
       focusDay = d;
       render(true);
+      if (start && end) setTimeout(() => close(true), 350);
     };
 
     monthsEl.addEventListener("click", (e) => {
@@ -502,7 +574,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     const detailsText = (data) => {
       const lines = [];
       for (const [k, v] of data.entries()) {
-        if (k === "form-name" || k === "bot-field" || !String(v).trim()) continue;
+        if (k.startsWith("_") || k === "form-name" || !String(v).trim()) continue;
         lines.push(k.replace(/_/g, " ") + ": " + v);
       }
       return "Please add me to the Gator Haven House guest list.\n\n" + lines.join("\n");
@@ -527,7 +599,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       if (!name.value.trim()) { name.setAttribute("aria-invalid", "true"); name.focus(); return showError("Add your name so we know who to write back to."); }
       if (!email.validity.valid || !email.value.trim()) { email.setAttribute("aria-invalid", "true"); email.focus(); return showError("Add an email address like name@example.com so we can send you dates."); }
       const data = new FormData(form);
-      if (data.get("bot-field")) return;
+      if (data.get("_gotcha")) return;
       button.disabled = true;
       label.textContent = "Joining...";
       try {

@@ -46,17 +46,11 @@ The domain is registered at Cloudflare, so Pages needs no DNS changes. It's free
 
 ### The guest list form
 
-Pages doesn't collect form posts, so sign-ups go to Formspree (free: 50 a month). Make a form at formspree.io and put its URL in `js/site.js`:
-
-```js
-const FORM_ENDPOINT = "https://formspree.io/f/your-form-id";
-```
-
-and in the `action` of the `<form>` in `index.html` (for visitors with JavaScript off). If the form can't send for any reason, it shows Craig's and Jenn's addresses with a pre-filled email and a copy button, so no sign-up is lost.
+Pages doesn't collect form posts, so sign-ups go to Formspree (free: 50 a month). The form is `https://formspree.io/f/xeaaajnn`, set as `FORM_ENDPOINT` in `js/site.js` and as the `action` of the `<form>` in `index.html` (for visitors with JavaScript off). Its hidden `_subject` field sets the email subject, and `_gotcha` is Formspree's spam trap. If the form can't send for any reason, it shows Craig's and Jenn's addresses with a pre-filled email and a copy button, so no sign-up is lost.
 
 ### Hosting on Netlify instead
 
-`netlify.toml` holds the same settings. Netlify collects the form itself: set `FORM_ENDPOINT = "netlify"`, enable **Forms → form detection**, and add craig@ and jenn@ under **Forms → Form notifications**.
+`netlify.toml` holds the same settings. Formspree keeps working there. To use Netlify Forms instead, set `FORM_ENDPOINT = "netlify"`, add `data-netlify="true"` and a hidden `form-name` field to the form, enable **Forms → form detection**, and add craig@ and jenn@ under **Forms → Form notifications**.
 
 ## The email addresses
 
