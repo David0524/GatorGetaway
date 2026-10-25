@@ -185,7 +185,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       let marks = [];
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: draft, start: "top top", end: "+=340%", pin: true, scrub: 0.7, anticipatePin: 1,
+          trigger: draft, start: "top top", end: "+=240%", pin: true, scrub: 0.7, anticipatePin: 1,
           onUpdate: (self) => setStep(marks.filter((m) => self.progress >= m).length),
         },
       });

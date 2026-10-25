@@ -876,3 +876,37 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .finished-grid.is-flip h3 { font-size: clamp(1.8rem, 1.3rem + calc(1.6vw * var(--s)), 2.6rem); }
 @media (min-width: 960px) { .finished-grid.is-flip { grid-template-columns: minmax(0, 5.4fr) minmax(0, 5fr); } }
 @media (max-width: 959px) { .finished-grid.is-flip .transform-copy { order: -1; } }
+
+/* ---------- first screens: always leave the next section in view ---------- */
+@media (min-width: 1000px) {
+  .pb-1 { font-size: min(clamp(1.5rem, 0.9rem + calc(2vw * var(--s)), 2.5rem), 4.2svh); }
+  .pb-2 { font-size: min(clamp(5rem, 2.4rem + calc(9vw * var(--s)), 10.5rem), 15svh); }
+  .pb-3 { font-size: min(clamp(2.2rem, 1.4rem + calc(3vw * var(--s)), 4rem), 6svh); }
+  .pb-4 { font-size: min(clamp(2.6rem, 0.9rem + calc(5.4vw * var(--s)), 6.4rem), 10.5svh); }
+  .cabinet { width: min(100%, calc(560px * var(--s)), 62svh); }
+  .hero-copy { margin-top: min(calc(26px * var(--s)), 2.4svh); gap: min(calc(22px * var(--s)), 2.2svh); }
+  .hist-card { width: min(100%, 60svh); justify-self: center; }
+}
+.hist-hero { padding-block: clamp(calc(18px * var(--s)), calc(3vw * var(--s)), calc(36px * var(--s))) clamp(calc(28px * var(--s)), calc(3.5vw * var(--s)), calc(52px * var(--s))); }
+@media (max-width: 999px) {
+  .hist-grid .hist-title { order: -1; }
+  .hist-card { width: min(100%, calc(420px * var(--s))); justify-self: center; }
+}
+/* the arch over the Photos and Guide titles: a header, not a whole screen */
+.page-head.has-arch { --arch-w: min(100cqi, calc(660px * var(--s))); padding-top: clamp(calc(20px * var(--s)), calc(2.4vw * var(--s)), calc(32px * var(--s))); }
+.has-arch .page-title { padding-top: calc(var(--arch-w) * 0.235); }
+.has-arch .page-title > :not(.page-arch) { max-width: calc(var(--arch-w) * 0.8); }
+.has-arch .page-title .script { font-size: clamp(1.8rem, 1.2rem + calc(1.8vw * var(--s)), 2.8rem); }
+.has-arch .page-title h1 { font-size: clamp(2.2rem, 0.8rem + calc(4vw * var(--s)), 4.6rem); }
+.page-arch { width: var(--arch-w); }
+.page-head { padding-bottom: clamp(calc(20px * var(--s)), calc(3vw * var(--s)), calc(40px * var(--s))); }
+/* phones: one short masthead line, and the section links as a single swipeable row */
+@media (max-width: 560px) {
+  .program-line span:not(:nth-child(2)) { display: none; }
+  .program-line { font-size: 0.8125rem; padding-block: calc(8px * var(--s)); }
+}
+@media (max-width: 760px) {
+  .jump { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-20px * var(--s)); padding-inline: calc(20px * var(--s)); -webkit-mask: linear-gradient(90deg, transparent, #000 calc(20px * var(--s)), #000 calc(100% - 28px * var(--s)), transparent); mask: linear-gradient(90deg, transparent, #000 calc(20px * var(--s)), #000 calc(100% - 28px * var(--s)), transparent); }
+  .jump::-webkit-scrollbar { display: none; }
+  .jump a { flex: none; white-space: nowrap; }
+}
