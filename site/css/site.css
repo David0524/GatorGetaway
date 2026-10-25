@@ -180,6 +180,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .pb-1 { font: 800 clamp(1.5rem, 0.9rem + 2vw, 2.5rem)/1 var(--gothic); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); }
 .pb-2 { font: italic 900 clamp(5rem, 2.4rem + 9vw, 10.5rem)/0.82 var(--clarendon); letter-spacing: -0.04em; color: var(--orange); text-shadow: 0.035em 0.035em 0 var(--ink); }
 .pb-3 { font: 400 clamp(2.2rem, 1.4rem + 3vw, 4rem)/1 var(--script); color: var(--pine); margin-top: 0.06em; }
+/* clear the descender of the g in "big" so the script line never touches it */
+.pb-2 { padding-bottom: 0.2em; }
 .pb-4 { font: 900 clamp(2.6rem, 0.9rem + 5.4vw, 6.4rem)/0.88 var(--clarendon); letter-spacing: -0.03em; color: var(--ink); }
 .pb-rule { display: flex; align-items: center; gap: 14px; width: min(100%, 520px); margin: 18px auto 0; font: 700 0.8125rem/1 var(--gothic); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pine); }
 .pb-rule::before, .pb-rule::after { content: ""; flex: 1; height: 1px; background: var(--pine); }
