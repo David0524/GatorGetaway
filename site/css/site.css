@@ -806,3 +806,5 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 @media (max-width: 560px) { .g-line { flex-wrap: wrap; } .g-line::after { display: none; } .g-time { order: 3; flex-basis: 100%; } }
 .work-so-far { margin-top: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(88px * var(--s))); display: grid; gap: calc(22px * var(--s)); }
 .work-so-far h3 { font-size: 1.75rem; color: var(--paper); }
+.compare.r-23 { aspect-ratio: 2 / 3; }
+.finished-gallery { margin-top: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(88px * var(--s))); }
