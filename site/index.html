@@ -244,11 +244,18 @@
                   <label class="choice"><input type="checkbox" name="occasion" value="Something else" id="gl-occ-other"><span>Something else</span></label>
                 </div>
               </fieldset>
+              <fieldset class="field dates-field" data-calendar data-min="2026-12-26" data-max="2028-06-30" data-min-nights="2">
+                <legend>Your dates <span class="optional">Optional. Two-night minimum</span></legend>
+                <div class="date-inputs">
+                  <div class="field"><label for="gl-checkin">Check-in</label><input id="gl-checkin" name="checkin" type="date" min="2026-12-26" max="2028-06-30"></div>
+                  <div class="field"><label for="gl-checkout">Check-out</label><input id="gl-checkout" name="checkout" type="date" min="2026-12-28" max="2028-06-30"></div>
+                </div>
+              </fieldset>
               <div class="form-row">
-                <div class="field"><label for="gl-dates">When are you thinking? <span class="optional">Optional</span></label><input id="gl-dates" name="dates" type="text" placeholder="May 2027 graduation"></div>
                 <div class="field"><label for="gl-class">Your Gator&rsquo;s class year <span class="optional">Optional</span></label>
                   <select id="gl-class" name="class_year"><option value="">Choose one</option><option>Class of 2027</option><option>Class of 2028</option><option>Class of 2029</option><option>Class of 2030</option><option>Class of 2031</option><option>No current student</option></select>
                 </div>
+                <div class="field flex-field"><label class="choice"><input type="checkbox" name="flexible" value="Yes" id="gl-flexible"><span>My dates are flexible</span></label></div>
               </div>
               <p class="form-error" role="alert" hidden></p>
               <div><button class="pill" type="submit"><span>Join the guest list</span></button></div>

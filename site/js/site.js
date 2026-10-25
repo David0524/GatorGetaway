@@ -333,6 +333,157 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     btn.addEventListener("click", async () => { await copyText(btn, btn.getAttribute("data-copy")); setTimeout(() => { btn.textContent = "Copy"; }, 2000); });
   });
 
+  /* ---------------- Date calendar on the guest-list ticket
+     Without JavaScript the two native date fields stay. With it, they're hidden but still hold
+     the values (checkin and checkout, as YYYY-MM-DD) that the form sends. */
+  document.querySelectorAll("[data-calendar]").forEach((box) => {
+    const inIn = box.querySelector('[name="checkin"]');
+    const inOut = box.querySelector('[name="checkout"]');
+    const parse = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+    const iso = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+    const nightsBetween = (a, b) => Math.round((b - a) / 86400000);
+    const min = parse(box.dataset.min);
+    const max = parse(box.dataset.max);
+    const minNights = Number(box.dataset.minNights || 1);
+    const fmtLong = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+    const fmtShort = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" });
+    const fmtMonth = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric" });
+    let start = inIn.value ? parse(inIn.value) : null;
+    let end = inOut.value ? parse(inOut.value) : null;
+    let hover = null;
+    let view = new Date((start || min).getFullYear(), (start || min).getMonth(), 1);
+    let focusDay = start || min;
+
+    box.querySelector(".date-inputs").hidden = true;
+    const cal = document.createElement("div");
+    cal.className = "cal";
+    cal.innerHTML =
+      '<div class="cal-nav-row"><button type="button" class="cal-nav" data-step="-1" aria-label="Previous month"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>' +
+      '<button type="button" class="cal-nav" data-step="1" aria-label="Next month"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button></div>' +
+      '<div class="cal-months"></div>' +
+      '<div class="cal-foot"><p class="cal-summary" aria-live="polite"></p><button type="button" class="cal-clear" hidden>Clear dates</button></div>';
+    box.appendChild(cal);
+    const monthsEl = cal.querySelector(".cal-months");
+    const summary = cal.querySelector(".cal-summary");
+    const clearBtn = cal.querySelector(".cal-clear");
+    const prevBtn = cal.querySelector('[data-step="-1"]');
+    const nextBtn = cal.querySelector('[data-step="1"]');
+
+    const same = (a, b) => a && b && a.getTime() === b.getTime();
+    const picking = () => start && !end;
+    const blocked = (d) => d < min || d > max || (picking() && d > start && nightsBetween(start, d) < minNights);
+
+    const monthTable = (first) => {
+      const y = first.getFullYear(), m = first.getMonth();
+      const lead = first.getDay();
+      const days = new Date(y, m + 1, 0).getDate();
+      let html = '<div class="cal-month"><p class="cal-title" id="cal-' + y + "-" + m + '">' + fmtMonth.format(first) + "</p>" +
+        '<table aria-labelledby="cal-' + y + "-" + m + '"><thead><tr>' +
+        ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((w) => '<th scope="col" abbr="' + w + '">' + w[0] + "</th>").join("") +
+        "</tr></thead><tbody><tr>";
+      for (let i = 0; i < lead; i++) html += "<td></td>";
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(y, m, d);
+        const end2 = end || (picking() && hover && hover > start && !blocked(hover) ? hover : null);
+        const cls = ["cal-day"];
+        let state = "";
+        if (same(date, start)) { cls.push("is-start"); state = ", check-in"; }
+        if (same(date, end)) { cls.push("is-end"); state = ", check-out"; }
+        if (start && end2 && date > start && date < end2) cls.push("in-range");
+        if (!end && same(date, end2)) cls.push("is-preview");
+        const off = blocked(date);
+        const why = off && picking() && date > start ? ", " + minNights + "-night minimum" : off ? ", not available" : "";
+        html += '<td><button type="button" class="' + cls.join(" ") + '" data-date="' + iso(date) + '" tabindex="' + (same(date, focusDay) ? "0" : "-1") + '"' +
+          (off ? ' aria-disabled="true"' : "") + (state ? ' aria-pressed="true"' : "") +
+          ' aria-label="' + fmtLong.format(date) + state + why + '">' + d + "</button></td>";
+        if ((lead + d) % 7 === 0 && d < days) html += "</tr><tr>";
+      }
+      return html + "</tr></tbody></table></div>";
+    };
+
+    const render = (keepFocus) => {
+      const second = new Date(view.getFullYear(), view.getMonth() + 1, 1);
+      monthsEl.innerHTML = monthTable(view) + monthTable(second);
+      prevBtn.disabled = view <= new Date(min.getFullYear(), min.getMonth(), 1);
+      nextBtn.disabled = second >= new Date(max.getFullYear(), max.getMonth(), 1);
+      if (start && end) {
+        const n = nightsBetween(start, end);
+        summary.innerHTML = "<b>" + fmtShort.format(start) + " to " + fmtShort.format(end) + ", " + end.getFullYear() + "</b> " + n + " nights";
+      } else if (start) {
+        summary.innerHTML = "<b>Check-in " + fmtShort.format(start) + ".</b> Now pick check-out.";
+      } else {
+        summary.textContent = "Pick a check-in date. Stays start December 26, 2026.";
+      }
+      clearBtn.hidden = !start;
+      inIn.value = start ? iso(start) : "";
+      inOut.value = end ? iso(end) : "";
+      if (keepFocus) monthsEl.querySelector('[data-date="' + iso(focusDay) + '"]')?.focus();
+    };
+
+    const showMonthOf = (d) => {
+      const first = new Date(d.getFullYear(), d.getMonth(), 1);
+      const second = new Date(view.getFullYear(), view.getMonth() + 1, 1);
+      const twoUp = monthsEl.querySelectorAll(".cal-month")[1]?.offsetParent !== null;
+      if (first < view) view = first;
+      else if (first > (twoUp ? second : view)) view = twoUp ? new Date(first.getFullYear(), first.getMonth() - 1, 1) : first;
+    };
+
+    const pick = (d) => {
+      if (blocked(d)) return;
+      if (!start || end || d <= start) { start = d; end = null; }
+      else end = d;
+      hover = null;
+      focusDay = d;
+      render(true);
+    };
+
+    monthsEl.addEventListener("click", (e) => {
+      const b = e.target.closest(".cal-day");
+      if (b) pick(parse(b.dataset.date));
+    });
+    monthsEl.addEventListener("mouseover", (e) => {
+      const b = e.target.closest(".cal-day");
+      if (!b || !picking()) return;
+      const d = parse(b.dataset.date);
+      if (!same(d, hover)) { hover = d; render(false); }
+    });
+    monthsEl.addEventListener("mouseleave", () => { if (hover) { hover = null; render(false); } });
+    monthsEl.addEventListener("keydown", (e) => {
+      const b = e.target.closest(".cal-day");
+      if (!b) return;
+      const d = parse(b.dataset.date);
+      const moves = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 };
+      let next = null;
+      if (e.key in moves) next = addDays(d, moves[e.key]);
+      else if (e.key === "Home") next = addDays(d, -d.getDay());
+      else if (e.key === "End") next = addDays(d, 6 - d.getDay());
+      else if (e.key === "PageUp") next = new Date(d.getFullYear(), d.getMonth() - 1, Math.min(d.getDate(), 28));
+      else if (e.key === "PageDown") next = new Date(d.getFullYear(), d.getMonth() + 1, Math.min(d.getDate(), 28));
+      else return;
+      e.preventDefault();
+      if (next < min) next = min;
+      if (next > max) next = max;
+      focusDay = next;
+      if (picking()) hover = next;
+      showMonthOf(next);
+      render(true);
+    });
+    [prevBtn, nextBtn].forEach((btn) => btn.addEventListener("click", () => {
+      view = new Date(view.getFullYear(), view.getMonth() + Number(btn.dataset.step), 1);
+      const first = view < min ? min : view;
+      focusDay = first;
+      render(false);
+    }));
+    clearBtn.addEventListener("click", () => {
+      start = end = hover = null;
+      focusDay = min;
+      render(false);
+      monthsEl.querySelector('[tabindex="0"]')?.focus();
+    });
+    render(false);
+  });
+
   /* ---------------- Guest list ticket */
   const form = document.querySelector("[data-guest-form]");
   if (form) {
