@@ -52,6 +52,12 @@ Pages doesn't collect form posts, so sign-ups go to Formspree (free: 50 a month)
 
 `netlify.toml` holds the same settings. Formspree keeps working there. To use Netlify Forms instead, set `FORM_ENDPOINT = "netlify"`, add `data-netlify="true"` and a hidden `form-name` field to the form, enable **Forms → form detection**, and add craig@ and jenn@ under **Forms → Form notifications**.
 
+## Link previews
+
+Each page has its own 1200 by 630 preview image for texts, Facebook, LinkedIn, Slack and X: `images/og-share.jpg` (home), `og-photos.jpg`, `og-guide.jpg` and `og-history.jpg`. They're made from `design-source/og-*.html`; open one in Chrome at 1200 by 630 and screenshot it to update the image, then keep the same file name.
+
+Previews are cached by each app. After a change, refresh Facebook's copy at developers.facebook.com/tools/debug (paste the URL, click Scrape Again) and LinkedIn's at linkedin.com/post-inspector. iMessage refreshes on its own after a few days. In Cloudflare, leave **Security → Bots → Bot Fight Mode** off, or preview crawlers can be blocked.
+
 ## The email addresses
 
 craig@ and jenn@gatorhavenhouse.com need email hosting on the domain before they'll receive mail. With the domain at Cloudflare, the simplest is **Email → Email Routing** (free): forward craig@ and jenn@ to existing inboxes. For full inboxes that can also send as those addresses, use Google Workspace, Microsoft 365 or Zoho Mail. Send a test message to each address before you share the site.
