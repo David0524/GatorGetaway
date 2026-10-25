@@ -781,3 +781,26 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .stay-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: calc(20px * var(--s)) calc(40px * var(--s)); }
 .stay-inner .lede { margin-top: calc(10px * var(--s)); }
 #location { background: var(--paper-2); }
+
+/* ---------------- Visitor's guide: an old city-directory listing ---------------- */
+.g-sec:nth-of-type(even) { background: var(--paper-2); }
+.g-grid { display: grid; gap: calc(28px * var(--s)) clamp(calc(32px * var(--s)), calc(5vw * var(--s)), calc(80px * var(--s))); }
+@media (min-width: 960px) { .g-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); align-items: start; } .g-head { position: sticky; top: calc(var(--header-h) + 30px); } }
+.g-grid > * { min-width: 0; }
+.g-head { display: grid; gap: calc(14px * var(--s)); align-content: start; }
+.g-head h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.4rem); }
+.g-art { display: block; width: min(calc(240px * var(--s)), 60%); margin-bottom: calc(6px * var(--s)); }
+.g-art img { width: 100%; }
+.g-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.g-row { display: grid; gap: calc(4px * var(--s)); padding-block: calc(18px * var(--s)); border-bottom: 1px dotted var(--gilt); }
+.g-row:first-child { border-top: 1px dotted var(--gilt); }
+.g-line { display: flex; align-items: baseline; gap: calc(10px * var(--s)); }
+.g-line h3 { font-size: 1.375rem; }
+.g-line::after { content: ""; order: 2; flex: 1; border-bottom: 2px dotted var(--gilt); transform: translateY(-4px); min-width: calc(16px * var(--s)); }
+.g-time { order: 3; font: 800 0.875rem/1.2 var(--gothic); letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange-ink); white-space: nowrap; }
+.g-row p { color: var(--ink-soft); font-size: 0.9375rem; max-width: 40em; }
+.g-price { color: var(--pine); font-weight: 600; margin-left: 4px; }
+.g-addr { font-size: 0.8125rem; color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--gilt); text-underline-offset: 0.2em; justify-self: start; }
+.g-addr:hover { color: var(--ink); }
+.g-note { max-width: 44em; }
+@media (max-width: 560px) { .g-line { flex-wrap: wrap; } .g-line::after { display: none; } .g-time { order: 3; flex-basis: 100%; } }
