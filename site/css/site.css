@@ -764,3 +764,10 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .house-photos .cab { padding-bottom: calc(14px * var(--s)); }
 .house-photos .cab::before { inset: calc(7px * var(--s)); }
 .bill-foot .link { font-size: var(--step--1, 0.9375rem); }
+
+/* Pennant and ticket lettering: keep the words inside the felt and inside the ticket's border */
+.e-pennant span { left: 23%; top: 49%; transform: translateY(-50%) rotate(-3deg); font-size: 8.6cqw; letter-spacing: 0.05em; white-space: nowrap; }
+.e-ticket .ticket-text { left: 11%; right: 27%; top: 24%; bottom: 20%; gap: 0.8cqw; }
+.e-ticket .ticket-text b { font-size: 5.6cqw; }
+.e-ticket .ticket-text span { font-size: 11.5cqw; }
+.e-ticket .ticket-text small { font-size: 4cqw; line-height: 1.2; }
