@@ -127,6 +127,18 @@ Follow-up:
 
 Drop everything in the Google Drive folder with these file names. I'll build the sliders and trace the ornaments into SVG.
 
+### 11. The game-day living room, from the real room
+
+Replaces the old game-day rendering, which showed a room that isn't in the house.
+
+**`render-living-room-gameday.png`** (attach `7-living-room-furnished.jpg`, the furnished render that already lines up with the real photo). New chat:
+> This is a furnished rendering of the living room in our 1899 Victorian house, seen through a carved fretwork arch. Edit this exact image, don't make a new one. Add a 98-inch flat-screen TV mounted over the fireplace, in place of the oval mirror, showing a college football game from a high stadium angle: a packed crowd and the field, no team logos, no readable text or numbers. Turn the sofa and the two leather armchairs to face the TV, and put a bowl of popcorn and a few drinks on the coffee table. Keep the fretwork arch, the door frame, the doorways, the windows, the chandelier, the rug, the floors and everything outside the room exactly where they are, at the same size. Portrait, 1024 by 1536, photorealistic, warm late-afternoon light. No people, no text, no University of Florida branding. Reply only with the image.
+
+If the TV is going on a different wall, replace "over the fireplace, in place of the oval mirror" with that wall.
+
+**`spot-tv.png`, the engraving for the game-day row** (attach `1-living-room.jpg`). Paste this in the chat that made the other engravings, or in a new chat:
+> Redraw the attached photo as a small 1890s steel engraving: the same view through the carved fretwork arch into the living room, now furnished with a deep sofa and two armchairs facing a huge flat-screen TV over the fireplace that shows a football game. Fine parallel-line shading, single navy ink (#1B2A55) on plain cream (#F4EAD0), centered with empty space around it, no text, no frame, no logos.
+
 ---
 
 ## 1. Logo

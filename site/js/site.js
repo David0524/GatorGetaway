@@ -25,6 +25,13 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     window.gsap.ticker.add((t) => lenis.raf(t * 1000));
     window.gsap.ticker.lagSmoothing(0);
   }
+  /* A new page opens at the top unless the link names a section. Some viewers (the artifact
+     preview frame, for one) carry the previous page's scroll position across a link. */
+  const nav = performance.getEntriesByType?.("navigation")[0];
+  if (!location.hash && (!nav || nav.type !== "back_forward")) {
+    window.scrollTo(0, 0);
+    if (lenis) lenis.scrollTo(0, { immediate: true });
+  }
   const headerOffset = () => -(document.querySelector(".site-header")?.offsetHeight || 0) - 8;
   const scrollToEl = (el) => {
     if (lenis) lenis.scrollTo(el, { offset: headerOffset(), duration: 1.4 });
