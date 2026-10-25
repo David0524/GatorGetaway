@@ -913,15 +913,15 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 }
 /* House section: the finished rooms as a layered collage beside the house facts */
 @media (min-width: 1000px) { .house-grid { grid-template-columns: minmax(0, 6.6fr) minmax(0, 5.4fr); align-items: center; } }
-.house-photos { position: relative; min-height: 0; aspect-ratio: 1 / 1.1; }
+.house-photos { position: relative; min-height: 0; aspect-ratio: 1 / 0.98; }
 .house-photos .cab { position: absolute; margin: 0; padding: calc(10px * var(--s)) calc(10px * var(--s)) calc(8px * var(--s)); }
 .house-photos .cab::before { inset: calc(5px * var(--s)); }
 .house-photos .cab img { width: 100%; object-fit: cover; }
-.house-photos .hp-1 { width: 80%; left: 0; top: 0; z-index: 1; transform: rotate(-1.4deg); }
+.house-photos .hp-1 { width: 78%; left: 0; top: 0; z-index: 1; transform: rotate(-1.4deg); }
 .house-photos .hp-1 img { aspect-ratio: 4 / 3; object-position: 50% 38%; }
-.house-photos .hp-2 { width: 60%; right: 0; top: 40%; z-index: 2; transform: rotate(1.6deg); }
+.house-photos .hp-2 { width: 62%; right: 0; top: 31%; z-index: 2; transform: rotate(1.6deg); }
 .house-photos .hp-2 img { aspect-ratio: 3 / 2; object-position: 50% 55%; }
-.house-photos .hp-3 { width: 43%; left: 8%; bottom: 0; z-index: 3; transform: rotate(-1deg); }
+.house-photos .hp-3 { width: 42%; left: 9%; bottom: 0; z-index: 3; transform: rotate(-1deg); }
 .house-photos .hp-3 img { aspect-ratio: 4 / 5; object-position: 50% 60%; }
 .house-photos .note-script { position: static; display: block; text-align: center; font-size: clamp(0.95rem, 0.75rem + calc(0.6vw * var(--s)), 1.3rem); padding-top: calc(5px * var(--s)); }
 .house-photos .tag { top: calc(18px * var(--s)); left: calc(18px * var(--s)); }
