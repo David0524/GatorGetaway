@@ -808,3 +808,15 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .work-so-far h3 { font-size: 1.75rem; color: var(--paper); }
 .compare.r-23 { aspect-ratio: 2 / 3; }
 .finished-gallery { margin-top: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(88px * var(--s))); }
+/* Ornaments traced from the house's own woodwork: the stair-hall spindle frieze and the fretwork corner brackets. */
+.frieze-wrap { position: absolute; top: 0; left: 0; right: 0; pointer-events: none; z-index: 1; }
+.frieze { display: flex; height: clamp(calc(54px * var(--s)), calc(8.4vw * var(--s)), calc(118px * var(--s))); color: var(--paper); opacity: 0.92; }
+.section.has-frieze { padding-top: clamp(calc(110px * var(--s)), calc(15vw * var(--s)), calc(216px * var(--s))); }
+.frieze i { display: block; height: 100%; background: currentColor; -webkit-mask: var(--m) 0 0 / 100% 100% no-repeat; mask: var(--m) 0 0 / 100% 100% no-repeat; }
+.frieze .cap-l, .frieze .cap-r { flex: none; aspect-ratio: 361 / 338.5; }
+.frieze .cap-l { --m: url(../images/orn-frieze-cap-l.svg); }
+.frieze .cap-r { --m: url(../images/orn-frieze-cap-r.svg); }
+.frieze .run { flex: 1; --m: url(../images/orn-frieze-unit.svg); -webkit-mask-size: auto 100%; mask-size: auto 100%; -webkit-mask-repeat: round no-repeat; mask-repeat: round no-repeat; }
+.bill-corner { position: absolute; top: calc(19px * var(--s)); width: clamp(calc(40px * var(--s)), calc(5vw * var(--s)), calc(66px * var(--s))); aspect-ratio: 724.5 / 1174.5; background: var(--pine); -webkit-mask: url(../images/orn-fretwork-corner.svg) 0 0 / 100% 100% no-repeat; mask: url(../images/orn-fretwork-corner.svg) 0 0 / 100% 100% no-repeat; pointer-events: none; }
+.bill-corner.is-r { right: calc(19px * var(--s)); }
+.bill-corner.is-l { left: calc(19px * var(--s)); transform: scaleX(-1); }
