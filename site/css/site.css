@@ -859,3 +859,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .has-arch .page-title > :not(.page-arch) { position: relative; max-width: calc(min(100cqi, 940px * var(--s)) * 0.78); }
 .has-arch .page-title h1 { font-size: clamp(2.4rem, 0.6rem + calc(6vw * var(--s)), 6.4rem); }
 .page-arch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: min(100cqi, calc(940px * var(--s))); aspect-ratio: 1487 / 755.5; background: var(--pine); -webkit-mask: url(../images/orn-fretwork-arch.svg) 0 0 / 100% 100% no-repeat; mask: url(../images/orn-fretwork-arch.svg) 0 0 / 100% 100% no-repeat; pointer-events: none; }
+.finished-grid.is-flip { margin-top: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(88px * var(--s))); }
+.finished-grid.is-flip h3 { font-size: clamp(1.8rem, 1.3rem + calc(1.6vw * var(--s)), 2.6rem); }
+@media (min-width: 960px) { .finished-grid.is-flip { grid-template-columns: minmax(0, 5.4fr) minmax(0, 5fr); } }
+@media (max-width: 959px) { .finished-grid.is-flip .transform-copy { order: -1; } }
