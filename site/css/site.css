@@ -947,3 +947,20 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .greet { padding-block: clamp(calc(48px * var(--s)), calc(6vw * var(--s)), calc(88px * var(--s))); }
 .drafting.is-live .draft-pin { padding-block: clamp(calc(32px * var(--s)), calc(4vw * var(--s)), calc(56px * var(--s))); }
 @media (max-width: 999px) { .drafting.is-live .stage { max-width: calc((100svh - 330px * var(--s)) * 1551 / 1014); } }
+
+/* ---------- type: fewer voices ----------
+   Script is kept for a few signatures (the hero's "is coming to", "Greetings from", the hosts'
+   signature, "Go Gators!"). Captions, form labels and small headings use the body face in
+   sentence case instead of handwriting or tracked-out capitals. */
+.note-script, .cab .note-script { font: italic 400 0.875rem/1.3 var(--body); color: var(--ink-soft); letter-spacing: 0; }
+.cab .note-script { bottom: calc(14px * var(--s)); }
+.field label, .field legend, .dt-part small { font: 600 0.875rem/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.field .optional { font: 400 0.8125rem/1 var(--body); letter-spacing: 0; text-transform: none; color: var(--ink-soft); }
+.photo figcaption b { font: 600 0.9375rem/1.3 var(--body); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.footer-grid h2 { font: 600 0.9375rem/1.3 var(--body); letter-spacing: 0; text-transform: none; }
+.times dt { font: 600 0.9375rem/1.3 var(--body); letter-spacing: 0; text-transform: none; }
+.stop-when { font: 600 0.8125rem/1 var(--body); letter-spacing: 0.02em; text-transform: none; }
+.kick { letter-spacing: 0.08em; }
+.has-arch .page-title { padding-top: calc(var(--arch-w) * 0.27); }
+.bill-head { padding: calc(30px * var(--s)) calc(40px * var(--s)) 0; }
+.bill-head h2 { font-size: clamp(2rem, 1.4rem + calc(1.8vw * var(--s)), 3rem); }
