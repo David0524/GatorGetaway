@@ -168,10 +168,11 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
 
     /* Pinned sections first, so every later trigger measures the page with their spacers in place */
 
-    /* Drafting table: as the section scrolls past, the drawing builds up, callouts draw on, and
-       the photograph develops through it. Nothing is pinned, so the page keeps moving. */
+    /* Drafting table: the section holds still, centered on screen, while the drawing builds up,
+       the callouts draw on, and the photograph develops through it. It's shorter than the screen,
+       so the sections above and below stay in view while it plays. */
     const draft = document.querySelector(".drafting");
-    if (draft) mm.add("(min-width: 0px)", () => {
+    if (draft) mm.add("(min-height: 560px)", () => {
       draft.classList.add("is-live");
       const steps = draft.querySelectorAll(".draft-step");
       const leads = draft.querySelectorAll(".notes .lead");
@@ -186,7 +187,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       let marks = [];
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: draft.querySelector(".stage"), start: "top 85%", end: "bottom 30%", scrub: 0.6,
+          trigger: draft, start: () => (draft.offsetHeight < innerHeight ? "center center" : "top top"), end: "+=180%", pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true,
           onUpdate: (self) => setStep(marks.filter((m) => self.progress >= m).length),
         },
       });
