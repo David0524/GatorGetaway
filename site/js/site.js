@@ -220,15 +220,17 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     /* Hero: the playbill sets line by line, the cabinet card drops onto the table, the seal stamps down */
     const playIntro = root.classList.contains("motion");
     window.__heroReady = true;
-    gsap.set(".hero [data-hero-in]", { autoAlpha: 1 });
+    if (document.querySelector(".hero [data-hero-in]")) gsap.set(".hero [data-hero-in]", { autoAlpha: 1 });
     if (playIntro) {
-      gsap.from(".playbill > span", { y: 40, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.12, delay: 0.1 });
-      gsap.from(".hero .pb-rule, .hero-copy > *", { y: 20, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.08, delay: 0.55 });
-      gsap.from(".cabinet .cab", { y: 30, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.3 });
-      gsap.from(".cabinet .seal", { rotate: -90, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.7 });
-      gsap.from(".hist-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
-      gsap.from(".hist-card", { y: 30, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.3 });
-      gsap.from(".page-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
+      /* each page animates only the intro pieces it has */
+      const intro = (sel, vars) => { const els = document.querySelectorAll(sel); if (els.length) gsap.from(els, vars); };
+      intro(".playbill > span", { y: 40, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.12, delay: 0.1 });
+      intro(".hero .pb-rule, .hero-copy > *", { y: 20, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.08, delay: 0.55 });
+      intro(".cabinet .cab", { y: 30, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.3 });
+      intro(".cabinet .seal", { rotate: -90, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.7 });
+      intro(".hist-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
+      intro(".hist-card", { y: 30, opacity: 0, duration: 1.2, ease: "power3.out", delay: 0.3 });
+      intro(".page-title > *", { y: 30, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, delay: 0.1 });
     }
 
     /* Postcard: the big word rises and the stamps get stuck on */

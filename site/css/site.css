@@ -728,7 +728,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .footer-word { display: grid; justify-items: center; gap: 0; margin: clamp(calc(32px * var(--s)), calc(4vw * var(--s)), calc(56px * var(--s))) 0 0; text-align: center; }
 .footer-gator { width: min(calc(150px * var(--s)), 34%); margin-bottom: calc(10px * var(--s)); opacity: 0.9; }
 .footer-gator img { width: 100%; }
-.footer-word > img { width: min(100%, calc(440px * var(--s))); height: auto; }
+.footer-word > img, .footer-word > picture:not(.footer-gator) { display: block; width: min(100%, calc(440px * var(--s))); height: auto; }
+.footer-word > picture:not(.footer-gator) img { width: 100%; height: auto; }
 
 /* closing call to action */
 
