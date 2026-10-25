@@ -154,24 +154,36 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       gsap.set(q(".notes .dot, .notes text, .titleblock"), { opacity: 0 });
       gsap.set(q(".stage .draw"), { clipPath: "inset(0% 0% 0% 0%)" });
       gsap.set(q(".pencil"), { left: "0%", opacity: 0 });
+      gsap.set(q(".stage .build"), { opacity: 1 });
       const setStep = (i) => steps.forEach((s, k) => s.classList.toggle("is-on", k === i));
       setStep(0);
+      let marks = [];
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: draft, start: "top top", end: "+=240%", pin: true, scrub: 0.7, anticipatePin: 1,
-          onUpdate: (self) => setStep(self.progress < 0.42 ? 0 : self.progress < 0.8 ? 1 : 2),
+          trigger: draft, start: "top top", end: "+=420%", pin: true, scrub: 0.7, anticipatePin: 1,
+          onUpdate: (self) => setStep(marks.filter((m) => self.progress >= m).length),
         },
       });
+      /* pencil guidelines, then the timber frame, then the walls, then the finished drawing */
+      tl.to({}, { duration: 0.35 })
+        .addLabel("frame").to(q(".build.b1"), { opacity: 0, duration: 0.5, ease: "none" })
+        .to({}, { duration: 0.35 })
+        .addLabel("walls").to(q(".build.b2"), { opacity: 0, duration: 0.5, ease: "none" })
+        .to({}, { duration: 0.35 })
+        .addLabel("drawing").to(q(".build.b3"), { opacity: 0, duration: 0.5, ease: "none" });
       tl.to(q(".notes .dot"), { opacity: 1, stagger: 0.06, duration: 0.1 })
         .to(leads, { strokeDashoffset: 0, stagger: 0.06, duration: 0.3, ease: "none" }, "<")
         .to(q(".notes text, .titleblock"), { opacity: 1, stagger: 0.05, duration: 0.15 }, "-=0.2")
         .to({}, { duration: 0.15 })
+        .addLabel("photo")
         .set(q(".pencil"), { opacity: 1 })
         .to(q(".pencil"), { left: "100%", duration: 0.9, ease: "power1.inOut" })
         .to(q(".stage .draw"), { clipPath: "inset(0% 0% 0% 100%)", duration: 0.9, ease: "power1.inOut" }, "<")
         .to(q(".notes .note"), { opacity: 0, duration: 0.3, stagger: 0.03 }, "-=0.5")
         .to(q(".pencil"), { opacity: 0, duration: 0.05 })
         .to({}, { duration: 0.2 });
+      /* captions switch a little after each stage begins */
+      marks = ["frame", "walls", "drawing", "photo"].map((l) => (tl.labels[l] + 0.15) / tl.duration());
       return () => {
         draft.classList.remove("is-live");
         leads.forEach((l) => { l.style.strokeDasharray = ""; l.style.strokeDashoffset = ""; });
@@ -214,12 +226,12 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
 
     /* Ephemera: pieces start scattered off the table and settle into the pile as you scroll */
     if (document.querySelector(".pile")) {
-      [[".e-old", -260, -120, -24], [".e-now", 300, 60, 20], [".e-portrait", -80, 260, -18], [".pennant", 260, -200, -40], [".stub", -320, 140, 34]]
+      [[".e-old", -260, -120, -24], [".e-now", 300, 60, 20], [".e-portrait", -80, 260, -18], [".e-pennant", 260, -200, -40], [".e-ticket", -320, 140, 34]]
         .forEach(([sel, x, y, r]) => gsap.from(sel, {
           x, y, rotate: "+=" + r, opacity: 0, ease: "power2.out",
           scrollTrigger: { trigger: ".pile", start: "top 95%", end: "center 55%", scrub: 0.8 },
         }));
-      const pen = document.querySelector(".pennant");
+      const pen = document.querySelector(".e-pennant");
       pen?.addEventListener("pointerenter", () => gsap.fromTo(pen, { rotate: -10 }, { rotate: -16, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }));
     }
 

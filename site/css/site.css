@@ -683,3 +683,75 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
   .motion .hero [data-hero-in] { opacity: 1; }
 }
+
+/* ---------------- Round 3 art set ---------------- */
+/* masthead: seal + hand-lettered wordmark */
+.mark { gap: 10px; }
+.mark-seal { width: 46px; height: 46px; flex: none; }
+.mark-word-img { height: 52px; width: auto; }
+@media (max-width: 560px) { .mark-seal { width: 38px; height: 38px; } .mark-word-img { height: 44px; } }
+.seal-core { width: 64%; background: var(--ink); overflow: hidden; }
+.seal-core img { width: 100%; height: 100%; border-radius: 50%; }
+
+/* drafting table: pencil lines, frame and walls stack over the finished drawing */
+.stage .build { position: absolute; inset: 0; display: none; }
+.is-live .stage .build { display: block; }
+.stage .build img { width: 100%; height: 100%; object-fit: cover; }
+
+/* line-art spots and cut-out keepsakes */
+.stop-media.is-spot { background: var(--card); padding: 12px; }
+.stop-media.is-spot img { object-fit: contain; }
+.occ-art { display: block; height: 96px; margin-bottom: 2px; }
+.occ-art img { height: 100%; width: auto; }
+.gd-program { display: none; }
+@media (min-width: 900px) {
+  .gd-program { display: block; justify-self: end; transform: rotate(5deg); filter: drop-shadow(0 18px 24px rgba(0, 0, 20, 0.45)); }
+  .gd-program img { height: min(26svh, 280px); width: auto; }
+}
+
+/* ephemera pile: real pennant and ticket stub */
+.e-pennant { width: 52%; right: 0; top: 0; z-index: 4; transform: rotate(-10deg); container-type: inline-size; filter: drop-shadow(0 10px 10px rgba(58, 40, 16, 0.35)); }
+.e-pennant img, .e-ticket img, .thanks-ticket img { width: 100%; }
+.e-pennant span { position: absolute; left: 15%; top: 50%; transform: translateY(-60%); font: 900 10.5cqw/1 var(--gothic); letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); text-shadow: 0.04em 0.04em 0 var(--royal); }
+.e-ticket { width: 42%; left: -3%; bottom: 12%; z-index: 5; transform: rotate(8deg); container-type: inline-size; filter: drop-shadow(0 12px 14px rgba(58, 40, 16, 0.4)); }
+.ticket-text { position: absolute; left: 8%; right: 23%; top: 18%; bottom: 18%; display: grid; place-content: center; text-align: center; gap: 1.2cqw; color: var(--ink); }
+.ticket-text b { font: 900 6.4cqw/1 var(--gothic); letter-spacing: 0.2em; text-transform: uppercase; }
+.ticket-text span { font: 800 13cqw/1 var(--clarendon); }
+.ticket-text small { font: 600 4.2cqw/1.25 var(--body); color: var(--pine); }
+
+/* postcard: stamp and the illustrated map */
+.greet-stamp { position: absolute; z-index: 3; top: 34px; right: max(24px, 6%); width: clamp(84px, 11vw, 160px); transform: rotate(8deg); filter: drop-shadow(0 8px 10px rgba(40, 10, 0, 0.4)); }
+.greet-stamp img { width: 100%; }
+.greet-map { position: relative; max-width: 1080px; margin: clamp(44px, 6vw, 80px) auto 0; background: var(--white); padding: 12px 12px 46px; transform: rotate(-1.2deg); box-shadow: 0 30px 50px -28px rgba(40, 10, 0, 0.6); }
+.greet-map img { width: 100%; }
+.greet-map figcaption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font: 400 1.3rem/1 var(--script); color: var(--pine); }
+@media (max-width: 640px) { .greet-stamp { top: 22px; right: 18px; width: 76px; } .greet-map figcaption { font-size: 1rem; } }
+
+/* history */
+.quote-art { display: grid; gap: 18px; justify-items: start; }
+.quote-art .spot { width: min(340px, 72%); }
+.quote-art .spot img { width: 100%; }
+.postcard { width: min(100%, 500px); filter: drop-shadow(0 26px 30px rgba(58, 40, 16, 0.45)); }
+.postcard img { width: 100%; }
+.postcard .note-script { display: block; text-align: center; margin-top: 10px; font: 400 1.2rem/1.2 var(--script); color: var(--pine); }
+.pc-back { position: relative; container-type: inline-size; transform: rotate(1.5deg); filter: drop-shadow(0 26px 34px rgba(58, 40, 16, 0.45)); align-self: center; }
+.pc-back > picture img { width: 100%; }
+.pc-stamp { position: absolute; right: 4.6%; top: 6.2%; width: 15%; transform: rotate(4deg); }
+.pc-stamp img { width: 100%; }
+.pc-msg { position: absolute; left: 5.5%; top: 12%; width: 39%; font: 400 4.4cqw/1.45 var(--script); color: var(--ink); transform: rotate(-2deg); }
+.pc-line { position: absolute; left: 53%; margin: 0; font: 400 4.2cqw/1 var(--script); color: var(--ink); transform: translateY(-88%); white-space: nowrap; }
+
+/* photos, thanks, 404 */
+.coming-art { display: block; width: min(220px, 60%); }
+.coming-art img { width: 100%; }
+.thanks-ticket { position: relative; width: min(100%, 520px); margin: 34px auto 0; container-type: inline-size; transform: rotate(-3deg); filter: drop-shadow(0 18px 20px rgba(58, 40, 16, 0.4)); }
+.thanks-ticket .ticket-text { right: 8%; }
+.thanks-ticket .ticket-text span { font-size: 9cqw; }
+.nf-gator { display: block; width: min(420px, 80%); margin: 30px auto 0; }
+.nf-gator img { width: 100%; }
+
+/* footer: gator and hand-lettered wordmark */
+.footer-word { display: grid; justify-items: center; gap: 0; margin: clamp(56px, 8vw, 104px) 0 8px; text-align: center; }
+.footer-gator { width: min(240px, 46%); margin-bottom: 10px; opacity: 0.9; }
+.footer-gator img { width: 100%; }
+.footer-word > img { width: min(100%, 860px); height: auto; }

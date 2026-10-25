@@ -58,5 +58,5 @@ craig@ and jenn@gatorhavenhouse.com need email hosting on the domain before they
 - **Add photos:** see the instructions at the top of `photos.html`. Resize photos to about 1600 pixels wide before adding them.
 - **Write the history:** see the instructions at the top of `history.html`.
 - **Change dates or wording:** edit the text in `index.html` directly.
-- **Replace the logo:** the placeholder mark is the `<svg class="brand-mark">` in each page's header, plus `favicon.svg`.
+- **Logo:** the hand-lettered wordmark (`images/wordmark-*.png`) and seal (`images/seal-emblem-*.png`) come from `design-source/art/`. Icons: `favicon-32.png`, `favicon-64.png`, `apple-touch-icon.png`, `icon-512.png`.
 - **Update the share image:** replace `images/og-share.jpg` (1200 by 630 pixels).

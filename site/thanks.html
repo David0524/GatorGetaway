@@ -7,7 +7,8 @@
 <meta name="description" content="You're on the Gator Haven House guest list.">
 <meta name="theme-color" content="#f4ead0">
 <meta name="robots" content="noindex">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta property="og:type" content="website">
@@ -38,8 +39,8 @@
 <header class="site-header">
   <div class="wrap header-row">
     <a class="mark" href="./" aria-label="Gator Haven House, home">
-      <svg viewBox="0 0 40 44" aria-hidden="true"><path d="M2 20 20 2l18 18" fill="none" stroke="#1b2a55" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M6 19v23h28V19" fill="none" stroke="#1b2a55" stroke-width="3"/><path d="M10 18a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0" fill="none" stroke="#6b3a1e" stroke-width="1.6"/><path d="M17.5 14v-3a2.5 2.5 0 0 1 5 0v3z" fill="#d8501c"/><text x="20" y="36" text-anchor="middle" font-family="Besley, Georgia" font-weight="800" font-size="10" fill="#1b2a55">1899</text></svg>
-      <span class="mark-word"><b>Gator Haven House</b><i>The Albert Blanding House</i></span>
+      <img class="mark-seal" src="images/seal-emblem-96.png" width="96" height="96" alt="">
+      <img class="mark-word-img" src="images/wordmark-navy-480.png" srcset="images/wordmark-navy-480.png 480w, images/wordmark-navy-960.png 960w" sizes="140px" width="480" height="187" alt="">
     </a>
     <nav class="nav" aria-label="Main">
       <a href="./#the-house">The House</a>
@@ -78,6 +79,7 @@
       <h1>You&rsquo;re on the list</h1>
       <p class="lede">Keep your stub. We&rsquo;ll write when dates open and when there&rsquo;s progress to show, from craig@gatorhavenhouse.com or jenn@gatorhavenhouse.com.</p>
       <div class="actions" style="margin-top:18px"><a class="pill" href="photos.html">See the photos <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="ghost" href="history.html">Read the history</a></div>
+      <div class="thanks-ticket" aria-hidden="true"><picture><source type="image/webp" srcset="images/prop-ticket-blank.webp"><img src="images/prop-ticket-blank.png" width="900" height="503" alt="" loading="lazy"></picture><div class="ticket-text"><b>Admit one</b><span>Founding guest</span><small>No. 001899 &middot; Valid late 2026</small></div></div>
     </div>
   </section>
 </main>
@@ -109,10 +111,14 @@
         </ul>
       </div>
     </div>
-    <p class="footer-word" aria-hidden="true"><b>Gator Haven House</b><i>Go Gators!</i></p>
+    <div class="footer-word" aria-hidden="true">
+      <picture class="footer-gator"><source type="image/webp" srcset="images/spot-gator-cream.webp"><img src="images/spot-gator-cream.png" width="520" height="313" alt="" loading="lazy"></picture>
+      <img src="images/wordmark-cream-1400.png" width="1400" height="544" alt="" loading="lazy">
+      <i>Go Gators!</i>
+    </div>
     <div class="footer-legal">
       <span>Gator Haven House is a private vacation rental and is not affiliated with the University of Florida.</span>
-      <span>Map data &copy; OpenStreetMap contributors</span>
+      <span>Illustrations and keepsakes were created for this site. Map data &copy; OpenStreetMap contributors</span>
     </div>
   </div>
 </footer>
