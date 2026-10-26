@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&family=Big+Shoulders+Display:wght@600..900&family=Libre+Franklin:wght@300..700&family=Pinyon+Script&display=swap">
-<link rel="stylesheet" href="css/site.css?v=5cf1081e">
+<link rel="stylesheet" href="css/site.css?v=e4341b25">
 <script>
   (function () {
     var d = document.documentElement;
@@ -68,18 +68,20 @@
 <a class="float-cta pill" href="./#guest-list" aria-hidden="true" tabindex="-1">Join the guest list</a>
 
 <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
-  <div class="menu-top"><b>Gator Haven House</b><button class="menu-close" type="button">Close</button></div>
+  <div class="menu-top"><b>Gator Haven House</b><button class="menu-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
   <nav aria-label="Menu">
-    <a href="./#the-house">The House</a>
-    <a href="photos.html">Photos</a>
-    <a href="guide.html">Visitor&rsquo;s guide</a>
-    <a href="history.html">History</a>
-    <a href="./#guest-list">Guest list</a>
+    <a href="./#the-house">The House<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a href="photos.html">Photos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a href="guide.html">Visitor&rsquo;s Guide<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a href="history.html">Our History<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
   </nav>
   <div class="menu-foot">
-    <a class="pill" href="./#guest-list">Join the guest list</a>
-    <span>306 NE 3rd Street, Gainesville, Florida</span>
-    <span>stay@gatorhavenhouse.com<br>info@gatorhavenhouse.com</span>
+    <a class="pill menu-cta" href="./#guest-list">Join the guest list<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+    <p class="menu-note">Priority for popular UF dates, updates as the house comes together, and discounts for repeat guests.</p>
+    <div class="menu-contact">
+      <span>306 NE 3rd Street<br>Gainesville, Florida</span>
+      <span><a href="mailto:stay@gatorhavenhouse.com">stay@gatorhavenhouse.com</a><br><a href="mailto:info@gatorhavenhouse.com">info@gatorhavenhouse.com</a></span>
+    </div>
   </div>
 </div>
 
@@ -92,7 +94,7 @@
     </div>
     <nav class="jump" aria-label="Photo sections">
       <a href="#today">Outside <span class="count">4</span></a>
-      <a href="#inside">Inside <span class="count">6</span></a>
+      <a href="#inside">Inside <span class="count">7</span></a>
       <a href="#transformation">The transformation</a>
       <a href="#finished">When it&rsquo;s finished <span class="count">4</span></a>
     </nav>
@@ -139,6 +141,10 @@
         <figure class="photo cab w-7 r-land">
           <a href="images/home-arch-1200.jpg" data-lightbox><picture><source type="image/webp" srcset="images/home-arch-800.webp 800w, images/home-arch-1200.webp 1200w" sizes="(min-width: 760px) 58vw, 100vw"><img src="images/home-arch-1200.jpg" srcset="images/home-arch-800.jpg 800w, images/home-arch-1200.jpg 1200w" sizes="(min-width: 760px) 58vw, 100vw" width="1200" height="900" alt="Looking through a carved fretwork archway into the living room: wide-plank wood floors, dark-stained trim, a chandelier and a wood mantel with a tiled fireplace and an oval mirror." loading="lazy"></picture></a>
           <figcaption><b>Into the living room</b>The carved fretwork arch, with the mirrored mantel beyond.</figcaption>
+        </figure>
+        <figure class="photo cab w-12 r-land">
+          <a href="images/room-game-room-1200.jpg" data-lightbox><picture><source type="image/webp" srcset="images/room-game-room-800.webp 800w, images/room-game-room-1200.webp 1200w" sizes="100vw"><img src="images/room-game-room-1200.jpg" srcset="images/room-game-room-800.jpg 800w, images/room-game-room-1200.jpg 1200w" sizes="100vw" width="1200" height="900" alt="The game room: a pool table with blue felt and racked balls under a brass chandelier, a Ms. Pac-Man arcade cabinet by the window, a cue rack, and a tiled fireplace with an oval mirror." loading="lazy"></picture></a>
+          <figcaption><b>The game room</b>Billiards, Ms. Pac-Man and the original mantel.</figcaption>
         </figure>
         <figure class="photo cab w-5 is-offset r-tall">
           <a href="images/room-staircase-1200.jpg" data-lightbox><picture><source type="image/webp" srcset="images/room-staircase-600.webp 600w, images/room-staircase-1200.webp 1200w" sizes="(min-width: 760px) 42vw, 100vw"><img src="images/room-staircase-1200.jpg" srcset="images/room-staircase-600.jpg 600w, images/room-staircase-1200.jpg 1200w" sizes="(min-width: 760px) 42vw, 100vw" width="1200" height="1600" alt="The staircase turning up past a round window, with turned balusters, a paneled newel post and wood treads." loading="lazy"></picture></a>
@@ -300,6 +306,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="js/site.js?v=5cf1081e" defer></script>
+<script src="js/site.js?v=e4341b25" defer></script>
 </body>
 </html>

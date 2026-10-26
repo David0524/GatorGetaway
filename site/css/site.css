@@ -1038,3 +1038,17 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 @media (min-width: 1000px) { #the-house .house-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); } }
 .amenities b { white-space: normal; }
 @media (max-width: 420px) { .amenities b { white-space: normal; } }
+/* ---------- phone menu: ruled list with chevrons ---------- */
+.menu { grid-template-rows: auto auto 1fr; align-content: start; overflow-y: auto; background-image: var(--tex-linen); }
+.menu-top { padding-bottom: calc(16px * var(--s)); border-bottom: 1.5px solid rgba(244, 234, 208, 0.7); }
+.menu-top b { font-size: 1.5rem; }
+.menu-close { border: 0; padding: calc(6px * var(--s)); width: calc(44px * var(--s)); height: calc(44px * var(--s)); display: grid; place-items: center; }
+.menu-close svg { width: calc(28px * var(--s)); height: calc(28px * var(--s)); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.menu nav { align-content: start; gap: 0; margin-top: calc(6px * var(--s)); }
+.menu nav a { display: flex; justify-content: space-between; align-items: center; font: 700 clamp(1.9rem, calc(8.6vw * var(--s)), 2.6rem)/1.1 var(--clarendon); letter-spacing: -0.01em; padding: calc(18px * var(--s)) 0; border-bottom: 1px solid rgba(244, 234, 208, 0.3); }
+.menu nav a svg, .menu-cta svg { width: calc(22px * var(--s)); height: calc(22px * var(--s)); flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.menu-foot { align-self: start; gap: calc(14px * var(--s)); margin-top: calc(30px * var(--s)); }
+.menu-foot .menu-cta { justify-self: stretch; display: flex; justify-content: space-between; align-items: center; padding: calc(18px * var(--s)) calc(26px * var(--s)); font-size: 1.125rem; }
+.menu-note { margin: 0; font: 400 1.0625rem/1.45 var(--clarendon); color: var(--paper); max-width: 26em; }
+.menu-contact { display: grid; gap: calc(14px * var(--s)); margin-top: calc(12px * var(--s)); padding-top: calc(20px * var(--s)); border-top: 1.5px solid rgba(244, 234, 208, 0.7); font: 400 1rem/1.45 var(--clarendon); color: var(--paper); }
+.menu-contact a { color: inherit; text-decoration: none; }
