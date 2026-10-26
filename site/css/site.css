@@ -1052,3 +1052,15 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .menu-note { margin: 0; font: 400 1.0625rem/1.45 var(--clarendon); color: var(--paper); max-width: 26em; }
 .menu-contact { display: grid; gap: calc(14px * var(--s)); margin-top: calc(12px * var(--s)); padding-top: calc(20px * var(--s)); border-top: 1.5px solid rgba(244, 234, 208, 0.7); font: 400 1rem/1.45 var(--clarendon); color: var(--paper); }
 .menu-contact a { color: inherit; text-decoration: none; }
+/* ---------- the house: one wide card, map beside the amenities ---------- */
+.bill-wide { max-width: calc(1180px * var(--s)); margin-inline: auto; }
+.bill-wide .bill-head h2 { font-size: clamp(2rem, 1.4rem + calc(2vw * var(--s)), 3.2rem); }
+.bill-wide .house-stats { max-width: calc(760px * var(--s)); margin-inline: auto; }
+.bill-body { display: grid; gap: clamp(calc(24px * var(--s)), calc(3vw * var(--s)), calc(40px * var(--s))); align-items: center; margin-top: calc(6px * var(--s)); }
+@media (min-width: 900px) { .bill-body { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } }
+.bill-map { display: grid; gap: calc(14px * var(--s)); justify-items: center; }
+.bill-map .map-card { width: 100%; box-shadow: none; padding: calc(8px * var(--s)) calc(8px * var(--s)) calc(32px * var(--s)); background: rgba(255, 255, 255, 0.6); border: 1px solid var(--rule); }
+.bill-map .map-card::before { inset: calc(4px * var(--s)) calc(4px * var(--s)) calc(26px * var(--s)); }
+.bill-map .map-card .note-script { bottom: calc(8px * var(--s)); }
+.bill-amen .amen-h { text-align: left; margin-bottom: calc(14px * var(--s)); }
+.bill-wide .bill-foot { grid-auto-flow: row; max-width: calc(520px * var(--s)); margin-inline: auto; }
