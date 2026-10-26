@@ -2,8 +2,8 @@
   "name": "Gator Haven House",
   "short_name": "Gator Haven",
   "icons": [
-    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/apple-touch-icon.png?v=2", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png?v=2", "sizes": "512x512", "type": "image/png" }
   ],
   "theme_color": "#1b2a55",
   "background_color": "#fcfbf8",
