@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&family=Big+Shoulders+Display:wght@600..900&family=Libre+Franklin:wght@300..700&family=Pinyon+Script&display=swap">
-<link rel="stylesheet" href="css/site.css?v=278b419d">
+<link rel="stylesheet" href="css/site.css?v=e3449128">
 <script>
   (function () {
     var d = document.documentElement;
@@ -77,13 +77,11 @@
 <header class="site-header">
   <div class="wrap header-row">
     <a class="mark" href="./" aria-label="Gator Haven House, home">
-      <picture><source type="image/webp" srcset="images/seal-simple-192.webp"><img class="mark-seal" src="images/seal-simple-96.png" srcset="images/seal-simple-96.png 1x, images/seal-simple-192.png 2x" width="96" height="96" alt=""></picture>
-      <img class="mark-word-img" src="images/wordmark-navy-480.png" srcset="images/wordmark-navy-480.png 480w, images/wordmark-navy-960.png 960w" sizes="140px" width="480" height="187" alt="">
+      <picture><source type="image/webp" srcset="images/logo-sign-240.webp 1x, images/logo-sign-480.webp 2x"><img class="mark-sign" src="images/logo-sign-240.png" srcset="images/logo-sign-240.png 1x, images/logo-sign-480.png 2x" width="240" height="134" alt=""></picture>
     </a>
     <nav class="nav" aria-label="Main">
       <a href="./#the-house">The House</a>
       <a href="photos.html">Photos</a>
-      <a href="./#location">Location</a>
       <a href="guide.html">Guide</a>
       <a href="history.html">History</a>
     </nav>
@@ -101,7 +99,6 @@
   <nav aria-label="Menu">
     <a href="./#the-house">The House</a>
     <a href="photos.html">Photos</a>
-    <a href="./#location">Location</a>
     <a href="guide.html">Visitor&rsquo;s guide</a>
     <a href="history.html">History</a>
     <a href="./#guest-list">Guest list</a>
@@ -128,7 +125,8 @@
           </h1>
           <p class="pb-rule">Est. 1899</p>
           <div class="hero-copy">
-            <p class="lede">A Queen Anne in the Duck Pond, five minutes on foot from downtown, with four bedrooms, a fenced yard for the dog and a 98-inch TV for game day.</p>
+            <p class="lede">Your next Gator getaway is taking shape in the Historic Duck Pond District, steps away from UF&rsquo;s campus!</p>
+            <p class="lede">Built in 1899, this historic home will retain much of its original charm and character, with modern touches for a comfortable stay.</p>
             <div class="actions"><a class="pill" href="#guest-list">Join the guest list</a><a class="ghost" href="#the-house">See the house</a></div>
             <p class="hero-note">Opening December 26, 2026. Sleeps 8, two-night minimum.</p>
           </div>
@@ -155,10 +153,19 @@
 
   <section class="section" id="the-house" aria-labelledby="house-h">
     <div class="wrap house-grid">
-      <div class="house-photos">
-        <figure class="cab hp-1"><span class="tag">Concept</span><picture><source type="image/webp" srcset="images/gameday-concept-600.webp 600w, images/gameday-concept-1024.webp 1024w" sizes="(min-width: 1000px) 56vw, 100vw"><img src="images/gameday-concept-1024.jpg" srcset="images/gameday-concept-600.jpg 600w, images/gameday-concept-1024.jpg 1024w" sizes="(min-width: 1000px) 56vw, 100vw" width="1024" height="1536" alt="Concept rendering of the living room set up for game day, with a 98-inch TV over the fireplace showing a football game, a cream sofa and two cognac leather armchairs around a round coffee table with popcorn and drinks." loading="lazy"></picture></figure>
-        <figure class="cab hp-2"><span class="tag">Concept</span><picture><source type="image/webp" srcset="images/kitchen-concept-800.webp 800w, images/kitchen-concept-1553.webp 1553w" sizes="(min-width: 1000px) 28vw, 44vw"><img src="images/kitchen-concept-1553.jpg" srcset="images/kitchen-concept-800.jpg 800w, images/kitchen-concept-1553.jpg 1553w" sizes="(min-width: 1000px) 28vw, 44vw" width="1553" height="1013" alt="Concept rendering of the new kitchen: navy shaker cabinets with brass pulls, white counters and subway tile, open wood shelves, a farmhouse sink, a stainless range and fridge, two schoolhouse pendants, a farm table with rush stools, and the dark red painted mantel with white spindles." loading="lazy"></picture></figure>
-        <figure class="cab hp-3"><span class="tag">Concept</span><picture><source type="image/webp" srcset="images/bedroom-concept-600.webp 600w, images/bedroom-concept-1024.webp 1024w" sizes="(min-width: 1000px) 28vw, 44vw"><img src="images/bedroom-concept-1024.jpg" srcset="images/bedroom-concept-600.jpg 600w, images/bedroom-concept-1024.jpg 1024w" sizes="(min-width: 1000px) 28vw, 44vw" width="1024" height="1536" alt="Concept rendering of the upstairs primary bedroom: a king bed with a cream upholstered headboard, white bedding with a rust quilt and navy runner, brass lamps on wood nightstands, a bench at the foot, a jute rug and linen curtains on three windows." loading="lazy"></picture></figure>
+      <div class="house-map">
+        <figure class="cab map-card">
+        <div class="map-illo">
+        <picture><source type="image/webp" srcset="images/map-illustrated-route-1600.webp"><img class="map-art" src="images/map-illustrated-route-1600.jpg" width="1600" height="800" alt="An illustrated map of Gainesville: the yellow Victorian house in the upper right, a dotted path west through downtown's square and brick storefronts to the football stadium on the left, with the depot park and its steam train below." loading="lazy"></picture>
+        <svg class="map-walk" viewBox="0 0 1600 800" aria-hidden="true">
+          <defs><mask id="walk-reveal" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="800"><path class="walk-mask" d="M1421.2 239.6C1420.3 241.0 1417.9 245.4 1416.1 248.0C1414.3 250.6 1412.3 252.7 1410.3 255.2C1408.3 257.7 1406.5 260.7 1404.2 263.0C1402.0 265.4 1399.3 267.5 1396.7 269.5C1394.1 271.5 1391.4 273.5 1388.7 275.1C1385.9 276.7 1382.8 277.8 1380.0 279.0C1377.2 280.2 1374.7 281.0 1372.0 282.0C1369.3 283.0 1366.5 284.0 1363.7 284.8C1360.8 285.5 1357.9 285.9 1354.8 286.5C1351.7 287.0 1348.2 287.6 1345.0 288.2C1341.7 288.8 1338.4 289.3 1335.3 290.0C1332.1 290.8 1329.2 291.8 1326.0 292.6C1322.9 293.4 1319.4 293.9 1316.3 294.7C1313.2 295.4 1310.5 296.3 1307.5 297.1C1304.6 297.9 1301.4 298.6 1298.6 299.4C1295.9 300.2 1298.4 299.8 1291.1 301.9C1283.9 304.0 1268.5 308.2 1255.0 312.0C1241.5 315.8 1225.0 320.7 1210.0 325.0C1195.0 329.3 1180.0 334.2 1165.0 338.0C1150.0 341.8 1135.0 345.0 1120.0 348.0C1105.0 351.0 1088.8 353.9 1075.0 356.0C1061.2 358.1 1044.5 359.0 1036.9 360.8C1029.4 362.6 1032.2 365.1 1029.9 366.9C1027.6 368.8 1025.4 370.2 1023.0 371.9C1020.5 373.6 1017.8 375.4 1014.9 376.9C1012.1 378.4 1009.1 380.1 1005.9 380.9C1002.7 381.7 999.3 381.9 996.0 381.8C992.7 381.7 989.4 381.1 986.1 380.5C982.8 379.9 979.3 379.0 976.1 378.1C972.9 377.2 970.2 376.0 967.1 375.1C964.0 374.2 960.6 373.5 957.6 372.7C954.5 371.9 951.8 371.1 948.8 370.2C945.8 369.3 950.6 370.4 939.8 367.5C929.0 364.6 895.0 355.6 884.0 352.6C872.9 349.6 877.0 350.5 873.6 349.5C870.3 348.6 867.2 347.9 863.9 347.0C860.5 346.1 857.0 345.1 853.5 344.1C850.1 343.1 846.6 342.1 843.2 341.1C839.9 340.2 836.7 339.3 833.4 338.4C830.2 337.5 827.4 336.6 823.9 335.7C820.4 334.7 816.2 333.6 812.5 332.6C808.8 331.7 805.3 330.8 801.9 329.9C798.5 329.0 795.3 327.9 792.0 327.0C788.7 326.1 785.5 325.2 782.3 324.4C779.0 323.6 775.4 322.8 772.5 322.0C769.6 321.2 767.6 320.6 765.0 319.7C762.4 318.9 759.5 317.9 756.9 316.9C754.3 315.9 752.2 314.9 749.2 313.9C746.3 313.0 742.2 311.9 739.1 311.2C736.0 310.5 733.7 310.4 730.8 309.8C727.8 309.1 724.8 308.2 721.5 307.5C718.3 306.7 714.8 305.9 711.5 305.0C708.2 304.1 705.3 302.9 702.0 302.0C698.7 301.1 695.1 300.4 691.7 299.6C688.4 298.8 685.3 298.1 682.0 297.2C678.7 296.2 675.3 294.7 672.1 293.9C668.8 293.1 666.5 293.2 662.4 292.4C658.4 291.6 652.0 290.0 648.0 289.0C644.0 288.0 641.7 287.5 638.5 286.7C635.4 285.8 632.2 284.9 629.1 284.1C625.9 283.3 622.7 282.7 619.6 282.0C616.5 281.2 614.4 280.8 610.3 279.8C606.2 278.8 600.0 277.3 595.0 276.0C590.0 274.7 585.3 273.2 580.0 272.0C574.7 270.8 567.6 269.7 563.5 268.9C559.3 268.0 558.0 267.5 555.1 266.9C552.2 266.3 549.0 265.8 546.0 265.2C542.9 264.5 539.9 263.8 536.7 263.0C533.5 262.3 530.1 261.3 526.8 260.6C523.6 259.8 520.2 259.4 517.1 258.6C513.9 257.9 511.1 257.1 507.9 256.1C504.8 255.1 501.3 254.0 498.2 252.8C495.2 251.6 492.4 250.2 489.6 248.7C486.7 247.3 483.7 245.7 481.1 244.1C478.5 242.5 476.3 241.0 473.8 239.4C471.2 237.7 468.3 235.9 465.7 234.2C463.2 232.6 461.0 231.0 458.5 229.5C456.0 228.0 453.2 226.6 450.5 225.2C447.7 223.8 444.6 222.2 441.8 221.0C439.0 219.8 436.4 218.8 433.6 217.9C430.8 217.0 428.0 216.3 425.0 215.8C422.0 215.3 418.8 214.7 415.6 214.8C412.5 214.8 409.2 215.4 406.0 216.0C402.8 216.6 399.4 217.1 396.3 218.1C393.2 219.1 390.3 220.6 387.4 222.1C384.5 223.6 380.5 226.3 379.1 227.1"/></mask></defs>
+          <path class="walk-dots" d="M1421.2 239.6C1420.3 241.0 1417.9 245.4 1416.1 248.0C1414.3 250.6 1412.3 252.7 1410.3 255.2C1408.3 257.7 1406.5 260.7 1404.2 263.0C1402.0 265.4 1399.3 267.5 1396.7 269.5C1394.1 271.5 1391.4 273.5 1388.7 275.1C1385.9 276.7 1382.8 277.8 1380.0 279.0C1377.2 280.2 1374.7 281.0 1372.0 282.0C1369.3 283.0 1366.5 284.0 1363.7 284.8C1360.8 285.5 1357.9 285.9 1354.8 286.5C1351.7 287.0 1348.2 287.6 1345.0 288.2C1341.7 288.8 1338.4 289.3 1335.3 290.0C1332.1 290.8 1329.2 291.8 1326.0 292.6C1322.9 293.4 1319.4 293.9 1316.3 294.7C1313.2 295.4 1310.5 296.3 1307.5 297.1C1304.6 297.9 1301.4 298.6 1298.6 299.4C1295.9 300.2 1298.4 299.8 1291.1 301.9C1283.9 304.0 1268.5 308.2 1255.0 312.0C1241.5 315.8 1225.0 320.7 1210.0 325.0C1195.0 329.3 1180.0 334.2 1165.0 338.0C1150.0 341.8 1135.0 345.0 1120.0 348.0C1105.0 351.0 1088.8 353.9 1075.0 356.0C1061.2 358.1 1044.5 359.0 1036.9 360.8C1029.4 362.6 1032.2 365.1 1029.9 366.9C1027.6 368.8 1025.4 370.2 1023.0 371.9C1020.5 373.6 1017.8 375.4 1014.9 376.9C1012.1 378.4 1009.1 380.1 1005.9 380.9C1002.7 381.7 999.3 381.9 996.0 381.8C992.7 381.7 989.4 381.1 986.1 380.5C982.8 379.9 979.3 379.0 976.1 378.1C972.9 377.2 970.2 376.0 967.1 375.1C964.0 374.2 960.6 373.5 957.6 372.7C954.5 371.9 951.8 371.1 948.8 370.2C945.8 369.3 950.6 370.4 939.8 367.5C929.0 364.6 895.0 355.6 884.0 352.6C872.9 349.6 877.0 350.5 873.6 349.5C870.3 348.6 867.2 347.9 863.9 347.0C860.5 346.1 857.0 345.1 853.5 344.1C850.1 343.1 846.6 342.1 843.2 341.1C839.9 340.2 836.7 339.3 833.4 338.4C830.2 337.5 827.4 336.6 823.9 335.7C820.4 334.7 816.2 333.6 812.5 332.6C808.8 331.7 805.3 330.8 801.9 329.9C798.5 329.0 795.3 327.9 792.0 327.0C788.7 326.1 785.5 325.2 782.3 324.4C779.0 323.6 775.4 322.8 772.5 322.0C769.6 321.2 767.6 320.6 765.0 319.7C762.4 318.9 759.5 317.9 756.9 316.9C754.3 315.9 752.2 314.9 749.2 313.9C746.3 313.0 742.2 311.9 739.1 311.2C736.0 310.5 733.7 310.4 730.8 309.8C727.8 309.1 724.8 308.2 721.5 307.5C718.3 306.7 714.8 305.9 711.5 305.0C708.2 304.1 705.3 302.9 702.0 302.0C698.7 301.1 695.1 300.4 691.7 299.6C688.4 298.8 685.3 298.1 682.0 297.2C678.7 296.2 675.3 294.7 672.1 293.9C668.8 293.1 666.5 293.2 662.4 292.4C658.4 291.6 652.0 290.0 648.0 289.0C644.0 288.0 641.7 287.5 638.5 286.7C635.4 285.8 632.2 284.9 629.1 284.1C625.9 283.3 622.7 282.7 619.6 282.0C616.5 281.2 614.4 280.8 610.3 279.8C606.2 278.8 600.0 277.3 595.0 276.0C590.0 274.7 585.3 273.2 580.0 272.0C574.7 270.8 567.6 269.7 563.5 268.9C559.3 268.0 558.0 267.5 555.1 266.9C552.2 266.3 549.0 265.8 546.0 265.2C542.9 264.5 539.9 263.8 536.7 263.0C533.5 262.3 530.1 261.3 526.8 260.6C523.6 259.8 520.2 259.4 517.1 258.6C513.9 257.9 511.1 257.1 507.9 256.1C504.8 255.1 501.3 254.0 498.2 252.8C495.2 251.6 492.4 250.2 489.6 248.7C486.7 247.3 483.7 245.7 481.1 244.1C478.5 242.5 476.3 241.0 473.8 239.4C471.2 237.7 468.3 235.9 465.7 234.2C463.2 232.6 461.0 231.0 458.5 229.5C456.0 228.0 453.2 226.6 450.5 225.2C447.7 223.8 444.6 222.2 441.8 221.0C439.0 219.8 436.4 218.8 433.6 217.9C430.8 217.0 428.0 216.3 425.0 215.8C422.0 215.3 418.8 214.7 415.6 214.8C412.5 214.8 409.2 215.4 406.0 216.0C402.8 216.6 399.4 217.1 396.3 218.1C393.2 219.1 390.3 220.6 387.4 222.1C384.5 223.6 380.5 226.3 379.1 227.1" mask="url(#walk-reveal)"/>
+          <circle class="walk-start" cx="1421" cy="240" r="12"/>
+        </svg>
+        </div>
+        <figcaption class="note-script">Illustrated map, not to scale</figcaption>
+      </figure>
+        <div class="actions house-map-cta"><a class="ghost" href="https://www.google.com/maps/search/?api=1&query=306+NE+3rd+St+Gainesville+FL+32601" target="_blank" rel="noopener">Open in Maps<span class="visually-hidden"> (opens in a new tab)</span></a></div>
       </div>
       <div class="bill">
         <i class="bill-corner is-l" aria-hidden="true"></i><i class="bill-corner is-r" aria-hidden="true"></i>
@@ -184,41 +191,13 @@
     </div>
   </section>
 
-  <section class="section" id="location" aria-labelledby="location-h">
-    <div class="wrap map-grid">
-      <figure class="cab map-card">
-        <div class="map-illo">
-        <picture><source type="image/webp" srcset="images/map-illustrated-route-1600.webp"><img class="map-art" src="images/map-illustrated-route-1600.jpg" width="1600" height="800" alt="An illustrated map of Gainesville: the yellow Victorian house in the upper right, a dotted path west through downtown's square and brick storefronts to the football stadium on the left, with the depot park and its steam train below." loading="lazy"></picture>
-        <svg class="map-walk" viewBox="0 0 1600 800" aria-hidden="true">
-          <defs><mask id="walk-reveal" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="800"><path class="walk-mask" d="M1421.2 239.6C1420.3 241.0 1417.9 245.4 1416.1 248.0C1414.3 250.6 1412.3 252.7 1410.3 255.2C1408.3 257.7 1406.5 260.7 1404.2 263.0C1402.0 265.4 1399.3 267.5 1396.7 269.5C1394.1 271.5 1391.4 273.5 1388.7 275.1C1385.9 276.7 1382.8 277.8 1380.0 279.0C1377.2 280.2 1374.7 281.0 1372.0 282.0C1369.3 283.0 1366.5 284.0 1363.7 284.8C1360.8 285.5 1357.9 285.9 1354.8 286.5C1351.7 287.0 1348.2 287.6 1345.0 288.2C1341.7 288.8 1338.4 289.3 1335.3 290.0C1332.1 290.8 1329.2 291.8 1326.0 292.6C1322.9 293.4 1319.4 293.9 1316.3 294.7C1313.2 295.4 1310.5 296.3 1307.5 297.1C1304.6 297.9 1301.4 298.6 1298.6 299.4C1295.9 300.2 1298.4 299.8 1291.1 301.9C1283.9 304.0 1268.5 308.2 1255.0 312.0C1241.5 315.8 1225.0 320.7 1210.0 325.0C1195.0 329.3 1180.0 334.2 1165.0 338.0C1150.0 341.8 1135.0 345.0 1120.0 348.0C1105.0 351.0 1088.8 353.9 1075.0 356.0C1061.2 358.1 1044.5 359.0 1036.9 360.8C1029.4 362.6 1032.2 365.1 1029.9 366.9C1027.6 368.8 1025.4 370.2 1023.0 371.9C1020.5 373.6 1017.8 375.4 1014.9 376.9C1012.1 378.4 1009.1 380.1 1005.9 380.9C1002.7 381.7 999.3 381.9 996.0 381.8C992.7 381.7 989.4 381.1 986.1 380.5C982.8 379.9 979.3 379.0 976.1 378.1C972.9 377.2 970.2 376.0 967.1 375.1C964.0 374.2 960.6 373.5 957.6 372.7C954.5 371.9 951.8 371.1 948.8 370.2C945.8 369.3 950.6 370.4 939.8 367.5C929.0 364.6 895.0 355.6 884.0 352.6C872.9 349.6 877.0 350.5 873.6 349.5C870.3 348.6 867.2 347.9 863.9 347.0C860.5 346.1 857.0 345.1 853.5 344.1C850.1 343.1 846.6 342.1 843.2 341.1C839.9 340.2 836.7 339.3 833.4 338.4C830.2 337.5 827.4 336.6 823.9 335.7C820.4 334.7 816.2 333.6 812.5 332.6C808.8 331.7 805.3 330.8 801.9 329.9C798.5 329.0 795.3 327.9 792.0 327.0C788.7 326.1 785.5 325.2 782.3 324.4C779.0 323.6 775.4 322.8 772.5 322.0C769.6 321.2 767.6 320.6 765.0 319.7C762.4 318.9 759.5 317.9 756.9 316.9C754.3 315.9 752.2 314.9 749.2 313.9C746.3 313.0 742.2 311.9 739.1 311.2C736.0 310.5 733.7 310.4 730.8 309.8C727.8 309.1 724.8 308.2 721.5 307.5C718.3 306.7 714.8 305.9 711.5 305.0C708.2 304.1 705.3 302.9 702.0 302.0C698.7 301.1 695.1 300.4 691.7 299.6C688.4 298.8 685.3 298.1 682.0 297.2C678.7 296.2 675.3 294.7 672.1 293.9C668.8 293.1 666.5 293.2 662.4 292.4C658.4 291.6 652.0 290.0 648.0 289.0C644.0 288.0 641.7 287.5 638.5 286.7C635.4 285.8 632.2 284.9 629.1 284.1C625.9 283.3 622.7 282.7 619.6 282.0C616.5 281.2 614.4 280.8 610.3 279.8C606.2 278.8 600.0 277.3 595.0 276.0C590.0 274.7 585.3 273.2 580.0 272.0C574.7 270.8 567.6 269.7 563.5 268.9C559.3 268.0 558.0 267.5 555.1 266.9C552.2 266.3 549.0 265.8 546.0 265.2C542.9 264.5 539.9 263.8 536.7 263.0C533.5 262.3 530.1 261.3 526.8 260.6C523.6 259.8 520.2 259.4 517.1 258.6C513.9 257.9 511.1 257.1 507.9 256.1C504.8 255.1 501.3 254.0 498.2 252.8C495.2 251.6 492.4 250.2 489.6 248.7C486.7 247.3 483.7 245.7 481.1 244.1C478.5 242.5 476.3 241.0 473.8 239.4C471.2 237.7 468.3 235.9 465.7 234.2C463.2 232.6 461.0 231.0 458.5 229.5C456.0 228.0 453.2 226.6 450.5 225.2C447.7 223.8 444.6 222.2 441.8 221.0C439.0 219.8 436.4 218.8 433.6 217.9C430.8 217.0 428.0 216.3 425.0 215.8C422.0 215.3 418.8 214.7 415.6 214.8C412.5 214.8 409.2 215.4 406.0 216.0C402.8 216.6 399.4 217.1 396.3 218.1C393.2 219.1 390.3 220.6 387.4 222.1C384.5 223.6 380.5 226.3 379.1 227.1"/></mask></defs>
-          <path class="walk-dots" d="M1421.2 239.6C1420.3 241.0 1417.9 245.4 1416.1 248.0C1414.3 250.6 1412.3 252.7 1410.3 255.2C1408.3 257.7 1406.5 260.7 1404.2 263.0C1402.0 265.4 1399.3 267.5 1396.7 269.5C1394.1 271.5 1391.4 273.5 1388.7 275.1C1385.9 276.7 1382.8 277.8 1380.0 279.0C1377.2 280.2 1374.7 281.0 1372.0 282.0C1369.3 283.0 1366.5 284.0 1363.7 284.8C1360.8 285.5 1357.9 285.9 1354.8 286.5C1351.7 287.0 1348.2 287.6 1345.0 288.2C1341.7 288.8 1338.4 289.3 1335.3 290.0C1332.1 290.8 1329.2 291.8 1326.0 292.6C1322.9 293.4 1319.4 293.9 1316.3 294.7C1313.2 295.4 1310.5 296.3 1307.5 297.1C1304.6 297.9 1301.4 298.6 1298.6 299.4C1295.9 300.2 1298.4 299.8 1291.1 301.9C1283.9 304.0 1268.5 308.2 1255.0 312.0C1241.5 315.8 1225.0 320.7 1210.0 325.0C1195.0 329.3 1180.0 334.2 1165.0 338.0C1150.0 341.8 1135.0 345.0 1120.0 348.0C1105.0 351.0 1088.8 353.9 1075.0 356.0C1061.2 358.1 1044.5 359.0 1036.9 360.8C1029.4 362.6 1032.2 365.1 1029.9 366.9C1027.6 368.8 1025.4 370.2 1023.0 371.9C1020.5 373.6 1017.8 375.4 1014.9 376.9C1012.1 378.4 1009.1 380.1 1005.9 380.9C1002.7 381.7 999.3 381.9 996.0 381.8C992.7 381.7 989.4 381.1 986.1 380.5C982.8 379.9 979.3 379.0 976.1 378.1C972.9 377.2 970.2 376.0 967.1 375.1C964.0 374.2 960.6 373.5 957.6 372.7C954.5 371.9 951.8 371.1 948.8 370.2C945.8 369.3 950.6 370.4 939.8 367.5C929.0 364.6 895.0 355.6 884.0 352.6C872.9 349.6 877.0 350.5 873.6 349.5C870.3 348.6 867.2 347.9 863.9 347.0C860.5 346.1 857.0 345.1 853.5 344.1C850.1 343.1 846.6 342.1 843.2 341.1C839.9 340.2 836.7 339.3 833.4 338.4C830.2 337.5 827.4 336.6 823.9 335.7C820.4 334.7 816.2 333.6 812.5 332.6C808.8 331.7 805.3 330.8 801.9 329.9C798.5 329.0 795.3 327.9 792.0 327.0C788.7 326.1 785.5 325.2 782.3 324.4C779.0 323.6 775.4 322.8 772.5 322.0C769.6 321.2 767.6 320.6 765.0 319.7C762.4 318.9 759.5 317.9 756.9 316.9C754.3 315.9 752.2 314.9 749.2 313.9C746.3 313.0 742.2 311.9 739.1 311.2C736.0 310.5 733.7 310.4 730.8 309.8C727.8 309.1 724.8 308.2 721.5 307.5C718.3 306.7 714.8 305.9 711.5 305.0C708.2 304.1 705.3 302.9 702.0 302.0C698.7 301.1 695.1 300.4 691.7 299.6C688.4 298.8 685.3 298.1 682.0 297.2C678.7 296.2 675.3 294.7 672.1 293.9C668.8 293.1 666.5 293.2 662.4 292.4C658.4 291.6 652.0 290.0 648.0 289.0C644.0 288.0 641.7 287.5 638.5 286.7C635.4 285.8 632.2 284.9 629.1 284.1C625.9 283.3 622.7 282.7 619.6 282.0C616.5 281.2 614.4 280.8 610.3 279.8C606.2 278.8 600.0 277.3 595.0 276.0C590.0 274.7 585.3 273.2 580.0 272.0C574.7 270.8 567.6 269.7 563.5 268.9C559.3 268.0 558.0 267.5 555.1 266.9C552.2 266.3 549.0 265.8 546.0 265.2C542.9 264.5 539.9 263.8 536.7 263.0C533.5 262.3 530.1 261.3 526.8 260.6C523.6 259.8 520.2 259.4 517.1 258.6C513.9 257.9 511.1 257.1 507.9 256.1C504.8 255.1 501.3 254.0 498.2 252.8C495.2 251.6 492.4 250.2 489.6 248.7C486.7 247.3 483.7 245.7 481.1 244.1C478.5 242.5 476.3 241.0 473.8 239.4C471.2 237.7 468.3 235.9 465.7 234.2C463.2 232.6 461.0 231.0 458.5 229.5C456.0 228.0 453.2 226.6 450.5 225.2C447.7 223.8 444.6 222.2 441.8 221.0C439.0 219.8 436.4 218.8 433.6 217.9C430.8 217.0 428.0 216.3 425.0 215.8C422.0 215.3 418.8 214.7 415.6 214.8C412.5 214.8 409.2 215.4 406.0 216.0C402.8 216.6 399.4 217.1 396.3 218.1C393.2 219.1 390.3 220.6 387.4 222.1C384.5 223.6 380.5 226.3 379.1 227.1" mask="url(#walk-reveal)"/>
-          <circle class="walk-start" cx="1421" cy="240" r="12"/>
-        </svg>
-        </div>
-        <figcaption class="note-script">Illustrated map, not to scale</figcaption>
-      </figure>
-      <div class="map-copy">
-        <h2 id="location-h">Two miles from the stadium</h2>
-        <p class="address">306 NE 3rd Street<br>Gainesville, Florida 32601</p>
-        <dl class="times">
-          <div><dt>Downtown</dt><dd>5 min walk</dd></div>
-          <div><dt>UF campus</dt><dd>6 min drive</dd></div>
-          <div><dt>The stadium</dt><dd>7 min drive</dd></div>
-          <div><dt>O&rsquo;Connell Center</dt><dd>8 min drive</dd></div>
-          <div><dt>Airport (GNV)</dt><dd>10 min drive</dd></div>
-        </dl>
-        <p class="fine">Typical drive and walk times. Game days run longer.</p>
-        <div><a class="ghost" href="https://www.google.com/maps/search/?api=1&query=306+NE+3rd+St+Gainesville+FL+32601" target="_blank" rel="noopener">Open in Maps<span class="visually-hidden"> (opens in a new tab)</span></a></div>
-      </div>
-    </div>
-  </section>
-
   <section class="section gate on-royal has-frieze" id="guest-list" aria-labelledby="list-h">
     <div class="wrap frieze-wrap" aria-hidden="true"><div class="frieze"><i class="cap-l"></i><i class="run"></i><i class="cap-r"></i></div></div>
     <div class="wrap">
       <div class="section-head center">
         <h2 id="list-h">Join the guest list</h2>
-        <p class="lede">First pick of dates when stays open December 26, and progress photos as the work goes on. It&rsquo;s free, and it isn&rsquo;t a booking.</p>
+        <p class="lede">We&rsquo;ll keep you updated when the home is ready to rent and once the full transformation is completed. Our guest list will receive priority for football games, move-in weekends, graduations, and other special events.</p>
+        <p class="lede">We look forward to welcoming friends and friends of friends, with special discounts for repeat stays and referrals. We hope Gator Haven House becomes your home away from home!</p>
       </div>
       <div class="gate-grid">
         <div class="ticket">
@@ -257,11 +236,11 @@
               <div><button class="pill" type="submit"><span>Join the guest list</span></button></div>
             </form>
           </div>
-          <div class="t-stub" aria-hidden="true"><div class="t-stub-in"><b>Admit one</b><span>No. 001899</span><small>Valid from Dec. 26, 2026</small></div></div>
+          <div class="t-stub" aria-hidden="true"><div class="t-stub-in"><b>Admit one</b><span>No. 001899</span></div></div>
         </div>
         <div class="hosts">
           <h3>Meet your hosts</h3>
-          <p>We&rsquo;re Craig and Jenn. Our hope is to become your home away from home throughout your Gator&rsquo;s years at UF, and to welcome you back again and again.</p>
+          <p>WeWe&rsquo;re Craig and Jenn. Our hope is to become your home away from home throughout your Gator&rsquo;s years at UF, and to welcome you back again and again.rsquo;re Craig and Jenn. Write to either of us with questions about the house or your dates.</p>
           <ul class="contact-list">
             <li class="contact"><span><span class="contact-name">Craig</span><br><a href="mailto:craig@gatorhavenhouse.com">craig@gatorhavenhouse.com</a></span><button class="copy-btn" type="button" data-copy="craig@gatorhavenhouse.com">Copy</button></li>
             <li class="contact"><span><span class="contact-name">Jenn</span><br><a href="mailto:jenn@gatorhavenhouse.com">jenn@gatorhavenhouse.com</a></span><button class="copy-btn" type="button" data-copy="jenn@gatorhavenhouse.com">Copy</button></li>
@@ -334,6 +313,7 @@
     </div>
   </section>
 
+
   <section class="section table" aria-labelledby="table-h">
     <div class="wrap table-grid">
       <div class="pile" aria-hidden="true">
@@ -367,7 +347,6 @@
         <ul>
           <li><a href="./#the-house">The House</a></li>
           <li><a href="photos.html">Photos</a></li>
-          <li><a href="./#location">Location</a></li>
           <li><a href="guide.html">Visitor&rsquo;s guide</a></li>
           <li><a href="history.html">History</a></li>
           <li><a href="./#guest-list">Join the guest list</a></li>
@@ -397,6 +376,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="js/site.js?v=278b419d" defer></script>
+<script src="js/site.js?v=e3449128" defer></script>
 </body>
 </html>

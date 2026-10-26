@@ -994,3 +994,24 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .bill, .t-main, .t-stub, .cab, .stop, .postcard, .hosts { background-image: var(--tex-paper); background-blend-mode: multiply; }
 .band-royal, .gameday, .closer-strip { background-image: var(--tex-linen); }
 .greet { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .1 0 0 0 0 0 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); }
+
+/* ---------- Craig's October notes ---------- */
+:root { --gator-blue: #0021a5; }
+.pb-4 { color: var(--gator-blue); }
+.mark-sign { height: calc(54px * var(--s)); width: auto; display: block; filter: drop-shadow(0 2px 3px rgba(27, 42, 85, 0.25)); }
+@media (max-width: 560px) { .mark-sign { height: calc(46px * var(--s)); } }
+.hero-copy .lede + .lede { margin-top: calc(-8px * var(--s)); }
+/* the house section: the illustrated map beside the house facts */
+.house-map { display: grid; gap: calc(18px * var(--s)); justify-items: center; }
+.house-map .map-card { width: 100%; }
+@media (min-width: 1000px) {
+  #the-house .house-grid { grid-template-columns: minmax(0, 6.8fr) minmax(0, 5fr); align-items: start; }
+  .house-map { position: sticky; top: calc(50svh - 190px * var(--s)); }
+}
+.gate .section-head .lede { max-width: 40em; }
+.gate .section-head .lede + .lede { margin-top: calc(-6px * var(--s)); }
+:root { --header-h: 82px; }
+@media (min-width: 1000px) { :root { --header-h: 80px; } }
+.mark-sign { height: calc(66px * var(--s)); }
+@media (min-width: 1000px) { .mark-sign { height: 66px; } }
+@media (max-width: 560px) { .mark-sign { height: 58px; } }

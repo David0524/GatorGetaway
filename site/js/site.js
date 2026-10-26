@@ -254,15 +254,13 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
     if (walk && walk.getTotalLength) {
       const len = walk.getTotalLength();
       gsap.set(walk, { strokeDasharray: len, strokeDashoffset: len });
-      /* desktop: the section holds still, centered, while the walk draws; phones draw it as it scrolls past */
-      mm.add("(min-width: 1000px) and (min-height: 640px)", () => {
-        const loc = document.getElementById("location");
-        const tw = gsap.to(walk, { strokeDashoffset: 0, ease: "none", scrollTrigger: {
-          trigger: loc, start: () => (loc.offsetHeight < innerHeight ? "center center" : "top top"),
-          end: "+=110%", pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+      /* desktop: the map stays put beside the house facts while the walk draws; phones draw it as it scrolls past */
+      mm.add("(min-width: 1000px)", () => {
+        const tw = gsap.to(walk, { strokeDashoffset: 0, ease: "none",
+          scrollTrigger: { trigger: "#the-house", start: "top 55%", end: "bottom 75%", scrub: 0.6 } });
         return () => { tw.scrollTrigger?.kill(); tw.kill(); };
       });
-      mm.add("(max-width: 999px), (max-height: 639px)", () => {
+      mm.add("(max-width: 999px)", () => {
         const tw = gsap.to(walk, { strokeDashoffset: 0, ease: "none",
           scrollTrigger: { trigger: ".map-illo", start: "top 85%", end: "bottom 45%", scrub: 0.6 } });
         return () => { tw.scrollTrigger?.kill(); tw.kill(); };
