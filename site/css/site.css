@@ -164,17 +164,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .menu-foot { display: grid; gap: calc(12px * var(--s)); font-size: 0.9375rem; color: rgba(244, 234, 208, 0.86); }
 .menu-foot .pill { justify-self: start; }
 
-/* ---------- program line (masthead rule under the header) ---------- */
-.program-line {
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: calc(6px * var(--s)) calc(20px * var(--s));
-  font: 700 0.875rem/1.2 var(--gothic); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pine);
-  border-top: 3px double var(--pine); border-bottom: 1px solid var(--pine); padding-block: calc(10px * var(--s));
-}
-@media (max-width: 560px) { .program-line { justify-content: center; text-align: center; } }
 
 /* ---------- hero ---------- */
 .hero { padding-block: clamp(calc(18px * var(--s)), calc(3vw * var(--s)), calc(36px * var(--s))) clamp(calc(24px * var(--s)), calc(3vw * var(--s)), calc(44px * var(--s))); overflow-x: clip; }
-.hero .program-line { margin-bottom: clamp(calc(24px * var(--s)), calc(3vw * var(--s)), calc(40px * var(--s))); }
 .hero-grid { display: grid; gap: clamp(calc(40px * var(--s)), calc(5vw * var(--s)), calc(72px * var(--s))); align-items: center; }
 .hero-grid > * { min-width: 0; }
 @media (min-width: 1000px) { .hero-grid { grid-template-columns: minmax(0, 6.2fr) minmax(0, 5fr); } }
@@ -530,7 +522,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 
 /* ---------- inner pages ---------- */
 .page-head { padding-block: clamp(calc(18px * var(--s)), calc(3vw * var(--s)), calc(36px * var(--s))) clamp(calc(30px * var(--s)), calc(5vw * var(--s)), calc(60px * var(--s))); }
-.page-head .program-line { margin-bottom: clamp(calc(28px * var(--s)), calc(4vw * var(--s)), calc(56px * var(--s))); }
 .page-title { display: grid; justify-items: center; text-align: center; gap: calc(8px * var(--s)); }
 .page-title .script { font-size: clamp(2.2rem, 1.4rem + calc(3vw * var(--s)), 3.8rem); }
 .page-title h1 { font-size: clamp(3.2rem, 1.2rem + calc(8vw * var(--s)), 8.5rem); font-weight: 900; letter-spacing: -0.035em; line-height: 0.9; }
@@ -586,7 +577,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 
 /* ---------- history ---------- */
 .hist-hero { padding-block: clamp(calc(18px * var(--s)), calc(3vw * var(--s)), calc(36px * var(--s))) clamp(calc(60px * var(--s)), calc(8vw * var(--s)), calc(110px * var(--s))); }
-.hist-hero .program-line { margin-bottom: clamp(calc(28px * var(--s)), calc(4vw * var(--s)), calc(56px * var(--s))); }
 .hist-grid { display: grid; gap: clamp(calc(40px * var(--s)), calc(5vw * var(--s)), calc(80px * var(--s))); align-items: center; }
 .hist-grid > * { min-width: 0; }
 @media (min-width: 1000px) { .hist-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } }
@@ -901,11 +891,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .has-arch .page-title h1 { font-size: clamp(2.2rem, 0.8rem + calc(4vw * var(--s)), 4.6rem); }
 .page-arch { width: var(--arch-w); }
 .page-head { padding-bottom: clamp(calc(20px * var(--s)), calc(3vw * var(--s)), calc(40px * var(--s))); }
-/* phones: one short masthead line, and the section links as a single swipeable row */
-@media (max-width: 560px) {
-  .program-line span:not(:nth-child(2)) { display: none; }
-  .program-line { font-size: 0.8125rem; padding-block: calc(8px * var(--s)); }
-}
 @media (max-width: 760px) {
   .jump { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-20px * var(--s)); padding-inline: calc(20px * var(--s)); -webkit-mask: linear-gradient(90deg, transparent, #000 calc(20px * var(--s)), #000 calc(100% - 28px * var(--s)), transparent); mask: linear-gradient(90deg, transparent, #000 calc(20px * var(--s)), #000 calc(100% - 28px * var(--s)), transparent); }
   .jump::-webkit-scrollbar { display: none; }
@@ -1016,12 +1001,16 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 @media (min-width: 1000px) { .mark-sign { height: 66px; } }
 @media (max-width: 560px) { .mark-sign { height: 58px; } }
 /* House facts card: headline numbers, amenity tiles, small print, button */
-.house-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: calc(18px * var(--s)) 0 calc(26px * var(--s)); background: var(--ink); background-image: var(--tex-linen); color: var(--paper); border-radius: calc(6px * var(--s)); position: relative; }
-.house-stats > div { display: flex; flex-direction: column; align-items: center; padding: calc(16px * var(--s)) calc(6px * var(--s)) calc(14px * var(--s)); }
-.house-stats > div + div { border-left: 1px solid rgba(244, 234, 208, 0.28); }
-.house-stats dd { margin: 0; font: 900 clamp(2.4rem, 1.8rem + calc(1.6vw * var(--s)), 3.4rem)/1 var(--clarendon); color: var(--paper); }
-.house-stats dt { font: 800 0.8125rem/1 var(--gothic); letter-spacing: 0.2em; text-transform: uppercase; color: var(--peach); margin-top: calc(8px * var(--s)); order: 2; }
-.house-stats dd { order: 1; }
+/* the stat band is cut like the house sign: arched top, notched corners, an orange rim */
+.house-stats { --sign: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 120' preserveAspectRatio='none'%3E%3Cpath d='M14 26 Q14 18 22 18 L70 18 Q150 -6 230 18 L278 18 Q286 18 286 26 L286 30 Q292 30 292 36 L292 100 Q286 100 286 106 L286 112 L14 112 L14 106 Q8 100 8 100 L8 36 Q14 30 14 30 Z'/%3E%3C/svg%3E"); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); position: relative; isolation: isolate; margin: calc(14px * var(--s)) 0 calc(28px * var(--s)); padding: calc(22px * var(--s)) clamp(10px, 3vw, calc(26px * var(--s))) calc(16px * var(--s)); }
+.house-stats::before, .house-stats::after { content: ""; position: absolute; z-index: -1; -webkit-mask: var(--sign) center / 100% 100% no-repeat; mask: var(--sign) center / 100% 100% no-repeat; }
+.house-stats::before { inset: 0; background: var(--orange); }
+.house-stats::after { inset: 3px; background: var(--card); }
+.house-stats > div { display: flex; flex-direction: column; align-items: center; padding: calc(4px * var(--s)) calc(6px * var(--s)); }
+.house-stats > div + div { border-left: 1.5px solid rgba(216, 80, 28, 0.45); }
+.house-stats dd { margin: 0; order: 1; font: 900 clamp(2rem, 1.5rem + calc(1.6vw * var(--s)), 2.8rem)/1 var(--clarendon); color: var(--royal); }
+.house-stats dt { order: 2; margin-top: calc(4px * var(--s)); font: 700 clamp(0.9rem, 0.8rem + 0.3vw, 1.05rem)/1 var(--clarendon); color: var(--orange-ink); }
+@media (max-width: 359px) { .house-stats > div { padding-inline: 2px; } .house-stats dt { font-size: 0.78rem; } }
 .amen-h { text-align: center; font-size: clamp(1.5rem, 1.2rem + calc(0.8vw * var(--s)), 1.9rem); margin: 0 0 calc(16px * var(--s)); }
 .amenities { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(10px * var(--s)); }
 .amenities li { display: flex; gap: calc(12px * var(--s)); align-items: center; padding: calc(12px * var(--s)); border: 1px solid var(--rule); border-radius: calc(4px * var(--s)); background: rgba(255, 255, 255, 0.55); min-width: 0; }
@@ -1055,7 +1044,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 /* ---------- the house: one wide card, map beside the amenities ---------- */
 .bill-wide { max-width: calc(1180px * var(--s)); margin-inline: auto; }
 .bill-wide .bill-head h2 { font-size: clamp(2rem, 1.4rem + calc(2vw * var(--s)), 3.2rem); }
-.bill-wide .house-stats { max-width: calc(760px * var(--s)); margin-inline: auto; }
+.bill-wide .house-stats { max-width: 600px; margin-inline: auto; }
 .bill-body { display: grid; gap: clamp(calc(24px * var(--s)), calc(3vw * var(--s)), calc(40px * var(--s))); align-items: center; margin-top: calc(6px * var(--s)); }
 @media (min-width: 900px) { .bill-body { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } }
 .bill-map { display: grid; gap: calc(14px * var(--s)); justify-items: center; }
