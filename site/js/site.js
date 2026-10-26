@@ -249,24 +249,6 @@ const HOST_EMAILS = ["stay@gatorhavenhouse.com", "info@gatorhavenhouse.com"];
       pen?.addEventListener("pointerenter", () => gsap.fromTo(pen, { rotate: -10 }, { rotate: -16, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }));
     }
 
-    /* Illustrated map: the dotted walk from the house draws itself to the stadium as you scroll */
-    const walk = document.querySelector(".walk-mask");
-    if (walk && walk.getTotalLength) {
-      const len = walk.getTotalLength();
-      gsap.set(walk, { strokeDasharray: len, strokeDashoffset: len });
-      /* desktop: the map stays put beside the house facts while the walk draws; phones draw it as it scrolls past */
-      mm.add("(min-width: 1000px)", () => {
-        const tw = gsap.to(walk, { strokeDashoffset: 0, ease: "none",
-          scrollTrigger: { trigger: "#the-house", start: "top 55%", end: "bottom 75%", scrub: 0.6 } });
-        return () => { tw.scrollTrigger?.kill(); tw.kill(); };
-      });
-      mm.add("(max-width: 999px)", () => {
-        const tw = gsap.to(walk, { strokeDashoffset: 0, ease: "none",
-          scrollTrigger: { trigger: ".map-illo", start: "top 85%", end: "bottom 45%", scrub: 0.6 } });
-        return () => { tw.scrollTrigger?.kill(); tw.kill(); };
-      });
-    }
-
     /* Map: the walking route draws itself to the stadium */
     const route = document.querySelector(".map-route");
     if (route && route.getTotalLength) {
