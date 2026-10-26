@@ -995,7 +995,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .band-royal, .gameday, .closer-strip { background-image: var(--tex-linen); }
 .greet { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .1 0 0 0 0 0 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); }
 
-/* ---------- Craig's October notes ---------- */
+/* ---------- October revisions ---------- */
 :root { --gator-blue: #0021a5; }
 .pb-4 { color: var(--gator-blue); }
 .mark-sign { height: calc(54px * var(--s)); width: auto; display: block; filter: drop-shadow(0 2px 3px rgba(27, 42, 85, 0.25)); }
@@ -1015,7 +1015,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .mark-sign { height: calc(66px * var(--s)); }
 @media (min-width: 1000px) { .mark-sign { height: 66px; } }
 @media (max-width: 560px) { .mark-sign { height: 58px; } }
-/* House facts card: Craig's layout (headline numbers, amenity tiles, small print, button) in the program style */
+/* House facts card: headline numbers, amenity tiles, small print, button */
 .house-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: calc(18px * var(--s)) 0 calc(26px * var(--s)); background: var(--ink); background-image: var(--tex-linen); color: var(--paper); border-radius: calc(6px * var(--s)); position: relative; }
 .house-stats > div { display: flex; flex-direction: column; align-items: center; padding: calc(16px * var(--s)) calc(6px * var(--s)) calc(14px * var(--s)); }
 .house-stats > div + div { border-left: 1px solid rgba(244, 234, 208, 0.28); }
