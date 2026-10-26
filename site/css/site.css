@@ -1073,3 +1073,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .house-fine .am-ic { width: calc(34px * var(--s)); height: calc(34px * var(--s)); box-shadow: 0 0 0 1.5px var(--card), 0 0 0 2.5px var(--orange-ink); }
 .house-fine .am-ic svg { width: 58%; height: 58%; }
 @media (max-width: 420px) { .am-ic { width: calc(44px * var(--s)); height: calc(44px * var(--s)); } }
+.amenities b { font-size: 1.1875rem; }
+@media (max-width: 420px) { .amenities li { flex-direction: row; align-items: center; gap: calc(10px * var(--s)); padding: calc(10px * var(--s)); } .amenities b { font-size: 1rem; } .am-ic { width: calc(40px * var(--s)); height: calc(40px * var(--s)); } }
+@media (max-width: 420px) { .amenities { grid-template-columns: minmax(0, 1fr); gap: calc(8px * var(--s)); } .amenities b { font-size: 1.0625rem; } }
