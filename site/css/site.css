@@ -1064,3 +1064,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .bill-map .map-card .note-script { bottom: calc(8px * var(--s)); }
 .bill-amen .amen-h { text-align: left; margin-bottom: calc(14px * var(--s)); }
 .bill-wide .bill-foot { grid-auto-flow: row; max-width: calc(520px * var(--s)); margin-inline: auto; }
+.frieze-wrap { top: -2px; }
