@@ -8,7 +8,7 @@
               data-netlify attributes on the form in index.html).
    If sending fails, the form shows the hosts' email addresses and a copy button instead. */
 const FORM_ENDPOINT = "https://formspree.io/f/xeaaajnn";
-const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
+const HOST_EMAILS = ["stay@gatorhavenhouse.com", "info@gatorhavenhouse.com"];
 
 (function () {
   const root = document.documentElement;
@@ -610,7 +610,7 @@ const HOST_EMAILS = ["craig@gatorhavenhouse.com", "jenn@gatorhavenhouse.com"];
       form.innerHTML =
         '<div class="form-success" role="status" tabindex="-1">' +
         "<h3>You're on the list" + (first ? ", " + first : "") + ".</h3>" +
-        "<p>Keep your stub. We'll write when dates open and when there's progress to show, from " + HOST_EMAILS.join(" or ") + ".</p>" +
+        "<p>Keep your stub. We'll write when dates open and when there's progress to show, from " + HOST_EMAILS[0] + ".</p>" +
         '<p><a class="link" href="photos.html">See the photos while you wait</a></p></div>';
       form.querySelector(".form-success").focus();
     };
